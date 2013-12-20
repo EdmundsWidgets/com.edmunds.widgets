@@ -1,0 +1,13 @@
+{
+  "name": "com.edmunds.widgets",
+  "version": "0.0.1",
+  "description": "Edmunds Widgets",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
