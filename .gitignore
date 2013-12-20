@@ -1,3 +1,6 @@
+### App
+public/css/
+
 ### File extensions
 *.diff
 *.log
@@ -8,3 +11,9 @@ Thumbs.db
 .project
 .settings/
 .idea/
+
+### Node
+node_modules/
+
+### Bower
+bower_components/
