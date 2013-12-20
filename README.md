@@ -4,11 +4,11 @@ The Edmunds Widgets application allows to configure the widgets.
 
 ## Environments
 
-[Development](http://edmunds-widgets-dev.herokuapp.com/) [![Build Status](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets.png?branch=master)](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets)
+### [![Build Status](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets.png?branch=master)](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets) [Development](http://edmunds-widgets-dev.herokuapp.com/)
 
-[Staging](http://edmunds-widgets-staging.herokuapp.com/) [![Build Status](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets.png?branch=staging)](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets)
+### [![Build Status](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets.png?branch=staging)](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets) [Staging](http://edmunds-widgets-staging.herokuapp.com/)
 
-[Production](http://edmunds-widgets-prod.herokuapp.com/) [![Build Status](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets.png?branch=production)](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets)
+### [![Build Status](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets.png?branch=production)](https://travis-ci.org/EdmundsWidgets/com.edmunds.widgets) [Production](http://edmunds-widgets-prod.herokuapp.com/)
 
 ## Widgets
 
