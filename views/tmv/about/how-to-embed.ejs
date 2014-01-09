@@ -1,0 +1,31 @@
+<div class="docs-section" id="how_to_embed">
+	<h2>How to Embed Widget</h2>
+	<p>To embed TMV Widget on your page just follow the instructions from <code>Get Code</code> popup.</p>
+	<h3>Example scenario:</h3>
+	<ol>
+		<li>
+			<p>Add the following JavaScript files to your page. It's preferably to add them at the bottom of your page for best page performance:</p>
+					<pre>&lt;script src="http://tmv.herokuapp.com/js/edm/sdk.js"&gt;&lt;/script&gt;
+	&lt;script src="http://tmv.herokuapp.com/js/edm/tmvwidget.js"&gt;&lt;/script&gt;</pre>
+		</li>
+		<li>
+			<p>Create new instance of the Widget:</p>
+			<pre>var widget = new EDM.TMV('vc7cfrppxszkhbtu4zhy3gvd', {root: 'tmvwidget', baseClass: 'tmvwidget'});</pre>
+		</li>
+		<li>
+			<p>Widget initialisation:</p>
+			<pre>widget.init({"includedMakes":"acura,aston-martin,audi","price":"tmv-invoice-msrp","showVehicles":"ALL","zip":"90010"});</pre>
+		</li>
+		<li>
+			<p>Widget rendering:</p>
+			<pre>widget.render();</pre>
+		</li>
+		<li>
+			<p>Add the CSS files to your page. It's preferably to add them at the head of your page:</p>
+					<pre>&lt;link rel="stylesheet" href="http://tmv.herokuapp.com/css/simple-light.css"&gt;
+	&lt;style&gt;
+	.tmvwidget{-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border-width:1px;width:248px;}.tmvwidget .tmvwidget-header{-webkit-border-top-right-radius:5px;-moz-border-radius-topright:5px;border-top-right-radius:5px;-webkit-border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px;}
+	&lt;/style&gt;</pre>
+		</li>
+	</ol>
+</div>
