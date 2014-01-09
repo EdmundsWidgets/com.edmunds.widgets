@@ -1,0 +1,30 @@
+<div class="docs-section" id="custom_events">
+	<h2>Widget Custom Events</h2>
+	<p>New Vehicle Configurator Widget provides the next method for subscription to the widget events:</p>
+	<br>
+	<p><code>on()</code> - Binds a callback function to the widget object. The callback will be invoked whenever the event is fired. <!-- (<a href="/docs/classes/EDM.Observable.html#method_on" target="_blank">More details</a>) --></p>
+        <pre>
+(function(){
+
+    // create instance of the widget
+    var widget = EDM.createWidget(/* configured options here */);
+
+    // subscribe to the event
+    widget.on('vehicle.make.select', function(makeId, makeName) {
+        console.log(makeName + ' was selected.');
+    });
+
+}());</pre>
+	<p><code>event_name</code> - this is one event of the widget. All list of <a href="#events">events</a> is below.</p>
+
+	<div class="alert alert-info">
+		<p>This method is very useful if you would use Google Analytics or another tracking system for the widget. For example:</p>
+            <pre>
+// subscribe to the event
+widget.on('vehicle.make.select', function(makeId, makeName) {
+    _gaq.push(['_trackEvent', 'Edmunds NVC Widget', 'Select a Make', makeName]);
+});
+            </pre>
+		<p>Where <code>_gaq</code> is an instance of Google Analytics in your page.</p>
+	</div>
+</div>

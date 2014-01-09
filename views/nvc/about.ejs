@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%- title %></title>
+	<link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+
+<% include nav %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="sidebar">
+				<ul class="nav">
+					<li><a href="#get_widget_code">Get Widget Code</a></li>
+					<li><a href="#how_to_embed">How to Embed Widget</a></li>
+					<li><a href="#custom_events">Widget Custom Events</a></li>
+					<li><a href="#events">Events List</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="page-header">
+				<h1>Quick Start</h1>
+			</div>
+			<% include about/get-widget-code.ejs %>
+			<% include about/how-to-embed.ejs %>
+			<% include about/custom-events.ejs %>
+			<% include about/events-list.ejs %>
+		</div>
+	</div>
+
+
+</div>
+
+<% include ../layout/scripts.ejs %>
+
+</body>
+</html>
