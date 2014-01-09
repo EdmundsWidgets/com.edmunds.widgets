@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src\constructor.js - com.edmunds.widgets.tmv</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="com.edmunds.widgets.tmv"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.2.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/EDM.Observable.html">EDM.Observable</a></li>
+            
+                <li><a href="../classes/EDM.TMV.html">EDM.TMV</a></li>
+            
+                <li><a href="../classes/EDM.Util.html">EDM.Util</a></li>
+            
+                <li><a href="../classes/EDM.Widget.html">EDM.Widget</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src\constructor.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * True Market Value Widget
+ * @class TMV
+ * @namespace EDM
+ * @param {String} apiKey The value of API Key
+ * @param {Object} options Base options for Widget
+ * @example
+ *      var widget = new EDM.TMV(apikey, {root: &#x27;tmvwidget&#x27;, baseClass: &#x27;tmvwidget&#x27;});
+ * @constructor
+ * @extends EDM.Widget
+ */
+function TMV(apiKey, options) {
+
+    var
+        /**
+         * Button element for price calculate.
+         * @property _calculateButton
+         * @type {HTMLButtonElement}
+         * @private
+         */
+        _calculateButton,
+
+        /**
+         * Select element with list of makes.
+         * @property _makesElement
+         * @type {HTMLSelectElement}
+         * @private
+         */
+        _makesElement,
+
+        /**
+         * Select element with list of models.
+         * @property _modelsElement
+         * @type {HTMLSelectElement}
+         * @private
+         */
+        _modelsElement,
+
+        /**
+         * Div root element for price view.
+         * @property _priceRootElement
+         * @type {HTMLDivElement}
+         * @private
+         */
+        _priceRootElement,
+
+        /**
+         * Div inner element for price view.
+         * @property _priceInnerElement
+         * @type {HTMLDivElement}
+         * @private
+         */
+        _priceInnerElement,
+
+        /**
+         * Select element with list of styles.
+         * @property _stylesElement
+         * @type {HTMLSelectElement}
+         * @private
+         */
+        _stylesElement,
+
+        /**
+         * Select element with list of years.
+         * @property _yearsElement
+         * @type {HTMLSelectElement}
+         * @private
+         */
+        _yearsElement,
+
+        /**
+         * Input element with value of zip code.
+         * @property _zipElement
+         * @type {HTMLInputElement}
+         * @private
+         */
+        _zipElement,
+
+        /**
+         * Div element with tooltip of zip code.
+         * @property _zipTooltipElement
+         * @type {HTMLDivElement}
+         * @private
+         */
+        _zipTooltipElement;
+
+    EDM.Widget.apply(this, arguments);
+
+    /**
+     * Render widget html.
+     * Bind events and caching elements after render.
+     *
+     * @method htmlSetup
+     * @chainable
+     */
+    this.htmlSetup = function() {
+        var me = this,
+            baseId = me.getBaseId(),
+            rootElement = me.getRootElement(),
+            options = this.getOptions();
+        if (rootElement === null) {
+            throw new Error(&#x27;Root element was not found.&#x27;);
+        }
+        /**
+         * Returns callback function for events of change.
+         * @method bindOnChangeEvent
+         * @param {Object} name The name of event
+         * @return {Function}
+         */
+        function bindOnChangeEvent(name) {
+            return function() {
+                var text = this.options ? this.options[this.selectedIndex].innerHTML : null;
+                me.trigger(&#x27;change:&#x27; + name, this.value, text);
+            };
+        }
+
+        // render from template
+        rootElement.innerHTML = $.renderTemplate(TMV.template, {
+            tmvTooltip: TMV.TOOLTIP_TMV,
+            baseId: baseId,
+            baseClass: me.getBaseClass(),
+            zip: this.zip || &#x27;&#x27;
+        });
+
+        // cache elements
+        _makesElement      = document.getElementById(baseId + &#x27;_make&#x27;);
+        _modelsElement     = document.getElementById(baseId + &#x27;_model&#x27;);
+        _yearsElement      = document.getElementById(baseId + &#x27;_year&#x27;);
+        _stylesElement     = document.getElementById(baseId + &#x27;_style&#x27;);
+        _zipElement        = document.getElementById(baseId + &#x27;_zip&#x27;);
+        _zipTooltipElement = document.getElementById(baseId + &#x27;_zip_tooltip&#x27;);
+        _priceRootElement  = document.getElementById(baseId + &#x27;_price&#x27;);
+        _priceInnerElement = document.getElementById(baseId + &#x27;_price_inner&#x27;);
+        _calculateButton   = document.getElementById(baseId + &#x27;_button&#x27;);
+        // bind events
+        _makesElement.onchange  = bindOnChangeEvent(&#x27;make&#x27;);
+        _modelsElement.onchange = bindOnChangeEvent(&#x27;model&#x27;);
+        _yearsElement.onchange  = bindOnChangeEvent(&#x27;year&#x27;);
+        _stylesElement.onchange = bindOnChangeEvent(&#x27;style&#x27;);
+        _zipElement.onchange    = bindOnChangeEvent(&#x27;zip&#x27;);
+        _zipElement.onkeyup     = bindOnChangeEvent(&#x27;zip&#x27;);
+        _zipElement.onkeydown   = function(event) {
+            var systemKeys = [8, 27, 35, 36, 37, 38, 39, 40, 45, 46,
+                    112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123],
+                numKey = [96, 97, 98, 99, 100, 101, 102, 103, 104, 105],
+                key = (event = event || window.event).keyCode,
+                val = String.fromCharCode(key),
+                isNum = (/^\d+$/).test(val),
+                isNumLock = isNum || key == 8 || $.contains(numKey, key);
+
+            if ((event.ctrlKey &amp;&amp; key == 86) || key == 86) {
+                return isNum;
+            }
+            if (event.shiftKey &amp;&amp; key == 45) {
+                return isNum;
+            }
+            if ($.contains(systemKeys, key)) {
+                return;
+            }
+            if (!isNumLock) {
+                return isNum;
+            }
+
+        };
+        _calculateButton.onclick = function() {
+            me.trigger(&#x27;calculate&#x27;);
+        };
+        this.bindEvents();
+        return this;
+    };
+
+    /**
+     * Disabled button calculation of price.
+     *
+     * @method disableButton
+     * @chainable
+     */
+    this.disableButton = function() {
+        _calculateButton.disabled = true;
+        return this;
+    };
+
+    /**
+     * Enable button calculation of price.
+     *
+     * @method enableButton
+     * @chainable
+     */
+    this.enableButton = function() {
+        _calculateButton.disabled = false;
+        return this;
+    };
+
+    /**
+     * Enables makes select
+     * @method enableMakes
+     * @chainable
+     */
+    this.enableMakes = function() {
+        _makesElement.removeAttribute(&#x27;disabled&#x27;);
+        return this;
+    };
+
+    /**
+     * Enables models select
+     * @method enableModels
+     * @chainable
+     */
+    this.enableModels = function() {
+        _modelsElement.removeAttribute(&#x27;disabled&#x27;);
+        return this;
+    };
+
+    /**
+     * Enables years select
+     * @method enableYears
+     * @chainable
+     */
+    this.enableYears = function() {
+        _yearsElement.removeAttribute(&#x27;disabled&#x27;);
+        return this;
+    };
+
+    /**
+     * Enables styles select
+     * @method enableStyles
+     * @chainable
+     */
+    this.enableStyles = function() {
+        _stylesElement.removeAttribute(&#x27;disabled&#x27;);
+        return this;
+    };
+
+    /**
+     * Disables makes select
+     * @method disableMakes
+     * @chainable
+     */
+    this.disableMakes = function() {
+        _makesElement.setAttribute(&#x27;disabled&#x27;, &#x27;disabled&#x27;);
+        return this;
+    };
+
+    /**
+     * Disables models select
+     * @method disableModels
+     * @chainable
+     */
+    this.disableModels = function() {
+        _modelsElement.setAttribute(&#x27;disabled&#x27;, &#x27;disabled&#x27;);
+        return this;
+    };
+
+    /**
+     * Disables years select
+     * @method disableYears
+     * @chainable
+     */
+    this.disableYears = function() {
+        _yearsElement.setAttribute(&#x27;disabled&#x27;, &#x27;disabled&#x27;);
+        return this;
+    };
+
+    /**
+     * Disables styles select
+     * @method disableStyles
+     * @chainable
+     */
+    this.disableStyles = function() {
+        _stylesElement.setAttribute(&#x27;disabled&#x27;, &#x27;disabled&#x27;);
+        return this;
+    };
+
+    /**
+     * Disabled a tooltip for zip code element.
+     *
+     * @method disableZipTooltip
+     * @chainable
+     */
+    this.disableZipTooltip = function() {
+        _zipTooltipElement.style.display = &#x27;none&#x27;;
+        return this;
+    };
+
+    /**
+     * Enable a tooltip for zip code element.
+     *
+     * @method enableZipTooltip
+     * @chainable
+     */
+    this.enableZipTooltip = function() {
+        _zipTooltipElement.style.display = &#x27;block&#x27;;
+        return this;
+    };
+    /**
+     * Reset a list of makes.
+     *
+     * @method resetMakes
+     * @param {String} defaultText
+     * @chainable
+     */
+    this.resetMakes = function(defaultText) {
+        defaultText = defaultText || &#x27;List of Makes&#x27;;
+        $.renderSelectOptions(_makesElement, {}, defaultText);
+        _makesElement.disabled = true;
+        this.make = null;
+        this.trigger(&#x27;reset:make&#x27;);
+        return this;
+    };
+
+    /**
+     * Reset a list of models.
+     *
+     * @method resetModels
+     * @param {String} defaultText
+     * @chainable
+     */
+    this.resetModels = function(defaultText) {
+        defaultText = defaultText || &#x27;List of Models&#x27;;
+        $.renderSelectOptions(_modelsElement, {}, defaultText);
+        _modelsElement.disabled = true;
+        this.model = null;
+        this.models = {};
+        this.trigger(&#x27;reset:model&#x27;);
+        return this;
+    };
+
+    /**
+     * Reset a price.
+     *
+     * @method resetPrice
+     * @chainable
+     */
+    this.resetPrice = function() {
+        var baseClass = this.getBaseClass(),
+            options = this.getOptions(),
+            price = options.price,
+            showVehicles = this.showVehicles,
+            priceClass,
+            isUsed = this.getOptions().showVehicles === &#x27;USED&#x27; || showVehicles === &#x27;USED&#x27;,
+            lessLabel = (isUsed) ? &#x27;Dealer Retail&#x27; : &#x27;Invoice&#x27;,
+            moreLabel = (isUsed) ? &#x27;Private Party&#x27; : &#x27;MSRP&#x27;,
+            tmvLabel = (isUsed) ? &#x27;Trade-in&#x27; : &#x27;TMV&lt;sup&gt;&amp;reg;&lt;/sup&gt;&#x27;;
+
+        this.price = null;
+
+        if (!price) {
+            price = &#x27;tmv-invoice-msrp&#x27;;
+        }
+        switch (price) {
+            case &#x27;tmv_invoice&#x27;:
+                priceClass = &#x27;price-tmv-invoice&#x27;;
+                break;
+            case &#x27;tmv&#x27;:
+                priceClass = &#x27;price-tmv&#x27;;
+                break;
+            default:
+                priceClass = &#x27;price-tmv-invoice-msrp&#x27;;
+        }
+        if (!isUsed) {
+            _priceRootElement.className = baseClass + &#x27;-price&#x27; + (this.getApiKey() ? &#x27;&#x27; : &#x27; disabled&#x27;);
+            _priceInnerElement.innerHTML = $.renderTemplate(TMV.textPriceTemplate, {
+                priceClass: priceClass,
+                baseClass: baseClass,
+                showVehicles: this.getOptions().showVehicles,
+                less: &#x27;---&#x27;,
+                more: &#x27;---&#x27;,
+                tmv: &#x27;---&#x27;,
+                isLess: &#x27;invalid&#x27;,
+                isMore: &#x27;invalid&#x27;,
+                isTmv: &#x27;invalid&#x27;,
+                lessLabel: lessLabel,
+                moreLabel: moreLabel,
+                tmvLabel: tmvLabel,
+                lessTooltip: TMV.TOOLTIP_INVOICE,
+                moreTooltip: TMV.TOOLTIP_MSRP,
+                tmvTooltip: &#x27;&#x27;
+            });
+        } else {
+            _priceRootElement.className = baseClass + &#x27;-price&#x27; + (this.getApiKey() ? &#x27;&#x27; : &#x27; disabled&#x27;);
+            _priceInnerElement.innerHTML = $.renderTemplate(TMV.graphPriceTemplate, {
+                priceClass: priceClass,
+                baseClass: baseClass,
+                showVehicles: this.getOptions().showVehicles,
+                less: &#x27;---&#x27;,
+                more: &#x27;---&#x27;,
+                tmvMin: &#x27;---&#x27;,
+                tmvMax: &#x27;---&#x27;,
+                isLess: &#x27;invalid&#x27;,
+                isMore: &#x27;invalid&#x27;,
+                isTmv: &#x27;invalid&#x27;,
+                isRangeMin: &#x27;invalid&#x27;,
+                isRangeMax: &#x27;invalid&#x27;,
+                lessLabel: lessLabel,
+                moreLabel: moreLabel,
+                tmvLabel: tmvLabel,
+                lessTooltip: TMV.TOOLTIP_INVOICE,
+                moreTooltip: TMV.TOOLTIP_MSRP,
+                tmvTooltip: &#x27;&#x27;
+            });
+        }
+
+
+        this.trigger(&#x27;reset:price&#x27;);
+
+
+        return this;
+    };
+
+    /**
+     * Reset a list of styles.
+     *
+     * @method resetStyles
+     * @param {String} defaultText
+     * @chainable
+     */
+    this.resetStyles = function(defaultText) {
+        defaultText = defaultText || &#x27;List of Styles&#x27;;
+        $.renderSelectOptions(_stylesElement, {}, defaultText);
+        _stylesElement.disabled = true;
+        this.disableButton();
+        this.style = null;
+        this.trigger(&#x27;reset:style&#x27;);
+        return this;
+    };
+
+    /**
+     * Reset a list of years.
+     *
+     * @method resetYears
+     * @param {String} defaultText
+     * @chainable
+     */
+    this.resetYears = function(defaultText) {
+        defaultText = defaultText || &#x27;Year&#x27;;
+        $.renderSelectOptions(_yearsElement, {}, defaultText);
+        _yearsElement.disabled = true;
+        this.year = null;
+        this.trigger(&#x27;reset:year&#x27;);
+        return this;
+    };
+
+    /**
+     * Set a make.
+     *
+     * @method setMakes
+     * @param {Object} records
+     * @chainable
+     */
+    this.setMakes = function(records) {
+        if ($.isEmpty(records)) {
+            return this.resetMakes(&#x27;Makes not found&#x27;);
+        }
+        $.renderSelectOptions(_makesElement, records, &#x27;Select a Make&#x27;);
+        _makesElement.disabled = false;
+        return this;
+    };
+
+    /**
+     * Set a model.
+     *
+     * @method setModels
+     * @param {Object} records
+     * @chainable
+     */
+    this.setModels = function(records) {
+        if ($.isEmpty(records)) {
+            return this.resetModels(&#x27;Models not found&#x27;);
+        }
+        $.renderSelectOptions(_modelsElement, records, &#x27;Select a Model&#x27;);
+        _modelsElement.disabled = false;
+        return this;
+    };
+
+    /**
+     * Set a price.
+     *
+     * @method setPrice
+     * @param {Object} price
+     * @chainable
+     */
+    this.setPrice = function(price) {
+        var options = this.getOptions(),
+            priceType = options.price,
+            expr = /(?=(?:\d{3})+(?:\.|$))/g,
+            priceClass,
+            less = price.less,
+            more = price.more,
+            tmvStrMin = (price.rangeMin) ? price.rangeMin.toString().split(expr).join(&#x27;,&#x27;) : &#x27;N/A&#x27;,
+            tmvStrMax = (price.rangeMax) ? price.rangeMax.toString().split(expr).join(&#x27;,&#x27;) : &#x27;N/A&#x27;,
+            showVehicles = this.showVehicles,
+            isUsed = this.getOptions().showVehicles === &#x27;USED&#x27; || showVehicles === &#x27;USED&#x27;,
+            tmv = price.tmv,
+            lessStr = (less) ? less.toString().split(expr).join(&#x27;,&#x27;) : &#x27;N/A&#x27;,
+            moreStr = (more) ? more.toString().split(expr).join(&#x27;,&#x27;) : &#x27;N/A&#x27;,
+            tmvStr = (tmv) ? tmv.toString().split(expr).join(&#x27;,&#x27;) : &#x27;N/A&#x27;;
+
+        if (!priceType) {
+            priceType = &#x27;tmv-invoice-msrp&#x27;;
+        }
+        switch (priceType) {
+            case &#x27;tmv_invoice&#x27;:
+                priceClass = &#x27;price-tmv-invoice&#x27;;
+                break;
+            case &#x27;tmv&#x27;:
+                priceClass = &#x27;price-tmv&#x27;;
+                break;
+            default:
+                priceClass = &#x27;price-tmv-invoice-msrp&#x27;;
+        }
+
+        if (!isUsed) {
+            _priceRootElement.className = this.getBaseClass() + &#x27;-price&#x27;;
+            _priceInnerElement.innerHTML = $.renderTemplate(TMV.textPriceTemplate, {
+                priceClass: priceClass,
+                baseClass: this.getBaseClass(),
+                showVehicles:   price.showVehicles,
+                less:           lessStr,       //low
+                more:           moreStr,       //big
+                tmv:            tmvStr,        //mid
+                isLess:         (less) ? &#x27;valid&#x27; : &#x27;invalid&#x27;,
+                isMore:         (more) ? &#x27;valid&#x27; : &#x27;invalid&#x27;,
+                isTmv:          (tmv) ? &#x27;valid&#x27; : &#x27;invalid&#x27;,
+                lessLabel:      price.lessLabel,
+                moreLabel:      price.moreLabel,
+                tmvLabel:       price.tmvLabel,
+                headerToolTip:  price.headerToolTip,
+                lessTooltip:    price.lessTooltip,
+                moreTooltip:    price.moreTooltip,
+                tmvTooltip:     price.tmvTooltip
+            });
+        } else {
+            _priceRootElement.className = this.getBaseClass() + &#x27;-price&#x27;;
+            _priceInnerElement.innerHTML = $.renderTemplate(TMV.graphPriceTemplate, {
+                priceClass: priceClass,
+                baseClass: this.getBaseClass(),
+                showVehicles: this.getOptions().showVehicles,
+                less:           lessStr,       //low
+                more:           moreStr,       //big
+                tmvMin:         tmvStrMin,
+                tmvMax:         tmvStrMax,
+                isLess:         (less) ? &#x27;valid&#x27; : &#x27;invalid&#x27;,
+                isMore:         (more) ? &#x27;valid&#x27; : &#x27;invalid&#x27;,
+                isTmv:          (tmv) ? &#x27;valid&#x27; : &#x27;invalid&#x27;,
+                isRangeMin:     (price.rangeMin) ? &#x27;valid&#x27; : &#x27;invalid&#x27;,
+                isRangeMax:     (price.rangeMax) ? &#x27;valid&#x27; : &#x27;invalid&#x27;,
+                lessLabel:      price.lessLabel,
+                moreLabel:      price.moreLabel,
+                tmvLabel:       price.tmvLabel,
+                headerToolTip:  price.headerToolTip,
+                lessTooltip:    price.lessTooltip,
+                moreTooltip:    price.moreTooltip,
+                tmvTooltipMin:  price.tmvTooltipMin,
+                tmvTooltipMax:  price.tmvTooltipMax
+            });
+        }
+    };
+
+    /**
+     * Set a style.
+     *
+     * @method setStyles
+     * @param {Object} records
+     * @chainable
+     */
+    this.setStyles = function(records) {
+        if ($.isEmpty(records)) {
+            return this.resetStyles(&#x27;Styles not found&#x27;);
+        }
+        $.renderSelectOptions(_stylesElement, records, &#x27;Select a Style&#x27;);
+        _stylesElement.disabled = false;
+        return this;
+    };
+
+    /**
+     * Set a year.
+     *
+     * @method setYears
+     * @param {Object} records
+     * @chainable
+     */
+    this.setYears = function(records) {
+        var type = this.getOptions().showVehicles,
+            hasOptGroups = !type || type === &#x27;ALL&#x27;;
+        if (hasOptGroups &amp;&amp; records.length &gt; 0 || !hasOptGroups &amp;&amp; $.isEmpty(records)) {
+            return this.resetYears(&#x27;Years not found&#x27;);
+        }
+        $.renderSelectOptions(_yearsElement, records, &#x27;Year&#x27;, hasOptGroups);
+        _yearsElement.disabled = false;
+        return this;
+    };
+
+    this.showError = function(text) {
+        var root = this.getRootElement(),
+            error = new EDM.nvc.MessageDialog();
+        root.appendChild(error.render({
+            isSuccess: false,
+            text: text || [
+                &#x27;&lt;p&gt;Something went wrong!&lt;/p&gt;&#x27;,
+                &#x27;&lt;p&gt;Please return and try again or &lt;a href=&quot;Mailto:api@edmunds.com&quot;&gt;contact us&lt;/a&gt; directly.&lt;/p&gt;&#x27;
+            ].join(&#x27;&#x27;)
+        }).el);
+        error.init();
+    };
+
+}
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

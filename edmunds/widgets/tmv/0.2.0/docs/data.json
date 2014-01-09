@@ -1,0 +1,2043 @@
+{
+    "project": {
+        "name": "com.edmunds.widgets.tmv",
+        "description": "Edmunds True Market Value Widget",
+        "version": "0.2.0"
+    },
+    "files": {
+        "src\\constructor.js": {
+            "name": "src\\constructor.js",
+            "modules": {},
+            "classes": {
+                "EDM.TMV": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "EDM": 1
+            }
+        },
+        "src\\events.js": {
+            "name": "src\\events.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "EDM.TMV": 1
+            },
+            "namespaces": {}
+        },
+        "src\\observable.js": {
+            "name": "src\\observable.js",
+            "modules": {},
+            "classes": {
+                "EDM.Observable": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "EDM": 1
+            }
+        },
+        "src\\proto.js": {
+            "name": "src\\proto.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "EDM.TMV": 1
+            },
+            "namespaces": {}
+        },
+        "src\\template.js": {
+            "name": "src\\template.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "EDM.TMV": 1
+            },
+            "namespaces": {}
+        },
+        "src\\tooltips.js": {
+            "name": "src\\tooltips.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "EDM.TMV": 1
+            },
+            "namespaces": {}
+        },
+        "src\\utils.js": {
+            "name": "src\\utils.js",
+            "modules": {},
+            "classes": {
+                "EDM.Util": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "EDM": 1
+            }
+        },
+        "src\\widget.js": {
+            "name": "src\\widget.js",
+            "modules": {},
+            "classes": {
+                "EDM.Widget": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "EDM": 1
+            }
+        }
+    },
+    "modules": {},
+    "classes": {
+        "EDM.TMV": {
+            "name": "EDM.TMV",
+            "shortname": "EDM.TMV",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "EDM",
+            "file": "src\\constructor.js",
+            "line": 1,
+            "description": "True Market Value Widget",
+            "params": [
+                {
+                    "name": "apiKey",
+                    "description": "The value of API Key",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "Base options for Widget",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n     var widget = new EDM.TMV(apikey, {root: 'tmvwidget', baseClass: 'tmvwidget'});"
+            ],
+            "is_constructor": 1,
+            "extends": "EDM.Widget"
+        },
+        "EDM.Observable": {
+            "name": "EDM.Observable",
+            "shortname": "EDM.Observable",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "EDM",
+            "file": "src\\observable.js",
+            "line": 1,
+            "description": "Observable mixin",
+            "example": [
+                "\n    // create constructor\n    var Widget = function() {\n      // make the widget observable\n      // Observable.call(Widget.prototype);\n      Observable.call(this);\n      // test method\n      this.test = function(data) {\n        this.trigger('test', data);\n      }\n    };\n    // create new instance of the Widget\n    var widget = new Widget();\n    // add event listener\n    widget.on('test', function(data) {\n        console.log(data);\n    });\n    // test\n    widget.test('lorem ipsum'); // => writes to console \"lorem ipsum\""
+            ],
+            "return": {
+                "description": "",
+                "type": "Function"
+            }
+        },
+        "EDM.Util": {
+            "name": "EDM.Util",
+            "shortname": "EDM.Util",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "EDM",
+            "file": "src\\utils.js",
+            "line": 1,
+            "description": "This module contains helpers.",
+            "static": 1
+        },
+        "EDM.Widget": {
+            "name": "EDM.Widget",
+            "shortname": "EDM.Widget",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "EDM",
+            "file": "src\\widget.js",
+            "line": 1,
+            "description": "Base Widget Class",
+            "is_constructor": 1,
+            "extends": "EDM.Observable",
+            "example": [
+                "\n     // create new instance of the Widget\n     var widget = new Widget();"
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "src\\constructor.js",
+            "line": 15,
+            "description": "Button element for price calculate.",
+            "itemtype": "property",
+            "name": "_calculateButton",
+            "type": "{HTMLButtonElement}",
+            "access": "private",
+            "tagname": "",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 23,
+            "description": "Select element with list of makes.",
+            "itemtype": "property",
+            "name": "_makesElement",
+            "type": "{HTMLSelectElement}",
+            "access": "private",
+            "tagname": "",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 31,
+            "description": "Select element with list of models.",
+            "itemtype": "property",
+            "name": "_modelsElement",
+            "type": "{HTMLSelectElement}",
+            "access": "private",
+            "tagname": "",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 39,
+            "description": "Div root element for price view.",
+            "itemtype": "property",
+            "name": "_priceRootElement",
+            "type": "{HTMLDivElement}",
+            "access": "private",
+            "tagname": "",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 47,
+            "description": "Div inner element for price view.",
+            "itemtype": "property",
+            "name": "_priceInnerElement",
+            "type": "{HTMLDivElement}",
+            "access": "private",
+            "tagname": "",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 55,
+            "description": "Select element with list of styles.",
+            "itemtype": "property",
+            "name": "_stylesElement",
+            "type": "{HTMLSelectElement}",
+            "access": "private",
+            "tagname": "",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 63,
+            "description": "Select element with list of years.",
+            "itemtype": "property",
+            "name": "_yearsElement",
+            "type": "{HTMLSelectElement}",
+            "access": "private",
+            "tagname": "",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 71,
+            "description": "Input element with value of zip code.",
+            "itemtype": "property",
+            "name": "_zipElement",
+            "type": "{HTMLInputElement}",
+            "access": "private",
+            "tagname": "",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 79,
+            "description": "Div element with tooltip of zip code.",
+            "itemtype": "property",
+            "name": "_zipTooltipElement",
+            "type": "{HTMLDivElement}",
+            "access": "private",
+            "tagname": "",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 89,
+            "description": "Render widget html.\nBind events and caching elements after render.",
+            "itemtype": "method",
+            "name": "htmlSetup",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 104,
+            "description": "Returns callback function for events of change.",
+            "itemtype": "method",
+            "name": "bindOnChangeEvent",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of event",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 172,
+            "description": "Disabled button calculation of price.",
+            "itemtype": "method",
+            "name": "disableButton",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 183,
+            "description": "Enable button calculation of price.",
+            "itemtype": "method",
+            "name": "enableButton",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 194,
+            "description": "Enables makes select",
+            "itemtype": "method",
+            "name": "enableMakes",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 204,
+            "description": "Enables models select",
+            "itemtype": "method",
+            "name": "enableModels",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 214,
+            "description": "Enables years select",
+            "itemtype": "method",
+            "name": "enableYears",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 224,
+            "description": "Enables styles select",
+            "itemtype": "method",
+            "name": "enableStyles",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 234,
+            "description": "Disables makes select",
+            "itemtype": "method",
+            "name": "disableMakes",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 244,
+            "description": "Disables models select",
+            "itemtype": "method",
+            "name": "disableModels",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 254,
+            "description": "Disables years select",
+            "itemtype": "method",
+            "name": "disableYears",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 264,
+            "description": "Disables styles select",
+            "itemtype": "method",
+            "name": "disableStyles",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 274,
+            "description": "Disabled a tooltip for zip code element.",
+            "itemtype": "method",
+            "name": "disableZipTooltip",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 285,
+            "description": "Enable a tooltip for zip code element.",
+            "itemtype": "method",
+            "name": "enableZipTooltip",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 295,
+            "description": "Reset a list of makes.",
+            "itemtype": "method",
+            "name": "resetMakes",
+            "params": [
+                {
+                    "name": "defaultText",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 311,
+            "description": "Reset a list of models.",
+            "itemtype": "method",
+            "name": "resetModels",
+            "params": [
+                {
+                    "name": "defaultText",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 328,
+            "description": "Reset a price.",
+            "itemtype": "method",
+            "name": "resetPrice",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 410,
+            "description": "Reset a list of styles.",
+            "itemtype": "method",
+            "name": "resetStyles",
+            "params": [
+                {
+                    "name": "defaultText",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 427,
+            "description": "Reset a list of years.",
+            "itemtype": "method",
+            "name": "resetYears",
+            "params": [
+                {
+                    "name": "defaultText",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 443,
+            "description": "Set a make.",
+            "itemtype": "method",
+            "name": "setMakes",
+            "params": [
+                {
+                    "name": "records",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 459,
+            "description": "Set a model.",
+            "itemtype": "method",
+            "name": "setModels",
+            "params": [
+                {
+                    "name": "records",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 475,
+            "description": "Set a price.",
+            "itemtype": "method",
+            "name": "setPrice",
+            "params": [
+                {
+                    "name": "price",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 559,
+            "description": "Set a style.",
+            "itemtype": "method",
+            "name": "setStyles",
+            "params": [
+                {
+                    "name": "records",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\constructor.js",
+            "line": 575,
+            "description": "Set a year.",
+            "itemtype": "method",
+            "name": "setYears",
+            "params": [
+                {
+                    "name": "records",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 5,
+            "description": "This event fires when value of make changed.",
+            "itemtype": "event",
+            "name": "change:make",
+            "params": [
+                {
+                    "name": "makeId",
+                    "description": "ID of make",
+                    "type": "String"
+                },
+                {
+                    "name": "makeName",
+                    "description": "The make name",
+                    "type": "String"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 12,
+            "description": "This event fires when value of model changed.",
+            "itemtype": "event",
+            "name": "change:model",
+            "params": [
+                {
+                    "name": "modelId",
+                    "description": "ID of model",
+                    "type": "String"
+                },
+                {
+                    "name": "modelName",
+                    "description": "The model name",
+                    "type": "String"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 19,
+            "description": "This event fires when value of year changed.",
+            "itemtype": "event",
+            "name": "change:year",
+            "params": [
+                {
+                    "name": "year",
+                    "description": "Value of year",
+                    "type": "String"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 25,
+            "description": "This event fires when value of style changed.",
+            "itemtype": "event",
+            "name": "change:style",
+            "params": [
+                {
+                    "name": "styleId",
+                    "description": "ID of style",
+                    "type": "String"
+                },
+                {
+                    "name": "styleName",
+                    "description": "The style name",
+                    "type": "String"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 32,
+            "description": "This event fires when zip code changed.",
+            "itemtype": "event",
+            "name": "change:zip",
+            "params": [
+                {
+                    "name": "zip",
+                    "description": "Value of Zip Code",
+                    "type": "String"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 38,
+            "description": "This event fires when list of makes reseted.",
+            "itemtype": "event",
+            "name": "reset:make",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 43,
+            "description": "This event fires when list of makes reseted.",
+            "itemtype": "event",
+            "name": "reset:model",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 48,
+            "description": "This event fires when list of models reseted.",
+            "itemtype": "event",
+            "name": "reset:style",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 53,
+            "description": "This event fires when list of styles reseted.",
+            "itemtype": "event",
+            "name": "reset:year",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 58,
+            "description": "This event fires when list of styles reseted.",
+            "itemtype": "event",
+            "name": "reset:price",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 63,
+            "description": "This event fires on '_calculateButton'.",
+            "itemtype": "event",
+            "name": "calculate",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 68,
+            "description": "This event fires when list of makes loaded.",
+            "itemtype": "event",
+            "name": "load:makes",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "JSON response",
+                    "type": "Object"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 74,
+            "description": "This event fires when list of models loaded.",
+            "itemtype": "event",
+            "name": "load:models",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "JSON response",
+                    "type": "Object"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 80,
+            "description": "This event fires when a price loaded.",
+            "itemtype": "event",
+            "name": "load:price",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "JSON response",
+                    "type": "Object"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 86,
+            "description": "This event fires when list of styles loaded.",
+            "itemtype": "event",
+            "name": "load:styles",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "JSON response",
+                    "type": "Object"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\events.js",
+            "line": 92,
+            "description": "This event fires when list of years loaded.",
+            "itemtype": "event",
+            "name": "load:years",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "JSON response",
+                    "type": "Object"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\observable.js",
+            "line": 28,
+            "description": "List of events",
+            "itemtype": "property",
+            "name": "_events",
+            "access": "private",
+            "tagname": "",
+            "type": "{Object}",
+            "class": "EDM.Observable",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\observable.js",
+            "line": 36,
+            "description": "Binds a callback function to an object. The callback will be invoked whenever the event is fired.",
+            "itemtype": "method",
+            "name": "on",
+            "example": [
+                "\n    // External usage example:\n    widget.on('change:make', function(makeId) {\n        // this code is executed when the change event is fired by the widget\n    });\n\n    // Internal usage example:\n    this.on('change:make', function(makeId) {\n        // this code is executed when the change event is fired by the widget\n    });"
+            ],
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The event name",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback function",
+                    "type": "Function"
+                },
+                {
+                    "name": "context",
+                    "description": "The context object",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.Observable",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\observable.js",
+            "line": 67,
+            "description": "Removes a previously-bound callback function from an object. If no event name is specified, all callbacks will be removed.",
+            "itemtype": "method",
+            "name": "off",
+            "example": [
+                "\n    // External usage example:\n    widget.off('change:make');\n\n    // Internal usage example:\n    this.off('change:make');"
+            ],
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The event name",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.Observable",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\observable.js",
+            "line": 87,
+            "description": "Trigger callbacks for the given event. Subsequent arguments to trigger will be passed along to the event callbacks.",
+            "itemtype": "method",
+            "name": "trigger",
+            "example": [
+                "\n    this.trigger('change:make', makeId);"
+            ],
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The event name",
+                    "type": "String"
+                },
+                {
+                    "name": "arg*",
+                    "description": "The arguments",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.Observable",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 10,
+            "description": "Bind events.",
+            "itemtype": "method",
+            "name": "bindEvents",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 36,
+            "description": "Track Google Analytics Events.",
+            "itemtype": "method",
+            "name": "trackEvents",
+            "params": [
+                {
+                    "name": "category",
+                    "description": "The name of category",
+                    "type": "String"
+                },
+                {
+                    "name": "action",
+                    "description": "The value of category",
+                    "type": "String"
+                },
+                {
+                    "name": "opt_label",
+                    "description": "The label",
+                    "type": "String"
+                },
+                {
+                    "name": "opt_value",
+                    "description": "The value",
+                    "type": "String"
+                },
+                {
+                    "name": "opt_noninteraction",
+                    "description": "The noninteraction",
+                    "type": "String"
+                }
+            ],
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 47,
+            "params": [
+                {
+                    "name": "category",
+                    "description": ""
+                },
+                {
+                    "name": "action",
+                    "description": ""
+                },
+                {
+                    "name": "opt_label",
+                    "description": "",
+                    "optional": true
+                },
+                {
+                    "name": "opt_value",
+                    "description": "",
+                    "optional": true
+                },
+                {
+                    "name": "opt_noninteraction",
+                    "description": "",
+                    "optional": true
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 84,
+            "description": "Initialisation of widget.",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n     widget.init({\"includedMakes\":\"acura,aston-martin,audi\",\"price\":\"tmv-invoice-msrp\",\"showVehicles\":\"ALL\",\"zip\":\"90010\"});"
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 96,
+            "description": "Сreate new instance of the EDMUNDSAPI.Vehicle.",
+            "itemtype": "property",
+            "name": "vehiclesApi",
+            "type": "{EDMUNDSAPI.Vehicle}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 107,
+            "description": "Render a widget.",
+            "itemtype": "method",
+            "name": "render",
+            "example": [
+                "\n     widget.render();"
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 127,
+            "description": "Request to load list of makes.",
+            "itemtype": "method",
+            "name": "loadMakes",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 139,
+            "description": "Request to load a zip code.",
+            "itemtype": "method",
+            "name": "loadZip",
+            "params": [
+                {
+                    "name": "zip",
+                    "description": "Zip Code",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 152,
+            "description": "Request to load list of models.",
+            "itemtype": "method",
+            "name": "loadModels",
+            "params": [
+                {
+                    "name": "makeId",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 166,
+            "description": "Request to load a price.",
+            "itemtype": "method",
+            "name": "loadPrice",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 188,
+            "description": "Request to load min price for range .",
+            "itemtype": "method",
+            "name": "loadRangeMin",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 208,
+            "description": "Request to load max price for range.",
+            "itemtype": "method",
+            "name": "loadRangeMax",
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 231,
+            "description": "Request to load list of styles.",
+            "itemtype": "method",
+            "name": "loadStyles",
+            "params": [
+                {
+                    "name": "make",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "model",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "year",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 251,
+            "description": "Changed a year.",
+            "itemtype": "method",
+            "name": "onMakeChange",
+            "params": [
+                {
+                    "name": "makeId",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 268,
+            "description": "Changed a model.",
+            "itemtype": "method",
+            "name": "onModelChange",
+            "params": [
+                {
+                    "name": "modelId",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 288,
+            "description": "Changed a style.",
+            "itemtype": "method",
+            "name": "onStyleChange",
+            "params": [
+                {
+                    "name": "styleId",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 308,
+            "description": "Changed a year.",
+            "itemtype": "method",
+            "name": "onYearChange",
+            "params": [
+                {
+                    "name": "year",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 326,
+            "description": "Changed zip code.",
+            "itemtype": "method",
+            "name": "onZipChange",
+            "params": [
+                {
+                    "name": "zip",
+                    "description": "Zip code",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 349,
+            "description": "Loaded a zip code.",
+            "itemtype": "method",
+            "name": "onZipLoad",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 364,
+            "description": "Loaded list of makes.",
+            "itemtype": "method",
+            "name": "onMakesLoad",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 382,
+            "description": "Loaded list of models.",
+            "itemtype": "method",
+            "name": "onModelsLoad",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 402,
+            "description": "Loaded a price.",
+            "itemtype": "method",
+            "name": "onPriceLoad",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 421,
+            "description": "Loaded list of styles.",
+            "itemtype": "method",
+            "name": "onStylesLoad",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 442,
+            "description": "Loaded list of years.",
+            "itemtype": "method",
+            "name": "onYearsLoad",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 482,
+            "description": "Parsing list of makes.",
+            "itemtype": "method",
+            "name": "parseMakes",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 506,
+            "description": "Parsing list of models.",
+            "itemtype": "method",
+            "name": "parseModels",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 516,
+            "description": "Checking list of years.",
+            "itemtype": "method",
+            "name": "hasYears",
+            "params": [
+                {
+                    "name": "years",
+                    "description": "List of years",
+                    "type": "Array"
+                },
+                {
+                    "name": "type",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 540,
+            "description": "Mapping for list of models.",
+            "itemtype": "method",
+            "name": "mapModels",
+            "params": [
+                {
+                    "name": "records",
+                    "description": "List of models",
+                    "type": "Array"
+                },
+                {
+                    "name": "type",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 568,
+            "description": "Return object with options for render price.",
+            "itemtype": "method",
+            "name": "parsePrice",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 609,
+            "description": "Return value for min range price.",
+            "itemtype": "method",
+            "name": "parsePriceRangeMin",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 623,
+            "description": "Return value for max range price.",
+            "itemtype": "method",
+            "name": "parsePriceRangeMax",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 637,
+            "description": "Parsing list of styles.",
+            "itemtype": "method",
+            "name": "parseStyles",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 655,
+            "description": "Parsing list of years.",
+            "itemtype": "method",
+            "name": "parseYears",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "type",
+                    "description": "The vehicle type (ALL, NEW or USED)",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\proto.js",
+            "line": 665,
+            "description": "Mapping for list of years.",
+            "itemtype": "method",
+            "name": "mapYears",
+            "params": [
+                {
+                    "name": "years",
+                    "description": "List of years",
+                    "type": "Array"
+                },
+                {
+                    "name": "type",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\template.js",
+            "line": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\template.js",
+            "line": 5,
+            "description": "`template` HTML template - widget view",
+            "itemtype": "property",
+            "name": "template",
+            "static": 1,
+            "type": "{HTMLDivElement}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\template.js",
+            "line": 38,
+            "description": "`graphPriceTemplate` HTML template - view values of price in graph format",
+            "itemtype": "property",
+            "name": "graphPriceTemplate",
+            "static": 1,
+            "type": "{HTMLDivElement}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\template.js",
+            "line": 82,
+            "description": "`textPriceTemplate` HTML template - view values of price in text format",
+            "itemtype": "property",
+            "name": "textPriceTemplate",
+            "static": 1,
+            "type": "{HTMLDivElement}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\tooltips.js",
+            "line": 1,
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\tooltips.js",
+            "line": 5,
+            "itemtype": "property",
+            "name": "TOOLTIP_TMV",
+            "static": 1,
+            "final": 1,
+            "type": "{String}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\tooltips.js",
+            "line": 13,
+            "itemtype": "property",
+            "name": "TOOLTIP_INVOICE",
+            "static": 1,
+            "final": 1,
+            "type": "{String}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\tooltips.js",
+            "line": 21,
+            "itemtype": "property",
+            "name": "TOOLTIP_MSRP",
+            "static": 1,
+            "final": 1,
+            "type": "{String}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\tooltips.js",
+            "line": 29,
+            "itemtype": "property",
+            "name": "TOOLTIP_TRADEIN_MIN",
+            "static": 1,
+            "final": 1,
+            "type": "{String}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\tooltips.js",
+            "line": 37,
+            "itemtype": "property",
+            "name": "TOOLTIP_TRADEIN_MAX",
+            "static": 1,
+            "final": 1,
+            "type": "{String}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\tooltips.js",
+            "line": 45,
+            "itemtype": "property",
+            "name": "TOOLTIP_PRIVATEPARTY",
+            "static": 1,
+            "final": 1,
+            "type": "{String}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\tooltips.js",
+            "line": 53,
+            "itemtype": "property",
+            "name": "TOOLTIP_TMVRETAIL",
+            "static": 1,
+            "final": 1,
+            "type": "{String}",
+            "class": "EDM.TMV",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\utils.js",
+            "line": 21,
+            "description": "Bind a function to an object.",
+            "itemtype": "method",
+            "name": "bind",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "example": [
+                "\n     var obj = {},           // Some object\n         fn = function(){    // Some function\n             return this;\n         };\n     EDM.Util.bind(fn, obj);"
+            ],
+            "class": "EDM.Util",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\utils.js",
+            "line": 43,
+            "description": "Returns true if the value is present in the list.",
+            "itemtype": "method",
+            "name": "contains",
+            "params": [
+                {
+                    "name": "list",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n     var array = [96, 97, 98, 99, 100, 101, 102, 103, 104, 105], // Array\n         key = 100;                                              // Numder or string\n     EDM.Util.contains(array, key); // => true"
+            ],
+            "class": "EDM.Util",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\utils.js",
+            "line": 70,
+            "description": "Copy all of the properties in the source objects over to the destination object.",
+            "itemtype": "method",
+            "name": "extend",
+            "params": [
+                {
+                    "name": "destination",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "source",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "example": [
+                "\n     EDM.Util.extend(object1, object2);"
+            ],
+            "class": "EDM.Util",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\utils.js",
+            "line": 94,
+            "description": "Returns true if object is an Array.",
+            "itemtype": "method",
+            "name": "isArray",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n     EDM.Util.isArray([1990, 1999, 1996, 2010]); // => true"
+            ],
+            "class": "EDM.Util",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\utils.js",
+            "line": 116,
+            "description": "Renders options to HTMLSelectElement.",
+            "itemtype": "method",
+            "name": "renderSelectOptions",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "",
+                    "type": "HTMLSelectElement"
+                },
+                {
+                    "name": "records",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "hasOptGroups",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "HTMLSelectElement"
+            },
+            "example": [
+                "\n     // for example element can be {HTMLSelectElement}\n     EDM.Util.renderSelectOptions(element, {}, 'Select a Make');"
+            ],
+            "class": "EDM.Util",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\utils.js",
+            "line": 163,
+            "description": "Finds and replaces all variables in template.",
+            "itemtype": "method",
+            "name": "renderTemplate",
+            "example": [
+                "\n     EDM.Util.renderTemplate('<div><%= text %></div>', { text: 'test' }); // => <div>test</div>"
+            ],
+            "params": [
+                {
+                    "name": "template",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "EDM.Util",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 14,
+            "description": "Vehicle API Key.",
+            "itemtype": "property",
+            "name": "_apiKey",
+            "access": "private",
+            "tagname": "",
+            "type": "{String}",
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 22,
+            "description": "Base class name.",
+            "itemtype": "property",
+            "name": "_baseClass",
+            "access": "private",
+            "tagname": "",
+            "type": "{String}",
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 30,
+            "description": "Base ID.",
+            "itemtype": "property",
+            "name": "_baseId",
+            "access": "private",
+            "tagname": "",
+            "type": "{String}",
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 38,
+            "description": "List of events.",
+            "itemtype": "property",
+            "name": "_events",
+            "access": "private",
+            "tagname": "",
+            "type": "{Object}",
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 46,
+            "description": "Base Options of widget.",
+            "itemtype": "property",
+            "name": "_options",
+            "access": "private",
+            "tagname": "",
+            "type": "{Object}",
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 54,
+            "description": "Root element of widget.",
+            "itemtype": "property",
+            "name": "_rootElement",
+            "access": "private",
+            "tagname": "",
+            "type": "{HTMLElement}",
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 62,
+            "description": "Returns the API key.",
+            "itemtype": "method",
+            "name": "getApiKey",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 71,
+            "description": "Returns base class name.",
+            "itemtype": "method",
+            "name": "getBaseClass",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 80,
+            "description": "Returns base Id.",
+            "itemtype": "method",
+            "name": "getBaseId",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 89,
+            "description": "Returns a copy of the options to prevent the change.",
+            "itemtype": "method",
+            "name": "getOptions",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 98,
+            "description": "Returns a root element.",
+            "itemtype": "method",
+            "name": "getRootElement",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 107,
+            "description": "Set a copy of the options to prevent the change.",
+            "itemtype": "method",
+            "name": "setOptions",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        },
+        {
+            "file": "src\\widget.js",
+            "line": 116,
+            "description": "Configures the widget.",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_configure",
+            "params": [
+                {
+                    "name": "apiKey",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "EDM.Widget",
+            "namespace": "EDM"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type",
+            "line": " src\\events.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src\\proto.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src\\proto.js:47"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src\\template.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src\\tooltips.js:1"
+        }
+    ]
+}

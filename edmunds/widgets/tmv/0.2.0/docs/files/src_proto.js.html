@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src\proto.js - com.edmunds.widgets.tmv</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="com.edmunds.widgets.tmv"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.2.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/EDM.Observable.html">EDM.Observable</a></li>
+            
+                <li><a href="../classes/EDM.TMV.html">EDM.TMV</a></li>
+            
+                <li><a href="../classes/EDM.Util.html">EDM.Util</a></li>
+            
+                <li><a href="../classes/EDM.Widget.html">EDM.Widget</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src\proto.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * @for EDM.TMV
+ */
+
+// TMV prototype shortcut
+var proto = TMV.prototype;
+
+$.extend(TMV.prototype, EDM.Widget.prototype);
+
+/**
+ * Bind events.
+ *
+ * @method bindEvents
+ * @chainable
+ */
+proto.bindEvents = function() {
+    // unbind all events
+    this.off();
+    // change events
+    this.on(&#x27;change:make&#x27;, this.onMakeChange, this);
+    this.on(&#x27;change:model&#x27;, this.onModelChange, this);
+    this.on(&#x27;change:year&#x27;, this.onYearChange, this);
+    this.on(&#x27;change:style&#x27;, this.onStyleChange, this);
+    this.on(&#x27;change:zip&#x27;, this.onZipChange, this);
+    // reset events
+    this.on(&#x27;reset:make&#x27;, this.resetModels, this);
+    this.on(&#x27;reset:model&#x27;, this.resetYears, this);
+    this.on(&#x27;reset:year&#x27;, this.resetStyles, this);
+    this.on(&#x27;reset:style&#x27;, this.resetPrice, this);
+    // calculate price
+    this.on(&#x27;calculate&#x27;, this.loadPrice, this);
+    this.trackEvents();
+    return this;
+};
+
+/**
+ * Track Google Analytics Events.
+ *
+ * @method trackEvents
+ * @param {String} category The name of category
+ * @param {String} action The value of category
+ * @param {String} opt_label The label
+ * @param {String} opt_value The value
+ * @param {String} opt_noninteraction The noninteraction
+ */
+proto.trackEvents = function() {
+    /**
+     * @param category
+     * @param action
+     * @param [opt_label]
+     * @param [opt_value]
+     * @param [opt_noninteraction]
+     * @private
+     */
+    function _trackEvent(category, action, opt_label, opt_value, opt_noninteraction) {
+        _gaq.push([&#x27;_trackEvent&#x27;, category, action, opt_label, opt_value, opt_noninteraction]);
+    }
+    this.on(&#x27;init&#x27;, function() {
+        _trackEvent(&#x27;Widgets&#x27;, &#x27;TMV Simple&#x27;, &#x27;A simple TMV widget&#x27;);
+    });
+    this.on(&#x27;change:make&#x27;, function(value) {
+        if (value) _trackEvent(&#x27;Makes&#x27;, value, &#x27;A make was selected&#x27;);
+    });
+    this.on(&#x27;change:model&#x27;, function(value) {
+        if (value) _trackEvent(&#x27;Models&#x27;, value, &#x27;A model was selected&#x27;);
+    });
+    this.on(&#x27;change:year&#x27;, function(value) {
+        if (value) _trackEvent(&#x27;Years&#x27;, value, &#x27;A year was selected&#x27;);
+    });
+    this.on(&#x27;change:style&#x27;, function(value) {
+        if (value) _trackEvent(&#x27;Styles&#x27;, value, &#x27;A style was selected&#x27;);
+    });
+    this.on(&#x27;change:zip&#x27;, function(value) {
+        if (value) _trackEvent(&#x27;ZIP&#x27;, value, &#x27;A ZIP code was changed&#x27;);
+    });
+    this.on(&#x27;calculate&#x27;, function() {
+        _trackEvent(&#x27;TVM&#x27;, &#x27;Click&#x27;, &#x27;Pricing Info was requested&#x27;);
+    });
+    this.on(&#x27;load:price&#x27;, function() {
+        _trackEvent(&#x27;TVM&#x27;, &#x27;Received&#x27;, &#x27;Pricing Info was received&#x27;);
+    });
+};
+
+/**
+ * Initialisation of widget.
+ * @method init
+ * @param {Object} options
+ * @example
+ *      widget.init({&quot;includedMakes&quot;:&quot;acura,aston-martin,audi&quot;,&quot;price&quot;:&quot;tmv-invoice-msrp&quot;,&quot;showVehicles&quot;:&quot;ALL&quot;,&quot;zip&quot;:&quot;90010&quot;});
+ * @chainable
+ */
+proto.init = function(options) {
+    options = options || {};
+    this.setOptions(options);
+
+    /**
+     * Сreate new instance of the EDMUNDSAPI.Vehicle.
+     * @property vehiclesApi
+     * @type {EDMUNDSAPI.Vehicle}
+     */
+    this.vehiclesApi = new EDMUNDSAPI.Vehicle(this.getApiKey());
+    this.zip = options.zip || &#x27;&#x27;;
+    this.trigger(&#x27;init&#x27;);
+    return this;
+};
+
+/**
+ * Render a widget.
+ * @method render
+ * @example
+ *      widget.render();
+ * @chainable
+ */
+proto.render = function() {
+    var options = this.getOptions();
+    this.htmlSetup();
+    this.trigger(&#x27;render&#x27;);
+    if (!this.getApiKey()) {
+        return this.resetMakes();
+    }
+    this.loadMakes(String(options.showVehicles).toLowerCase());
+    return this;
+};
+
+// Data load methods
+
+/**
+ * Request to load list of makes.
+ * @method loadMakes
+ * @chainable
+ */
+proto.loadMakes = function(publicationState) {
+    var successCallback = $.bind(this.onMakesLoad, this),
+        errorCallback = $.bind(this.onMakesLoadError, this);
+    this.resetMakes(&#x27;Loading Makes...&#x27;);
+    this.vehiclesApi.getListOfMakes(publicationState, successCallback, errorCallback);
+    return this;
+};
+/**
+ * Request to load a zip code.
+ * @method loadZip
+ * @param {String} zip Zip Code
+ * @chainable
+ */
+proto.loadZip = function(zip) {
+    var successCallback = $.bind(this.onZipLoad, this),
+        errorCallback = $.bind(this.onZipLoadError, this);
+    this.vehiclesApi.getValidZip(zip, successCallback, errorCallback);
+    return this;
+};
+
+/**
+ * Request to load list of models.
+ * @method loadModels
+ * @param {String} makeId
+ * @chainable
+ */
+proto.loadModels = function(makeId) {
+    var successCallback = $.bind(this.onModelsLoad, this),
+        errorCallback = $.bind(this.onModelsLoadError, this);
+    this.disableMakes();
+    this.vehiclesApi.getListOfModelsByMake(makeId, successCallback, errorCallback);
+    return this;
+};
+
+/**
+ * Request to load a price.
+ * @method loadPrice
+ * @chainable
+ */
+proto.loadPrice = function() {
+    var isNew = this.showVehicles === &#x27;NEW&#x27;,
+        st = isNew ? &#x27;calculatenewtmv&#x27; : &#x27;calculatetypicallyequippedusedtmv&#x27;,
+        url = &#x27;/api/tmv/tmvservice/&#x27; + st,
+        successCallback = isNew ? $.bind(this.onPriceLoad, this) : $.bind(this.loadRangeMin, this),
+        errorCallback = $.bind(this.onPriceLoadError, this),
+        options = {
+            alg:        &#x27;rethink&#x27;,
+            styleid:    this.style,
+            zip:        this.zip
+        };
+    this.disableButton();
+    this.resetPrice();
+    this.vehiclesApi.invoke(url, options, successCallback, errorCallback);
+    return this;
+};
+
+/**
+ * Request to load min price for range .
+ * @method loadRangeMin
+ * @chainable
+ */
+proto.loadRangeMin = function(data) {
+    var url = &#x27;/api/tmv/tmvservice/calculateusedtmv&#x27;,
+        callback = $.bind(this.loadRangeMax, this),
+        options = {
+            alg:        &#x27;rethink&#x27;,
+            styleid:    this.style,
+            zip:        this.zip,
+            condition:  &#x27;ROUGH&#x27;,
+            mileage:    50000
+        };
+    this.price = this.parsePrice(data);
+    this.vehiclesApi.invoke(url, options, callback);
+    return this;
+};
+
+/**
+ * Request to load max price for range.
+ * @method loadRangeMax
+ * @chainable
+ */
+proto.loadRangeMax = function(data) {
+    var url = &#x27;/api/tmv/tmvservice/calculateusedtmv&#x27;,
+        callback = $.bind(this.onPriceLoad, this),
+        options = {
+            alg:        &#x27;rethink&#x27;,
+            styleid:    this.style,
+            zip:        this.zip,
+            condition:  &#x27;OUTSTANDING&#x27;,
+            mileage:    15000
+        };
+    this.price.rangeMin = this.parsePriceRangeMin(data);
+    this.vehiclesApi.invoke(url, options, callback);
+    return this;
+};
+
+//http://api.edmunds.com/v1/api/tmv/tmvservice/calculateusedtmv?styleid=101381665&amp;zip=12345&amp;mileage=15000&amp;condition=OUTSTANDING&amp;api_key=g2dgxhfatcspkunbb7m33zv6&amp;fmt=json&amp;callback=EDMUNDSAPI.cb1369142284181
+//http://api.edmunds.com/v1/api/tmv/tmvservice/calculateusedtmv?styleid=101381665&amp;zip=12345&amp;mileage=50000&amp;condition=ROUGH&amp;api_key=g2dgxhfatcspkunbb7m33zv6&amp;fmt=json&amp;callback=EDMUNDSAPI.cb1369142284181
+
+/**
+ * Request to load list of styles.
+ * @method loadStyles
+ * @param {String} make
+ * @param {String} model
+ * @param {String} year
+ * @chainable
+ */
+proto.loadStyles = function(make, model, year) {
+    var successCallback = $.bind(this.onStylesLoad, this),
+        errorCallback = $.bind(this.onStylesLoadError, this);
+    this.disableMakes();
+    this.disableModels();
+    this.disableYears();
+    this.vehiclesApi.getVehicle(make, model, year, successCallback, errorCallback);
+    return this;
+};
+
+// Change callbacks
+
+/**
+ * Changed a year.
+ * @method onMakeChange
+ * @param {String} makeId
+ * @chainable
+ */
+proto.onMakeChange = function(makeId) {
+    this.make = makeId;
+    if (!makeId) {
+        this.resetModels();
+        return;
+    }
+    this.resetModels(&#x27;Loading Models...&#x27;);
+    this.loadModels(makeId);
+    return this;
+};
+
+/**
+ * Changed a model.
+ * @method onModelChange
+ * @param {String} modelId
+ * @chainable
+ */
+proto.onModelChange = function(modelId) {
+    var model, years;
+    if (!modelId) {
+        this.resetYears();
+        return;
+    }
+    model = modelId.substring(0, modelId.indexOf(&#x27;:&#x27;));
+    years = this.parseYears(this.models[modelId], this.getOptions().showVehicles);
+    this.model = model;
+    this.resetYears();
+    this.setYears(years);
+    return this;
+};
+
+/**
+ * Changed a style.
+ * @method onStyleChange
+ * @param {String} styleId
+ * @chainable
+ */
+proto.onStyleChange = function(styleId) {
+    this.style = styleId;
+    if (!styleId) {
+        this.resetPrice();
+        this.disableButton();
+        return;
+    }
+    this.resetPrice();
+    if (this.zip) {
+        this.enableButton();
+    }
+    return this;
+};
+
+/**
+ * Changed a year.
+ * @method onYearChange
+ * @param {String} year
+ * @chainable
+ */
+proto.onYearChange = function(year) {
+    this.year = year;
+    this.showVehicles = year &amp;&amp; year.substr &amp;&amp; year.substr(4) || null;
+    if (!year) {
+        this.resetStyles();
+        return;
+    }
+    this.resetStyles(&#x27;Loading Styles...&#x27;);
+    this.loadStyles(this.make, this.model, parseInt(year, 10));
+    return this;
+};
+
+/**
+ * Changed zip code.
+ * @method onZipChange
+ * @param {String} zip Zip code
+ * @chainable
+ */
+proto.onZipChange = function(zip) {
+    var isValid = (/[0-9]{5}/).test(zip);
+
+    this.zip = zip;
+
+    if (isValid){
+        this.loadZip(zip);
+    } else {
+        this.disableButton();
+        this.enableZipTooltip();
+    }
+
+    return this;
+};
+
+// Load callbacks
+
+/**
+ * Loaded a zip code.
+ * @method onZipLoad
+ * @param {Object} data
+ * @chainable
+ */
+proto.onZipLoad = function(data) {
+    var zip = this.zip,
+        isValid = (data[zip] === &#x27;true&#x27;) ? true : false;
+
+    this[isValid ? &#x27;disableZipTooltip&#x27; : &#x27;enableZipTooltip&#x27;]();
+    this[isValid &amp;&amp; this.style ? &#x27;enableButton&#x27; : &#x27;disableButton&#x27;]();
+    return this;
+};
+
+/**
+ * Loaded list of makes.
+ * @method onMakesLoad
+ * @param {Object} data
+ * @chainable
+ */
+proto.onMakesLoad = function(data) {
+    var records = this.parseMakes(data);
+    if (data.error) {
+        this.resetMakes(&#x27;Makes not found&#x27;);
+        this.showError();
+        return this;
+    }
+    this.setMakes(records);
+    this.trigger(&#x27;load:makes&#x27;, data);
+    return this;
+};
+
+/**
+ * Loaded list of models.
+ * @method onModelsLoad
+ * @param {Object} data
+ * @chainable
+ */
+proto.onModelsLoad = function(data) {
+    var records = this.parseModels(data);
+    this.enableMakes();
+    if (data.error) {
+        this.resetModels(&#x27;Models not found&#x27;);
+        this.showError();
+        return this;
+    }
+    this.models = data.models;
+    this.setModels(records);
+    this.trigger(&#x27;load:models&#x27;, data);
+    return this;
+};
+
+/**
+ * Loaded a price.
+ * @method onPriceLoad
+ * @param {Object} data
+ * @chainable
+ */
+proto.onPriceLoad = function(data) {
+    var isNew = this.showVehicles === &#x27;NEW&#x27;;
+    if (isNew) {
+        this.price = this.parsePrice(data);
+    } else {
+        this.price.rangeMax = this.parsePriceRangeMax(data);
+    }
+    this.setPrice(this.price);
+    this.enableButton();
+    this.trigger(&#x27;load:price&#x27;, data, this.price);
+    return this;
+};
+
+/**
+ * Loaded list of styles.
+ * @method onStylesLoad
+ * @param {Object} data
+ * @chainable
+ */
+proto.onStylesLoad = function(data) {
+    var records = this.parseStyles(data);
+    this.enableMakes();
+    this.enableModels();
+    this.enableYears();
+    if (data.error) {
+        this.resetStyles(&#x27;Styles not found&#x27;);
+        this.showError();
+        return this;
+    }
+    this.setStyles(records);
+    this.trigger(&#x27;load:styles&#x27;, data);
+    return this;
+};
+
+/**
+ * Loaded list of years.
+ * @method onYearsLoad
+ * @param {Object} data
+ * @chainable
+ */
+proto.onYearsLoad = function(data) {
+    var records = this.parseYears(data);
+    this.setYears(records);
+    this.trigger(&#x27;load:years&#x27;, data);
+    return this;
+};
+
+// Error handlers
+
+proto.onMakesLoadError = function() {
+    this.resetMakes(&#x27;Makes not found&#x27;);
+    this.showError();
+};
+
+proto.onModelsLoadError = function() {
+    this.resetModels(&#x27;Models not found&#x27;);
+    this.showError();
+};
+
+proto.onStylesLoadError = function() {
+    this.resetStyles(&#x27;Styles not found&#x27;);
+    this.showError();
+};
+
+proto.onZipLoadError = function() {
+    this.showError();
+};
+
+proto.onPriceLoadError = function() {
+    this.onPriceLoad({});
+};
+
+// Parsers
+
+/**
+ * Parsing list of makes.
+ * @method parseMakes
+ * @param {Object} data
+ * @return {Object}
+ */
+proto.parseMakes = function(data) {
+    var result = {},
+        records = data.makes,
+        includedMakes = this.getOptions().includedMakes,
+        makes = (typeof includedMakes === &#x27;string&#x27;) ? includedMakes.split(&#x27;,&#x27;) : [],
+        includeAll = includedMakes === &#x27;all&#x27;,
+        key, record;
+
+    for (key in records) {
+        record = records[key];
+        if (includeAll || $.contains(makes, record.niceName)) {
+            result[record.niceName] = record.name;
+        }
+    }
+
+    return result;
+};
+
+/**
+ * Parsing list of models.
+ * @method parseModels
+ * @param {Object} data
+ * @return {Object}
+ */
+proto.parseModels = function(data) {
+    var records = data.models,
+        showVehicles = this.getOptions().showVehicles;
+
+    /**
+     * Checking list of years.
+     * @method hasYears
+     * @param {Array} years List of years
+     * @param {String} type
+     * @return {Object}
+     */
+    function hasYears(years, type) {
+        var result = false,
+            hasNewYears = !!years.NEW,
+            hasUsedYears = !!years.USED;
+        switch (type) {
+            case &#x27;NEW&#x27;:
+                result = hasNewYears;
+                break;
+            case &#x27;USED&#x27;:
+                result = hasUsedYears;
+                break;
+            default:
+                result = hasNewYears || hasUsedYears;
+        }
+        return result;
+    }
+
+    /**
+     * Mapping for list of models.
+     * @method mapModels
+     * @param {Array} records List of models
+     * @param {String} type
+     * @return {Object}
+     */
+    function mapModels(records, type) {
+        var result = {},
+            key, record;
+        for (key in records) {
+            record = records[key];
+            if (hasYears(record.years, type)) {
+                result[key] = record.name;
+            }
+        }
+        return result;
+    }
+
+    // used or new
+    if (showVehicles === &#x27;USED&#x27; || showVehicles === &#x27;NEW&#x27;) {
+        return mapModels(records, showVehicles);
+    }
+
+    return mapModels(records);
+
+};
+
+/**
+ * Return object with options for render price.
+ * @method parsePrice
+ * @param {Object} data
+ * @return {Object}
+ */
+proto.parsePrice = function(data) {
+    var result = {},
+        totalWithOptions,
+        invoice, msrp, tmv;
+    totalWithOptions = ((data || {}).tmv || {}).totalWithOptions || {};
+
+    if (this.showVehicles === &#x27;USED&#x27;) {
+        return {
+            showVehicles: this.showVehicles,
+            less: totalWithOptions.usedTmvRetail,
+            more: totalWithOptions.usedPrivateParty,
+            tmv: totalWithOptions.usedTradeIn,
+            lessLabel: &#x27;Dealer Retail&#x27;,
+            moreLabel: &#x27;Private Party&#x27;,
+            tmvLabel: &#x27;Trade-in&#x27;,
+            lessTooltip: TMV.TOOLTIP_TMVRETAIL,
+            moreTooltip: TMV.TOOLTIP_PRIVATEPARTY,
+            tmvTooltipMin: TMV.TOOLTIP_TRADEIN_MIN,
+            tmvTooltipMax: TMV.TOOLTIP_TRADEIN_MAX
+        };
+    }
+    return {
+        showVehicles: this.showVehicles,
+        less: totalWithOptions.baseInvoice,
+        more: totalWithOptions.baseMSRP,
+        tmv: totalWithOptions.tmv,
+        lessLabel: &#x27;Invoice&#x27;,
+        moreLabel: &#x27;MSRP&#x27;,
+        tmvLabel: &#x27;TMV&lt;sup&gt;&amp;reg;&lt;/sup&gt;&#x27;,
+        lessTooltip: TMV.TOOLTIP_INVOICE,
+        moreTooltip: TMV.TOOLTIP_MSRP,
+        tmvTooltip: &#x27;&#x27;
+    };
+};
+
+/**
+ * Return value for min range price.
+ * @method parsePriceRangeMin
+ * @param {Object} data
+ * @return {String}
+ */
+proto.parsePriceRangeMin = function(data){
+    var totalWithOptions,
+        priceRangeMin;
+    totalWithOptions = ((data || {}).tmv || {}).totalWithOptions || {};
+    priceRangeMin = totalWithOptions.usedTradeIn;
+    return priceRangeMin;
+};
+
+/**
+ * Return value for max range price.
+ * @method parsePriceRangeMax
+ * @param {Object} data
+ * @return {String}
+ */
+proto.parsePriceRangeMax = function(data){
+    var totalWithOptions,
+        priceRangeMax;
+    totalWithOptions = ((data || {}).tmv || {}).totalWithOptions || {};
+    priceRangeMax = totalWithOptions.usedTradeIn;
+    return priceRangeMax;
+};
+
+/**
+ * Parsing list of styles.
+ * @method parseStyles
+ * @param {Object} data
+ * @return {Object}
+ */
+proto.parseStyles = function(data) {
+    var result = {},
+        records = data.modelYearHolder[0].styles,
+        length = records.length,
+        i, record;
+    for (i = 0; i &lt; length; i++) {
+        record = records[i];
+        result[record.id] = record.name;
+    }
+    return result;
+};
+
+/**
+ * Parsing list of years.
+ * @method parseYears
+ * @param {Object} data
+ * @param {String} type The vehicle type (ALL, NEW or USED)
+ * @return {Object}
+ */
+proto.parseYears = function(data, type) {
+    var result = {},
+        records = data.years;
+    /**
+     * Mapping for list of years.
+     * @method mapYears
+     * @param {Array} years List of years
+     * @param {String} type
+     * @return {Object}
+     */
+    function mapYears(years, type) {
+        var result = {},
+            length, i, year;
+        years = $.isArray(years) ? years : [];
+        length = years.length;
+        for (i = 0; i &lt; length; i++) {
+            year = years[i];
+            result[year + type] = year;
+        }
+        return result;
+    }
+    // used or new
+    if (type === &#x27;USED&#x27; || type === &#x27;NEW&#x27;) {
+        return mapYears(records[type], type);
+    }
+    // all (NEW, USED)
+    for (type in records) {
+        if (type === &#x27;USED&#x27; || type === &#x27;NEW&#x27;) {
+            result[type] = mapYears(records[type], type);
+        }
+    }
+    return result;
+};
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
