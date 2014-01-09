@@ -1,0 +1,37 @@
+.sidebar.affix {
+  position: static;
+}
+
+@media (min-width: 992px) {
+  .sidebar.affix {
+    position: fixed;
+    top: 70px;
+    width: 213px;
+  }
+  .sidebar {
+    font-size: 12px;
+    .nav > li {
+      border-left: 0 solid @link-color;
+      padding-left: 2px;
+      a:hover { background: transparent; }
+      &:hover {
+        background: lighten(@nav-link-hover-bg, 5.5%);
+        border-left: 2px solid lighten(@link-color, 30%);
+        border-left-width: 2px;
+        padding-left: 0;
+      }
+      &.active {
+        background: @nav-link-hover-bg;
+        border-left: 2px solid @link-color;
+        font-weight: bold;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .sidebar.affix {
+    width: 263px;
+  }
+}
