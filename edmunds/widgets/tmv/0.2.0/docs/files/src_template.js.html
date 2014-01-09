@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src\template.js - com.edmunds.widgets.tmv</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="com.edmunds.widgets.tmv"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.2.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/EDM.Observable.html">EDM.Observable</a></li>
+            
+                <li><a href="../classes/EDM.TMV.html">EDM.TMV</a></li>
+            
+                <li><a href="../classes/EDM.Util.html">EDM.Util</a></li>
+            
+                <li><a href="../classes/EDM.Widget.html">EDM.Widget</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src\template.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * @for EDM.TMV
+ */
+
+/**
+ * &#x60;template&#x60; HTML template - widget view
+ * @property template
+ * @static
+ * @type {HTMLDivElement}
+ */
+TMV.template = [
+    &#x27;&lt;div class=&quot;&lt;%= baseClass %&gt;-inner&quot;&gt;&#x27;,
+        &#x27;&lt;div class=&quot;&lt;%= baseClass %&gt;-header&quot;&gt;&#x27;,
+            &#x27;&lt;span class=&quot;title&quot;&gt;True Market Value&lt;sup&gt;&amp;reg;&lt;/sup&gt;&lt;/span&gt;&lt;span class=&quot;question&quot; onclick=&quot;&quot;&gt;&lt;sup&gt;?&lt;/sup&gt;&lt;div class=&quot;tmvwidget-tooltip&quot;&gt;&lt;div class=&quot;arrow-left&quot;&gt;&lt;/div&gt;&lt;%= tmvTooltip %&gt;&lt;/div&gt;&lt;/span&gt;&#x27;,
+        &#x27;&lt;/div&gt;&#x27;,
+        &#x27;&lt;div class=&quot;&lt;%= baseClass %&gt;-body&quot;&gt;&#x27;,
+            &#x27;&lt;select class=&quot;&lt;%= baseClass %&gt;-make&quot; id=&quot;&lt;%= baseId %&gt;_make&quot; title=&quot;List of Makes&quot;&gt;&lt;/select&gt;&#x27;,
+            &#x27;&lt;select class=&quot;&lt;%= baseClass %&gt;-model&quot; id=&quot;&lt;%= baseId %&gt;_model&quot; title=&quot;List of Models&quot;&gt;&lt;/select&gt;&#x27;,
+            &#x27;&lt;select class=&quot;&lt;%= baseClass %&gt;-year&quot; id=&quot;&lt;%= baseId %&gt;_year&quot; title=&quot;List of Years&quot;&gt;&lt;/select&gt;&#x27;,
+            &#x27;&lt;select class=&quot;&lt;%= baseClass %&gt;-style&quot; id=&quot;&lt;%= baseId %&gt;_style&quot; title=&quot;List of Styles&quot;&gt;&lt;/select&gt;&#x27;,
+            &#x27;&lt;div class=&quot;&lt;%= baseClass %&gt;-row&quot;&gt;&#x27;,
+                &#x27;&lt;div class=&quot;zip-code&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;&lt;%= baseClass %&gt;-zip&quot; id=&quot;&lt;%= baseId %&gt;_zip&quot; value=&quot;&lt;%= zip %&gt;&quot; placeholder=&quot;ZIP&quot; title=&quot;ZIP Code&quot; maxlength=&quot;5&quot;&gt;&lt;div id=&quot;&lt;%= baseId %&gt;_zip_tooltip&quot; class=&quot;tmvwidget-tooltip&quot;&gt;&lt;div class=&quot;arrow-left&quot;&gt;&lt;/div&gt;Please enter a valid Zip Code&lt;/div&gt;&lt;/div&gt;&#x27;,
+                &#x27;&lt;button type=&quot;button&quot; id=&quot;&lt;%= baseId %&gt;_button&quot;&gt;Get Price&lt;/button&gt;&#x27;,
+            &#x27;&lt;/div&gt;&#x27;,
+        &#x27;&lt;/div&gt;&#x27;,
+        &#x27;&lt;div class=&quot;&lt;%= baseClass %&gt;-price&quot; id=&quot;&lt;%= baseId %&gt;_price&quot;&gt;&#x27;,
+            &#x27;&lt;div&gt;&#x27;,
+                &#x27;&lt;div class=&quot;&quot; id=&quot;&lt;%= baseId %&gt;_price_inner&quot;&gt;&lt;/div&gt;&#x27;,
+            &#x27;&lt;/div&gt;&#x27;,
+        &#x27;&lt;/div&gt;&#x27;,
+        &#x27;&lt;div class=&quot;&lt;%= baseClass %&gt;-footer&quot;&gt;&#x27;,
+            &#x27;&lt;a href=&quot;http://developer.edmunds.com/tmv_widget_terms&quot; class=&quot;copy&quot; target=&quot;_blank&quot;&gt;Legal Notice&lt;/a&gt;&#x27;,
+            &#x27;&lt;div class=&quot;logo&quot;&gt;Built by&lt;a href=&quot;http://www.edmunds.com/&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/div&gt;&#x27;,
+        &#x27;&lt;/div&gt;&#x27;,
+    &#x27;&lt;/div&gt;&#x27;
+].join(&#x27;&#x27;);
+
+/**
+ * &#x60;graphPriceTemplate&#x60; HTML template - view values of price in graph format
+ * @property graphPriceTemplate
+ * @static
+ * @type {HTMLDivElement}
+ */
+TMV.graphPriceTemplate = [
+    &#x27;&lt;div class=&quot;&lt;%= baseClass %&gt;-price-range&quot;&gt;&#x27;,
+        &#x27;&lt;div class=&quot;top&quot;&gt;&#x27;,
+            &#x27;&lt;div class=&quot;left&quot;&gt;&#x27;,
+                &#x27;&lt;div class=&quot;label&quot;&gt;Trade-in&lt;/div&gt;&#x27;,
+            &#x27;&lt;/div&gt;&#x27;,
+            &#x27;&lt;div class=&quot;right&quot;&gt;&#x27;,
+                // prices
+                &#x27;&lt;div class=&quot;values&quot;&gt;&#x27;,
+                    &#x27;&lt;span class=&quot;left value &lt;%= isRangeMin %&gt;&quot; onclick=&quot;&quot;&gt;&lt;sup&gt;$&lt;/sup&gt;&lt;%= tmvMin %&gt;&lt;div class=&quot;tmvwidget-tooltip&quot;&gt;&lt;div class=&quot;arrow-left&quot;&gt;&lt;/div&gt;&lt;%= tmvTooltipMin %&gt;&lt;/div&gt;&lt;/span&gt;&#x27;,
+                    &#x27;&lt;span class=&quot;right value &lt;%= isRangeMax %&gt;&quot; onclick=&quot;&quot;&gt;&lt;sup&gt;$&lt;/sup&gt;&lt;%= tmvMax %&gt;&lt;div class=&quot;tmvwidget-tooltip&quot;&gt;&lt;div class=&quot;arrow-left&quot;&gt;&lt;/div&gt;&lt;%= tmvTooltipMax %&gt;&lt;/div&gt;&lt;/span&gt;&#x27;,
+                &#x27;&lt;/div&gt;&#x27;,
+                // graph
+                &#x27;&lt;div class=&quot;pointers&quot;&gt;&#x27;,
+                    &#x27;&lt;div class=&quot;graph&quot;&gt;&#x27;,
+                        &#x27;&lt;div class=&quot;left-part&quot;&gt;&lt;/div&gt;&#x27;,
+                        &#x27;&lt;div class=&quot;right-part&quot;&gt;&lt;/div&gt;&#x27;,
+                    &#x27;&lt;/div&gt;&#x27;,
+                    &#x27;&lt;div class=&quot;left&quot;&gt;&lt;/div&gt;&#x27;,
+                    &#x27;&lt;div class=&quot;right&quot;&gt;&lt;/div&gt;&#x27;,
+                &#x27;&lt;/div&gt;&#x27;,
+                &#x27;&lt;div class=&quot;note&quot;&gt;based on mileage &amp; condition adjustments&lt;/div&gt;&#x27;,
+            &#x27;&lt;/div&gt;&#x27;,
+        &#x27;&lt;/div&gt;&#x27;,
+        // labels
+        &#x27;&lt;div class=&quot;bottom&quot;&gt;&#x27;,
+            &#x27;&lt;div class=&quot;left&quot;&gt;&#x27;,
+                &#x27;&lt;span class=&quot;label&quot;&gt;&lt;%= lessLabel %&gt;&lt;/span&gt;&#x27;,
+                &#x27;&lt;span class=&quot;value &lt;%= isLess %&gt;&quot; onclick=&quot;&quot;&gt;&lt;sup&gt;$&lt;/sup&gt;&lt;%= less %&gt;&lt;div class=&quot;tmvwidget-tooltip&quot;&gt;&lt;div class=&quot;arrow-left&quot;&gt;&lt;/div&gt;&lt;%= lessTooltip %&gt;&lt;/div&gt;&lt;/span&gt;&#x27;,
+            &#x27;&lt;/div&gt;&#x27;,
+            &#x27;&lt;div class=&quot;right&quot;&gt;&#x27;,
+                &#x27;&lt;span class=&quot;label&quot;&gt;&lt;%= moreLabel %&gt;&lt;/span&gt;&#x27;,
+                &#x27;&lt;span class=&quot;value &lt;%= isMore %&gt;&quot; onclick=&quot;&quot;&gt;&lt;sup&gt;$&lt;/sup&gt;&lt;%= more %&gt;&lt;div class=&quot;tmvwidget-tooltip&quot;&gt;&lt;div class=&quot;arrow-left&quot;&gt;&lt;/div&gt;&lt;%= moreTooltip %&gt;&lt;/div&gt;&lt;/span&gt;&#x27;,
+            &#x27;&lt;/div&gt;&#x27;,
+        &#x27;&lt;/div&gt;&#x27;,
+    &#x27;&lt;/div&gt;&#x27;
+].join(&#x27;&#x27;);
+
+/**
+ * &#x60;textPriceTemplate&#x60; HTML template - view values of price in text format
+ * @property textPriceTemplate
+ * @static
+ * @type {HTMLDivElement}
+ */
+TMV.textPriceTemplate = [
+    &#x27;&lt;div class=&quot;&lt;%= baseClass %&gt;-price-text &lt;%= showVehicles %&gt; &lt;%= priceClass %&gt;&quot;&gt;&#x27;,
+        &#x27;&lt;div class=&quot;labels&quot;&gt;&#x27;,
+            &#x27;&lt;div class=&quot;top&quot;&gt;&#x27;,
+                    &#x27;&lt;span class=&quot;label&quot;&gt;&lt;%= tmvLabel %&gt;&lt;/span&gt;&#x27;,
+                    &#x27;&lt;span class=&quot;value &lt;%= isTmv %&gt;&quot; onclick=&quot;&quot;&gt;&lt;sup&gt;$&lt;/sup&gt;&lt;%= tmv %&gt;&lt;div class=&quot;tmvwidget-tooltip&quot;&gt;&lt;div class=&quot;arrow-left&quot;&gt;&lt;/div&gt;&lt;%= tmvTooltip %&gt;&lt;/div&gt;&lt;/span&gt;&#x27;,
+            &#x27;&lt;/div&gt;&#x27;,
+            &#x27;&lt;div class=&quot;bottom&quot;&gt;&#x27;,
+                &#x27;&lt;div class=&quot;right&quot;&gt;&#x27;,
+                    &#x27;&lt;span class=&quot;label&quot;&gt;&lt;%= moreLabel %&gt;&lt;/span&gt;&#x27;,
+                    &#x27;&lt;span class=&quot;value &lt;%= isMore %&gt;&quot; onclick=&quot;&quot;&gt;&lt;sup&gt;$&lt;/sup&gt;&lt;%= more %&gt;&lt;div class=&quot;tmvwidget-tooltip&quot;&gt;&lt;div class=&quot;arrow-left&quot;&gt;&lt;/div&gt;&lt;%= moreTooltip %&gt;&lt;/div&gt;&lt;/span&gt;&#x27;,
+                &#x27;&lt;/div&gt;&#x27;,
+                &#x27;&lt;div class=&quot;left&quot;&gt;&#x27;,
+                    &#x27;&lt;span class=&quot;label&quot;&gt;&lt;%= lessLabel %&gt;&lt;/span&gt;&#x27;,
+                    &#x27;&lt;span class=&quot;value &lt;%= isLess %&gt;&quot; onclick=&quot;&quot;&gt;&lt;sup&gt;$&lt;/sup&gt;&lt;%= less %&gt;&lt;div class=&quot;tmvwidget-tooltip&quot;&gt;&lt;div class=&quot;arrow-left&quot;&gt;&lt;/div&gt;&lt;%= lessTooltip %&gt;&lt;/div&gt;&lt;/span&gt;&#x27;,
+                &#x27;&lt;/div&gt;&#x27;,
+            &#x27;&lt;/div&gt;&#x27;,
+        &#x27;&lt;/div&gt;&#x27;,
+    &#x27;&lt;/div&gt;&#x27;
+].join(&#x27;&#x27;);
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

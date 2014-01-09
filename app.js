@@ -21,7 +21,11 @@ app.use(require('less-middleware')({
     prefix: '/css',
     compress: true
 }));
+
+// static resources
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'bower_components')));
+app.use('/tmv', express.static(path.join(__dirname, 'edmunds/widgets/tmv/0.2.0')));
 
 // development only
 if ('development' == app.get('env')) {
@@ -29,7 +33,14 @@ if ('development' == app.get('env')) {
 }
 
 // routes
+app.use(routes.error404);
 app.get('/', routes.index);
+
+app.get('/tmv/configure', routes.tmv.configurator);
+app.get('/tmv/about', routes.tmv.about);
+
+app.get('/nvc/configure', routes.nvc.configurator);
+app.get('/nvc/about', routes.nvc.about);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));

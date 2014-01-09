@@ -1,0 +1,45 @@
+<div class="docs-section" id="how_to_embed">
+	<h2>How to Embed Widget</h2>
+	<p>To embed New Vehicle Configurator Widget on your page just follow the instructions from <code>Get Code</code> popup.</p>
+	<h3>Example scenario:</h3>
+	<ol>
+		<li>
+			<p>Insert the empty div to your page:</p>
+			<pre>&lt;div id="nvcwidget"&gt;&lt;/div&gt;</pre>
+		</li>
+		<li>
+			<p>Add the following JavaScript snippet to your page:</p>
+                <pre>
+&lt;script type="text/javascript" src="http://localhost:5000/loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+var widget = EDM.createWidget({
+    "type": "nvc",
+    "renderTo": "nvcwidget",
+    "style": {
+        "width": 250,
+        "height": 890,
+        "theme": "simple",
+        "color": "light",
+        "border": "1px",
+        "borderRadius": "5px"
+    },
+    "options": {
+        "vehicleApiKey": "axr2rtmnj63qsth3ume3tv5f",
+        "dealerApiKey": "axr2rtmnj63qsth3ume3tv5f",
+        "includedMakes": "bmw",
+        "dealerKeywords": "",
+        "zipCode": "10001",
+        "tabs": {
+            "tab1": "Configure",
+            "tab2": "TMV®",
+            "tab3": "Price Quotes"
+        }
+    }
+});
+}());
+&lt;/script&gt;
+                </pre>
+		</li>
+	</ol>
+</div>

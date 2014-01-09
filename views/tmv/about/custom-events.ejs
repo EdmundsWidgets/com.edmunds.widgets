@@ -1,0 +1,29 @@
+<div class="docs-section" id="custom_events">
+	<h2>Widget Custom Events</h2>
+	<p>TMV widget provides the next methods for working with custom events:</p>
+	<p><code>on()</code> - Binds a callback function to an object. The callback will be invoked whenever the event is fired. (<a href="/tmv/docs/classes/EDM.Observable.html#method_on" target="_blank">More details</a>)</p>
+
+	<pre>// External usage example:
+	widget.on('change:make', function(makeId) {
+		// this code is executed when the change event is fired by the widget
+	});
+
+	// Internal usage example:
+	this.on('change:make', function(makeId) {
+		// this code is executed when the change event is fired by the widget
+	});</pre>
+
+	<p><code>off()</code> - Removes a previously-bound callback function from an object. If no event name is specified, all callbacks will be removed. (<a href="/tmv/docs/classes/EDM.Observable.html#method_off" target="_blank">More details</a>)</p>
+	<pre>// External usage example:
+	widget.off('change:make');
+
+	// Internal usage example:
+	this.off('change:make');</pre>
+
+	<p><code>trigger()</code> - Trigger callbacks for the given event. Subsequent arguments to trigger will be passed along to the event callbacks. (<a href="/tmv/docs/classes/EDM.Observable.html#method_trigger" target="_blank">More details</a>)</p>
+	<pre>this.trigger('change:make', makeId);</pre>
+
+	<h3>Events</h3>
+	<p>You can read all list of events <a href="/tmv/docs/classes/EDM.TMV.html#events" target="_blank">here</a>.</p>
+
+</div>
