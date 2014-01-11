@@ -1,5 +1,5 @@
 exports.configurator = function(req, res){
-    res.render('tmv/configurator', { title: 'TMV Configurator' });
+    res.render('tmv/configure', { title: 'TMV Configurator' });
 };
 
 exports.about = function(req, res){
