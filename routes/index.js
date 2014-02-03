@@ -1,3 +1,4 @@
+exports.api = require('./api');
 exports.tmv = require('./widgets/tmv');
 exports.nvc = require('./widgets/nvc');
 
