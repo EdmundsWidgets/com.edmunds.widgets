@@ -36,6 +36,8 @@ if ('development' == app.get('env')) {
 app.use(routes.error404);
 app.get('/', routes.index);
 
+app.get('/api/tmv/less', routes.api.tmv.less);
+
 app.get('/tmv/configure', routes.tmv.configure);
 app.get('/tmv/about', routes.tmv.about);
 
