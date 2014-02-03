@@ -1,8 +1,2 @@
-# This setting forces git to normalize line endings to LF on checkin and prevents conversion to CRLF when the file is checked out.
-* eol=lf
-
-# Images
-*.ico binary
-*.png binary
-*.jpg binary
-*.gif binary
+# Auto detect text files and perform LF normalization
+* text=auto
