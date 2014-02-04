@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 deploy:
   provider: heroku
   api_key:
@@ -9,5 +9,7 @@ deploy:
     master: edmunds-widgets-dev
     staging: edmunds-widgets-staging
     production: edmunds-widgets-prod
+  run:
+    secure: O5O5tChTo524JLy2hHr4yPXYviPCnGE66iShCqjkf8rJzAiZzoU2dFW7ZyhwPJe30sAEHD9xiqtoCFlhwYGeB28XhE2c/KQ++frp9kfkfxjbwonIxDVVflUswAnbKlTvGyNs+nuPrvK6LbpTqnmDf0+9JHp1TS0t4Dc0FNdTvXk=
 notifications:
   email: false
