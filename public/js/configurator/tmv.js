@@ -69,7 +69,25 @@
 
     function vehicleApiKeyValidator(value) {
         var deferred = new jQuery.Deferred();
-        deferred.rejectWith(this, [value]);
+        if (!value) {
+            deferred.rejectWith(this, [value]);
+            return deferred.promise();
+        }
+        jQuery.ajax({
+            url: '/api/keyvalidate',
+            data: {
+                api_key: value,
+                service: 'vehicle'
+            },
+            dataType: 'json',
+            context: this,
+            success: function(response) {
+                deferred[response.valid === true ? 'resolveWith' : 'rejectWith'](this, [value]);
+            },
+            error: function() {
+                deferred.rejectWith(this, [value]);
+            }
+        });
         return deferred.promise();
     }
 
@@ -114,7 +132,7 @@
             // vehicle api key control
             this.vehicleApiControl = this.$('#vehicle-api-key-control').inputGroupControl({
                 tooltipTitle: 'Please enter a valid Vehicle API key',
-                validate: 'vehicleApiKeyValidator'
+                validate: vehicleApiKeyValidator
             }).data('inputGroupControl');
             // zip code control
             this.zipCodeControl = this.$('#zip-code-control').inputGroupControl({
