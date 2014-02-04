@@ -1,0 +1,31 @@
+<script src="/underscore/underscore.js"></script>
+<script src="/backbone/backbone.js"></script>
+
+<script src="/jquery-ui/ui/jquery.ui.core.js"></script>
+<script src="/jquery-ui/ui/jquery.ui.widget.js"></script>
+<script src="/jquery-ui/ui/jquery.ui.mouse.js"></script>
+<script src="/jquery-ui/ui/jquery.ui.slider.js"></script>
+
+
+<script src="/js/plugins/edm-plugins.js"></script>
+<script src="/js/edmunds-sdk.min.js"></script>
+<script src="/tmv/js/tmv.min.js"></script>
+<script src="/js/configurator/tmv.js"></script>
+
+<script>
+	var configurator = new TMVConfigurator({
+		el: $('#widget-configurator')
+	});
+	configurator.reset();
+</script>
+
+<% if (debug === true) { %>
+<script>
+	$(function() {
+		var apiKey = 'axr2rtmnj63qsth3ume3tv5f';
+		$('#vehicle-api-key-input').on('dblclick', function() {
+			$(this).val(apiKey);
+		});
+	});
+</script>
+<% } %>

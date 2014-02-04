@@ -1,0 +1,19 @@
+#widget-placeholder {
+  background: white;
+  border: 1px dashed #ccc;
+  float: left;
+  padding: 30px;
+  position: relative;
+
+  .corner {
+    background: url('../img/widget-corner.png') no-repeat 0 0;
+    height: 12px;
+    position: absolute;
+    width: 12px;
+
+    &.top { top:-6px; }
+    &.bottom { bottom: -6px; }
+    &.left { left: -6px; }
+    &.right { right: -6px; }
+  }
+}

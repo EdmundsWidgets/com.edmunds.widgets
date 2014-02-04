@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/css/app.css">
+	<link rel="stylesheet" href="/jquery-ui/themes/smoothness/jquery-ui.min.css">
+</head>
+<body>
+
+<% include nav.ejs %>
+
+<div class="container">
+	<!--<h1 class="page-header">Build your own True Market Value<sup>&reg;</sup> Widget</h1>-->
+
+	<div class="row">
+
+		<div class="col-sm-5 col-md-4">
+			<% include configure/configurator.ejs %>
+		</div>
+
+		<div class="col-sm-7 col-md-8">
+			<div id="message" class="alert hidden"></div>
+			<div id="widget-placeholder">
+				<div id="tmvwidget"></div>
+				<i class="corner top left"></i>
+				<i class="corner top right"></i>
+				<i class="corner bottom left"></i>
+				<i class="corner bottom right"></i>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<% include ../layout/scripts.ejs %>
+<% include configure/scripts.ejs %>
+
+</body>
+</html>
