@@ -37,6 +37,8 @@ app.use(routes.error404);
 app.get('/', routes.index);
 
 app.get('/api/tmv/less', routes.api.tmv.less);
+app.get('/api/keyvalidate', routes.api.mashery.keyValidate);
+app.get('/api/dealer/sendlead', routes.api.mashery.sendLead);
 
 app.get('/tmv/configure', routes.tmv.configure);
 app.get('/tmv/about', routes.tmv.about);
