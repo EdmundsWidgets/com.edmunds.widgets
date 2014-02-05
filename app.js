@@ -26,6 +26,7 @@ app.use(require('less-middleware')({
 // static resources
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
+app.use('/', express.static(path.join(__dirname, 'edmunds/widgets/')));
 app.use('/tmv', express.static(path.join(__dirname, 'edmunds/widgets/tmv/' + config.TMV_LATEST_VERSION)));
 
 // development only
