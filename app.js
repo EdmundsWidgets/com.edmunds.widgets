@@ -2,6 +2,7 @@ var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
+var config = require('./config');
 
 var app = express();
 
@@ -25,7 +26,7 @@ app.use(require('less-middleware')({
 // static resources
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
-app.use('/tmv', express.static(path.join(__dirname, 'edmunds/widgets/tmv/0.2.0')));
+app.use('/tmv', express.static(path.join(__dirname, 'edmunds/widgets/tmv/' + config.TMV_LATEST_VERSION)));
 
 // development only
 if ('development' == app.get('env')) {

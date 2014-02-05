@@ -1,7 +1,8 @@
 var http = require('http'),
     crypto = require('crypto'),
     url = require('url'),
-    zlib = require('zlib');
+    zlib = require('zlib'),
+    config = require('../../config');
 
 function httpRequest(options, content, onSuccess, onFail) {
 
@@ -52,15 +53,15 @@ var mashery = new function() {
 
     var HOST = 'api.mashery.com';
 
-    var SITE_ID = process.env.MASHERY_SITE_ID;
+    var SITE_ID = config.MASHERY_SITE_ID;
 
-    var API_KEY = process.env.MASHERY_API_KEY;
+    var API_KEY = config.MASHERY_API_KEY;
 
-    var SHARED_SECRET = process.env.MASHERY_SHARED_SECRET;
+    var SHARED_SECRET = config.MASHERY_SHARED_SECRET;
 
     var SERVICE_KEY = {
-        vehicle: process.env.MASHERY_VEHICLE_SERVICE_KEY,
-        dealer: process.env.MASHERY_DEALER_SERVICE_KEY
+        vehicle: config.MASHERY_VEHICLE_SERVICE_KEY,
+        dealer: config.MASHERY_DEALER_SERVICE_KEY
     };
 
     this.keyValidate = function(serviceName, apiKey, onSuccess, onFail) {
@@ -131,9 +132,9 @@ var dealerOAuth = new function() {
 
     var HOST = 'api.edmunds.com';
 
-    var API_KEY = process.env.MASHERY_DEALER_OAUTH_API_KEY;
+    var API_KEY = config.MASHERY_DEALER_OAUTH_API_KEY;
 
-    var SHARED_SECRET = process.env.MASHERY_DEALER_OAUTH_SHARED_SECRET;
+    var SHARED_SECRET = config.MASHERY_DEALER_OAUTH_SHARED_SECRET;
 
     var TOKEN_PATH = '/dealer/token';
 
