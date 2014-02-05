@@ -109,6 +109,7 @@
 
             'change .list-group-makes [type="checkbox"]': 'onSelectMake',
             'change #toggleAllMakes': 'onToggleAllMakes',
+            'change [name="priceToDisplay"]': 'onPriceToDisplayChange',
 
             'valid #vehicle-api-key-control': 'onVehicleApiKeyChange',
             'valid #zip-code-control': 'onZipCodeChange'
@@ -188,11 +189,11 @@
             if (!this.vehicleApiKey) {
                 return;
             }
+            this.resetMakes();
+            this.$makesList.html('<div class="loading">Loading makes...</div>');
             if (publicationState === 'all') {
                 publicationState = 'new,used';
             }
-            this.$makesList.html('<div class="loading">Loading makes...</div>');
-            this.$toggleAllMakes.prop('disabled', true);
             jQuery.ajax({
                 url: 'http://api.edmunds.com/api/vehicle/v2/makes',
                 data: {
@@ -209,13 +210,22 @@
             return this;
         },
 
+        resetMakes: function() {
+            this.$makesList.empty();
+            this.$includedMakes.val('');
+            this.$toggleAllMakes.prop({
+                disabled: true,
+                checked: false
+            });
+            return this;
+        },
+
         onSubmit: function(event) {
             event.preventDefault();
         },
 
         onReset: function() {
-            this.$makesList.empty();
-            this.$includedMakes.val('');
+            this.resetMakes();
             this.$borderWidth.val('1px');
             //
             this.zipCodeControl.reset();
@@ -238,6 +248,10 @@
             this.zipCodeControl.enable();
             this.zipCodeControl.options.apiKey = apiKey;
             this.findMakes();
+            this.renderWidget();
+        },
+
+        onPriceToDisplayChange: function() {
             this.renderWidget();
         },
 
