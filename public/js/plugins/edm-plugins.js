@@ -96,7 +96,6 @@
         onValidationFail: function(value) {
             this.$input.tooltip('show');
             this.$el.trigger('invalid', value);
-            this.$input.val('');
         },
 
         onValidationComplete: function() {
