@@ -3,7 +3,11 @@ exports.tmv = require('./widgets/tmv');
 exports.nvc = require('./widgets/nvc');
 
 exports.index = function(req, res){
-    res.render('index', { title: 'Edmunds Widgets' });
+    res.render('index', {
+        title: 'Edmunds Widgets',
+        debug: req.query.debug === 'true',
+        portal: req.query.portal === 'true'
+    });
 };
 
 exports.loader = function(req, res){
@@ -14,5 +18,8 @@ exports.loader = function(req, res){
 };
 
 exports.error404 = function(req, res){
-    res.status(404).render('404');
+    res.status(404).render('404', {
+        debug: req.query.debug === 'true',
+        portal: req.query.portal === 'true'
+    });
 };

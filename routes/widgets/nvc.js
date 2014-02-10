@@ -7,5 +7,9 @@ exports.configurator = function(req, res) {
 };
 
 exports.about = function(req, res) {
-    res.render('nvc/about', { title: 'NVC Widget Quick Start' });
+    res.render('nvc/about', {
+        title: 'NVC Widget Quick Start',
+        debug: req.query.debug === 'true',
+        portal: req.query.portal === 'true'
+    });
 };

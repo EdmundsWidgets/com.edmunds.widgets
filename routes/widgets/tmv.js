@@ -7,5 +7,9 @@ exports.configure = function(req, res) {
 };
 
 exports.about = function(req, res) {
-    res.render('tmv/about', { title: 'TMV&reg; Widget Quick Start' });
+    res.render('tmv/about', {
+        title: 'TMV&reg; Widget Quick Start',
+        debug: req.query.debug === 'true',
+        portal: req.query.portal === 'true'
+    });
 };
