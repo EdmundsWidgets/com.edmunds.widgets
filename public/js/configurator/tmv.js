@@ -44,6 +44,10 @@
         '</label>'
     ].join(''));
 
+    _.templateSettings = {
+        interpolate: /\{\{(.+?)\}\}/g
+    };
+
     function zipCodeValidator(value) {
         var deferred = new jQuery.Deferred();
         if (!/^\d{5}$/.test(value)) {
@@ -147,6 +151,12 @@
             // create sliders
             this.widthSlider = this.createSlider(this.$widthSlider, widthSliderOptionsMap[this.defaults.layout], _.bind(this.onWidthChange, this));
             this.borderRadiusSlider = this.createSlider(this.$borderRadiusSlider, borderRadiusSliderOptions, _.bind(this.onBorderRadiusChange, this));
+            // instructions
+            this.$instructions = $('#instructions_dialog').modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: false
+            });
             // optimize
             this.updateStyles = _.debounce(this.updateStyles, 500);
             this.renderWidget = _.debounce(this.renderWidget, 500);
@@ -221,13 +231,28 @@
         },
 
         onSubmit: function(event) {
+            var isValid = true;
             event.preventDefault();
+            if (!this.vehicleApiKey) {
+                this.vehicleApiControl.$input.tooltip('show');
+                isValid = false;
+            }
+            if (!this.zipCode) {
+                this.zipCodeControl.$input.tooltip('show');
+                isValid = false;
+            }
+            if (isValid) {
+                this.$instructions.find('#insert_js').html(this.getJavaScriptSnippet());
+                this.$instructions.find('#insert_css').html(this.getStylesSnippet());
+                this.$instructions.modal('show');
+            }
         },
 
         onReset: function() {
             this.resetMakes();
             this.$borderWidth.val('1px');
             //
+            this.zipCode = null;
             this.zipCodeControl.reset();
             // reset button groups
             this.$('.btn-group .btn:first-child').trigger('click');
@@ -361,9 +386,18 @@
             primaryStyles.setAttribute('href', primaryUrl);
             // load additional styles
             jQuery.ajax({
-                url: '/api/tmv/less',
+                url: '/api/less/tmv',
                 data: {
-                    // TODO data
+                    options: {
+                        theme: options.theme,
+                        colorScheme: options.colorScheme,
+                        layout: options.layout
+                    },
+                    variables: {
+                        borderWidth: options.borderWidth,
+                        borderRadius: options.borderRadius,
+                        width: options.width
+                    }
                 },
                 dataType: 'json',
                 success: function(response) {
@@ -392,6 +426,34 @@
                 options[option.name] = option.value;
             });
             return options;
+        },
+
+        getJavaScriptSnippet: function() {
+            var tpl = _.escape('<script type="text/javascript">' + $('#js_snippet_template').html() + '</script>'),
+                options = this.toJSON(),
+                widgetOptions = {
+                    includedMakes:  options.includedMakes,
+                    showVehicles:   options.publicationState,
+                    zip:            options.zipCode,
+                    price:          options.priceToDisplay
+                };
+            return _.template(tpl, {
+                apiKey:     this.vehicleApiKey,
+                sdkSrc:     location.origin + '/js/edmunds-sdk.min.js',
+                widgetSrc:  location.origin + '/tmv/js/tmv.min.js',
+                options:    JSON.stringify(widgetOptions)
+            });
+        },
+
+        getStylesSnippet: function() {
+            var tpl = _.escape([
+                    '<link rel="stylesheet" href="{{ href }}">\n',
+                    '<style type="text/css">\n{{ styles }}\n</style>'
+                ].join(''));
+            return _.template(tpl, {
+                href:   this.primaryStyles.href,
+                styles: $(this.secondaryStyles).text()
+            });
         }
 
     });

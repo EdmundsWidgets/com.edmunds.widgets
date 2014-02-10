@@ -3,9 +3,9 @@
 <head>
 	<title><%= title %></title>
 	<link rel="stylesheet" href="/css/app.css">
-	<link rel="stylesheet" href="/jquery-ui/themes/smoothness/jquery-ui.min.css">
+	<link rel="stylesheet" href="/libs/jquery-ui/themes/smoothness/jquery-ui.min.css">
 </head>
-<body>
+<body<% if (portal === true) { %> class="portal-page"<% } %>>
 
 <% include nav.ejs %>
 
@@ -34,6 +34,8 @@
 </div>
 
 <% include ../layout/scripts.ejs %>
+<% include configure/instructions.ejs %>
+<% include configure/snippet.ejs %>
 <% include configure/scripts.ejs %>
 
 </body>
