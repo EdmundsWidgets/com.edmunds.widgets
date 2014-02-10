@@ -2,17 +2,11 @@ var less = require('less');
 var fs = require('fs');
 var path = require('path');
 
-var config = require('../../config');
+var config = require('../../../config');
+
 var TMV_PATH = path.join('edmunds/widgets/tmv', config.TMV_LATEST_VERSION);
 
-exports.nvc = function(req, res) {
-    res.json({
-        status: 'success',
-        styles: ''
-    });
-};
-
-exports.tmv = function(req, res) {
+exports.compile = function(req, res) {
     var fileName = getFileName(req.query.options || {});
 
     function renderLessCallback(error, styles) {
@@ -38,7 +32,7 @@ exports.tmv = function(req, res) {
             return;
         }
         // add custom variables
-        input += getVariables(req.query.variables);
+        input += getVariablesString(req.query.variables);
         // compile less
         less.render(input, {
             paths: [TMV_PATH + '/less/themes'],
@@ -56,7 +50,7 @@ function getFileName(options) {
     return path.join(TMV_PATH, '/less/themes', fileName);
 }
 
-function getVariables(records) {
+function getVariablesString(records) {
     var str = '', name;
     for (name in records) {
         str += ((name.slice(0,1) === '@')? '' : '@') + name +': '+
