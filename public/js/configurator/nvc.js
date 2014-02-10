@@ -145,8 +145,8 @@
             this.widthSlider = this.createSlider(this.$widthSlider, widthSliderOptions, _.bind(this.onWidthChange, this));
             this.borderRadiusSlider = this.createSlider(this.$borderRadiusSlider, borderRadiusSliderOptions, _.bind(this.onBorderRadiusChange, this));
             // optimize
-            this.renderWidget = _.debounce(this.renderWidget, 500, true);
-            this.updateStyles = _.debounce(this.updateStyles, 500, true);
+            this.renderWidget = _.debounce(this.renderWidget, 500);
+            this.updateStyles = _.debounce(this.updateStyles, 500);
             this.onReset = _.debounce(this.onReset, 500, true);
         },
 
@@ -361,11 +361,7 @@
                 options = this.toJSON(),
                 styleOptions = _.pick(options, ['theme', 'colorScheme']),
                 variables = _.pick(options, ['width', 'height', 'borderWidth', 'borderRadius']);
-            if (!this.widget) {
-                this.renderWidget();
-                return;
-            }
-            if (widgetFrameWindow && widgetFrameWindow.jQuery) {
+            if (this.widget && widgetFrameWindow && widgetFrameWindow.jQuery) {
                 // style options
                 _.each(styleOptions, function(value, key) {
                     key = encodeURIComponent('style[' + key + ']');
