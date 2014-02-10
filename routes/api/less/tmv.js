@@ -4,7 +4,7 @@ var path = require('path');
 
 var config = require('../../../config');
 
-var TMV_PATH = path.join('edmunds/widgets/tmv', config.TMV_LATEST_VERSION);
+var THEMES_PATH = path.join('edmunds/widgets/tmv', config.TMV_LATEST_VERSION, '/less/themes');
 
 exports.compile = function(req, res) {
     var fileName = getFileName(req.query.options || {});
@@ -35,7 +35,7 @@ exports.compile = function(req, res) {
         input += getVariablesString(req.query.variables);
         // compile less
         less.render(input, {
-            paths: [TMV_PATH + '/less/themes'],
+            paths: [THEMES_PATH],
             compress: true
         }, renderLessCallback);
     }
@@ -47,14 +47,13 @@ function getFileName(options) {
     var theme = options.theme || 'simple',
         layout = options.layout || 'vertical',
         fileName = theme + '-' + layout + '.less';
-    return path.join(TMV_PATH, '/less/themes', fileName);
+    return path.join(THEMES_PATH, fileName);
 }
 
-function getVariablesString(records) {
+function getVariablesString(variables) {
     var str = '', name;
-    for (name in records) {
-        str += ((name.slice(0,1) === '@')? '' : '@') + name +': '+
-            ((records[name].slice(-1) === ';')? records[name] : records[name] +';');
+    for (name in variables) {
+        str += '@' + name + ': ' + variables[name] + ';';
     }
     return str;
 }
