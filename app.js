@@ -1,7 +1,8 @@
 var express = require('express');
-var routes = require('./routes');
 var http = require('http');
 var path = require('path');
+
+var routes = require('./routes');
 var config = require('./config');
 
 var app = express();
@@ -23,31 +24,39 @@ app.use(require('less-middleware')({
     compress: true
 }));
 
-// static resources
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'bower_components')));
-app.use('/', express.static(path.join(__dirname, 'edmunds/widgets/')));
-app.use('/tmv', express.static(path.join(__dirname, 'edmunds/widgets/tmv/' + config.TMV_LATEST_VERSION)));
-
 // development only
 if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
-// routes
+/* static resources */
+// public folder
+app.use(express.static(path.join(__dirname, 'public')));
+// bower components
+app.use('/libs', express.static(path.join(__dirname, 'bower_components')));
+// widgets
+app.use('/', express.static(path.join(__dirname, 'edmunds/widgets/')));
+app.use('/tmv', express.static(path.join(__dirname, 'edmunds/widgets/tmv', config.TMV_LATEST_VERSION)));
+app.use('/nvc', express.static(path.join(__dirname, 'edmunds/widgets/nvc', config.NVC_LATEST_VERSION)));
+
+/* routes */
 app.use(routes.error404);
 app.get('/', routes.index);
-
-app.get('/api/tmv/less', routes.api.tmv.less);
+// api
+app.get('/api/less/tmv', routes.api.less.tmv);
+app.get('/api/less/nvc', routes.api.less.nvc);
 app.get('/api/keyvalidate', routes.api.mashery.keyValidate);
 app.get('/api/dealer/sendlead', routes.api.mashery.sendLead);
-
+// widget loader
+app.get('/loader.js', routes.loader);
+// tmv pages
 app.get('/tmv/configure', routes.tmv.configure);
 app.get('/tmv/about', routes.tmv.about);
-
+// nvc pages
 app.get('/nvc/configure', routes.nvc.configurator);
 app.get('/nvc/about', routes.nvc.about);
 
+/* start server */
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
 });
