@@ -169,8 +169,7 @@ function getAdditionalStyleUrl(options) {
         'variables[width]=' + options.width + 'px',
         'variables[height]=' + options.height + 'px',
         'variables[borderWidth]=' + options.border || '1px',
-        'variables[borderRadius]=' + options.borderRadius || '5px',
-        'type=css'
+        'variables[borderRadius]=' + options.borderRadius || '5px'
     ].join('&');
 }
 
