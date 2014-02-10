@@ -1,2 +1,2 @@
+exports.less = require('./less');
 exports.mashery = require('./mashery');
-exports.tmv = require('./tmv');
