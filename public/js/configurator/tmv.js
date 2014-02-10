@@ -386,7 +386,7 @@
             primaryStyles.setAttribute('href', primaryUrl);
             // load additional styles
             jQuery.ajax({
-                url: '/api/less/tmv',
+                url: '/tmv/api/less',
                 data: {
                     options: {
                         theme: options.theme,
