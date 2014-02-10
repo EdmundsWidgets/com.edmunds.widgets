@@ -43,8 +43,6 @@ app.use('/nvc', express.static(path.join(__dirname, 'edmunds/widgets/nvc', confi
 app.use(routes.error404);
 app.get('/', routes.index);
 // api
-app.get('/api/less/tmv', routes.api.less.tmv);
-app.get('/api/less/nvc', routes.api.less.nvc);
 app.get('/api/keyvalidate', routes.api.mashery.keyValidate);
 app.get('/api/dealer/sendlead', routes.api.mashery.sendLead);
 // widget loader
@@ -52,9 +50,11 @@ app.get('/loader.js', routes.loader);
 // tmv pages
 app.get('/tmv/configure', routes.tmv.configure);
 app.get('/tmv/about', routes.tmv.about);
-// nvc pages
+app.get('/tmv/api/less', routes.api.less.tmv.compile);
+// nvc routes
 app.get('/nvc/configure', routes.nvc.configurator);
 app.get('/nvc/about', routes.nvc.about);
+app.get('/nvc/api/less', routes.api.less.nvc.compile);
 
 /* start server */
 http.createServer(app).listen(app.get('port'), function(){
