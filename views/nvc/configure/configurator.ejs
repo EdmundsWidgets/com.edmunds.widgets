@@ -1,0 +1,23 @@
+<form id="widget-configurator" class="well well-small well-configurator">
+	<fieldset>
+		<legend>Primary Options</legend>
+		<% include configurator/vehicle-api-key.ejs %>
+		<% include configurator/dealer-api-key.ejs %>
+		<% include configurator/zip-code.ejs %>
+		<% include configurator/makes.ejs %>
+		<% include configurator/tabs-to-display.ejs %>
+		<% include configurator/dealer-keywords.ejs %>
+	</fieldset>
+	<fieldset>
+		<legend>Appearance</legend>
+		<% include configurator/theme.ejs %>
+		<% include configurator/color-scheme.ejs %>
+		<% include configurator/width.ejs %>
+		<% include configurator/border-width.ejs %>
+		<% include configurator/border-radius.ejs %>
+	</fieldset>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-submit" id="widget-get"><i class="icon-white icon-download"></i>&nbsp;Get Code</button>
+		<button type="reset" class="btn btn-link">Reset</button>
+	</div>
+</form><!--./widget-configurator -->
