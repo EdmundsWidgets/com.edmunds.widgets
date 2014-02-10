@@ -21,9 +21,9 @@
 					<div class="media-body">
 						<p>The Edmunds.com True Market Value<sup>&reg;</sup> (TMV<sup>&reg;</sup>) Widget gives automotive consumers the ability to find the Edmunds.com TMV<sup>&reg;</sup> price for a particular new or used vehicle without hassle. The price shown is for the base vehicle trim and doesn't account for any options or colors adjustments.</p>
 						<ul class="list-unstyled">
-							<li><a href="/tmv/configure"><span class="glyphicon glyphicon-cog"></span> Configure</a></li>
-							<li><a href="/tmv/about"><span class="glyphicon glyphicon-question-sign"></span> Quick Start</a></li>
-							<li><a href="/tmv/docs" target="_blank"><span class="glyphicon glyphicon-book"></span> API Documentation</a></li>
+							<li><a href="/tmv/configure<% if (debug === true) { %>?debug=true<% } %>"><span class="glyphicon glyphicon-cog"></span> Configure</a></li>
+							<li><a href="/tmv/about<% if (debug === true) { %>?debug=true<% } %>"><span class="glyphicon glyphicon-question-sign"></span> Quick Start</a></li>
+							<li><a href="/tmv/docs<% if (debug === true) { %>?debug=true<% } %>" target="_blank"><span class="glyphicon glyphicon-book"></span> API Documentation</a></li>
 						</ul>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 
 		<div class="col-md-6">
 			<div class="widget-announcement">
-				<h3>New Vehicle Configurator <small class="pull-right"></small></h3>
+				<h3>New Vehicle Configurator <small class="pull-right">v0.2.0</small></h3>
 				<div class="media">
 					<div class="thumbnail pull-left">
 						<img class="media-object" src="/img/thumbnail-nvc.png" alt="New Vehicle Configurator">
@@ -40,8 +40,8 @@
 					<div class="media-body">
 						<p>The New Vehicle Configurator Widget allows the consumer to configure a new vehicle, price it out and submit a quick quote to a local dealer(s).</p>
 						<ul class="list-unstyled">
-							<li><a href="/nvc/configure"><span class="glyphicon glyphicon-cog"></span> Configure</a></li>
-							<li><a href="/nvc/about"><span class="glyphicon glyphicon-question-sign"></span> Quick Start</a></li>
+							<li><a href="/nvc/configure<% if (debug === true) { %>?debug=true<% } %>"><span class="glyphicon glyphicon-cog"></span> Configure</a></li>
+							<li><a href="/nvc/about<% if (debug === true) { %>?debug=true<% } %>"><span class="glyphicon glyphicon-question-sign"></span> Quick Start</a></li>
 						</ul>
 					</div>
 				</div>

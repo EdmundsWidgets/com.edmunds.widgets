@@ -7,23 +7,23 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/">Edmunds Widgets</a>
+			<a class="navbar-brand" href="/<% if (debug === true) { %>?debug=true<% } %>">Edmunds Widgets</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">True Market Value <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="/tmv/configure">Configure Now</a></li>
-						<li><a href="/tmv/about">Quick Start</a></li>
-						<li><a href="/tmv/docs" target="_blank">API Documentation</a></li>
+						<li><a href="/tmv/configure<% if (debug === true) { %>?debug=true<% } %>">Configure Now</a></li>
+						<li><a href="/tmv/about<% if (debug === true) { %>?debug=true<% } %>">Quick Start</a></li>
+						<li><a href="/tmv/docs<% if (debug === true) { %>?debug=true<% } %>" target="_blank">API Documentation</a></li>
 					</ul>
 				</li>
 				<li class="dropdown active">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">New Vehicle Configurator <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="/nvc/configure">Configure Now</a></li>
-						<li><a href="/nvc/about">Quick Start</a></li>
+						<li><a href="/nvc/configure<% if (debug === true) { %>?debug=true<% } %>">Configure Now</a></li>
+						<li><a href="/nvc/about<% if (debug === true) { %>?debug=true<% } %>">Quick Start</a></li>
 					</ul>
 				</li>
 				<li>
