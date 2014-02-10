@@ -1,5 +1,5 @@
 exports.configurator = function(req, res) {
-    res.render('nvc/configurator', {
+    res.render('nvc/configure', {
         title: 'NVC Configurator',
         debug: req.query.debug === 'true',
         portal: req.query.portal === 'true'
