@@ -163,13 +163,12 @@ function getThemeStyleUrl(options) {
 
 function getAdditionalStyleUrl(options) {
     return '/nvc/api/less?' + [
-        'style[theme]=' + options.theme || 'simple',
-        'style[colorScheme]=' + options.color || 'light',
-        'style[layout]=vertical',
-        'variables[width]=' + options.width + 'px',
-        'variables[height]=' + options.height + 'px',
-        'variables[borderWidth]=' + options.border || '1px',
-        'variables[borderRadius]=' + options.borderRadius || '5px'
+        'style[theme]=' + (options.theme || 'simple'),
+        'style[colorScheme]=' + (options.colorScheme || options.color || 'light'),
+        'variables[width]=' + (options.width + 'px'),
+        'variables[height]=' + (options.height + 'px'),
+        'variables[borderWidth]=' + (options.border || '1px'),
+        'variables[borderRadius]=' + (options.borderRadius || '5px')
     ].join('&');
 }
 
