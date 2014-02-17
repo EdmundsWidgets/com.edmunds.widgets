@@ -1,6 +1,12 @@
 language: node_js
 node_js:
   - '0.10'
+script:
+  - foreman -v
+  - java -version
+  - mvn -version
+  - foreman start
+  - mvn clean test -Durl=http://localhost:5000
 deploy:
   provider: heroku
   api_key:
