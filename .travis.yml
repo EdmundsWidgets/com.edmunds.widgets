@@ -1,12 +1,23 @@
 language: node_js
+
 node_js:
   - '0.10'
+
+rvm:
+  - 1.9.3
+
+install:
+  - gem install foreman
+
 script:
   - foreman -v
   - java -version
   - mvn -version
   - foreman start
+
+test:
   - mvn clean test -Durl=http://localhost:5000
+
 deploy:
   provider: heroku
   api_key:
@@ -15,5 +26,6 @@ deploy:
     master: edmunds-widgets-dev
     staging: edmunds-widgets-staging
     production: edmunds-widgets-prod
+
 notifications:
   email: false
