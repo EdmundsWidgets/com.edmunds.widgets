@@ -7,7 +7,7 @@ rvm:
   - 1.9.3
 
 install:
-  - gem install foreman
+  - gem install foreman -v 0.61
 
 script:
   - foreman -v
