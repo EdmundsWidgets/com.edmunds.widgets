@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.Assert;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.java.After;
@@ -18,16 +17,24 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 public class RunCukesTest extends AbstractTestNGCucumberTests {
 
+    private static final String DEFAULT_BROWSER = "phantomjs";
+    private static final String DEFAULT_URL = "http://localhost:5000";
     private static String baseUrl;
     private static WebDriver driver;
 
     @Before
     public void setUp() throws InterruptedException {
-        Assert.assertNotNull(System.getProperty("siteUrl"), "'siteUrl' system property is missing");
-        baseUrl = System.getProperty("siteUrl");
-        setDriver(System.getProperty("browser"));
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        baseUrl = System.getProperty("url");
+        if (baseUrl == null) {
+            baseUrl = DEFAULT_BROWSER;
+        }
+        String browser = System.getProperty("browser");
+        if (browser == null) {
+            browser = DEFAULT_URL;
+        }
+        setDriver(browser);
         setWindowSize(WindowSize.LARGE);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @After
@@ -60,15 +67,6 @@ public class RunCukesTest extends AbstractTestNGCucumberTests {
 
     public static void setWindowSize(WindowSize windowSize) {
         driver.manage().window().setSize(windowSize.getDimension());
-        //sleep(3000);
-    }
-
-    public static void sleep(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
 }
