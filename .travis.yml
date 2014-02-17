@@ -3,6 +3,9 @@ language: node_js
 node_js:
   - 0.10.25
 
+rvm:
+  - 1.9.3
+
 jdk:
   - openjdk7
   - oraclejdk7
@@ -16,6 +19,9 @@ env:
   - secure: yXS+oVs17FxGXsftpTtvlVhHst+gCuC9Zd2IH5a/F1BB3M3kgF5SBKvj5LWCrBa2R4Roq4VsPdNHe7Wl3chHAfAXRBfB0YxopyCFm4e4cdRyI+sRnvGk3mPU13/rB5o/uYjlJVCHQ8kYeC//c+pTuTYjI7LzrwBLsrsG/Ojl9fQ=
   - secure: ItH9/R//Yifo5/Zyigf5jD2/VBMsfhrNfVBh5C0IoG5a+CcCprSzbr6Zh0eF01Nw+h6Oato6ouomnNYQqQKfD/eRUR5mfPXFu+b+bI/NjqkyKGobMQ6hgAllElAL9p6AGOtNyHhKQ/hwStdZbJPQ4ETraQjRmAAUZ+zKwiaMeFo=
   - secure: sr5Hkelfm1uYEwC/3cntR5hkH7u9ZVQw4bM2jwqjq1CFxbKsZu6ecELhAHQbf0KforE7+ZdjQBnQ+0/Y1aCkXMQBiaD/DHT8We3IV1Eqnf0znmlRttXisFuXzkv54ghsQMxFuQw+VzJOnmQYREfjGNPeEwoh04VAi+GDG4A1cWE=
+
+before_install:
+  - gem install foreman -v 0.61
 
 before_script:
   - foreman start
