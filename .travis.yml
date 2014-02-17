@@ -23,7 +23,7 @@ env:
 before_install:
   - gem install foreman -v 0.61
 
-test:
+script:
   - foreman start & mvn clean test -Durl=http://localhost:5000
 
 deploy:
