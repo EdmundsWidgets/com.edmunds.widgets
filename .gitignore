@@ -1,10 +1,12 @@
 ### App
 public/css/
+target/
 .env
 
 ### File extensions
 *.diff
 *.log
+*.iml
 
 ### OS and IDE folders
 .DS_Store
