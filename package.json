@@ -9,7 +9,8 @@
   "scripts": {
     "preinstall": "npm install -g bower",
     "install": "bower install",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "mvn clean test -Durl=http://localhost:5000"
   },
   "dependencies": {
     "ejs": "0.8.5",
