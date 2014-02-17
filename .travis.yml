@@ -23,11 +23,8 @@ env:
 before_install:
   - gem install foreman -v 0.61
 
-before_script:
-  - foreman start
-
 test:
-  - mvn clean test -Durl=http://localhost:5000
+  - foreman start & mvn clean test -Durl=http://localhost:5000
 
 deploy:
   provider: heroku
