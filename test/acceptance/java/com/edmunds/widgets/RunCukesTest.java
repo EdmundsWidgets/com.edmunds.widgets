@@ -26,11 +26,11 @@ public class RunCukesTest extends AbstractTestNGCucumberTests {
     public void setUp() throws InterruptedException {
         baseUrl = System.getProperty("url");
         if (baseUrl == null) {
-            baseUrl = DEFAULT_BROWSER;
+            baseUrl = DEFAULT_URL;
         }
         String browser = System.getProperty("browser");
         if (browser == null) {
-            browser = DEFAULT_URL;
+            browser = DEFAULT_BROWSER;
         }
         setDriver(browser);
         setWindowSize(WindowSize.LARGE);
