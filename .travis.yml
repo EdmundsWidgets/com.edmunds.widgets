@@ -1,22 +1,31 @@
 language: node_js
 
 node_js:
-  - '0.10.25'
+- 0.10.25
 
 rvm:
-  - 1.9.3
+- 1.9.3
 
 install:
-  - gem install foreman -v 0.61
+- gem install foreman -v 0.61
 
 script:
-  - foreman -v
-  - java -version
-  - mvn -version
-  - foreman start
-
+- foreman -v
+- java -version
+- mvn -version
+- foreman start
 test:
-  - mvn clean test -Durl=http://localhost:5000
+- mvn clean test -Durl=http://localhost:5000
+
+env:
+  global:
+  - secure: aYuJOG0DD/f2kycmjZTMAKv9icMwLbcB1WpeMoyaZVqR0TuWCHuWTDwnphYBUw89COp0Z/iT36e+FVVPVwP6nNwGPv59vDbQyy9FSO9NY673jeUgGiRHdCapzBDPM47AgrFHi/BuzMYAxUlaUSlp/sld5EKy07HNmvmQa5aF0HY=
+  - secure: iqpHn5cjHB78+ykR1uS3k/EskQbM3WSEZmNTNEYpCB/Fn9kvc6QCaAxsG+UON3SFQKvMuTXfnj6FtnhSIUmb0FkbCQ37e1wYRrhN4QWVS3K3zIBosTcuhTAAoz5fekZ4dZ7ggYjG2+Kjj6od3a1Xappsszu/Om0to4ps1yynysE=
+  - secure: kYsjfMsHRQFQmqDGHa9xP9bLTVnPMEciuqSr0Ic1jQ8xCufte4/xVUikyvvEl4sRAQX1zITfJftnaaXRKVDAfrfGSBqZ0TkJko9kQhNUBoGRTbxy9WZp++/mS1h9SDhWVsler6GoJ5FB0XOA+5nxYr349A7wWN8BbZYMXj3Wjy4=
+  - secure: RsZuil+6GBSL5BIXJU2rMCDqqRhcT866NQePi8mmutlalVAeEa71BtcAUBwigcygzcmZryX+Qf4MZMSYgHaTz2f+BOGlWY26/5FtAeTDu5/+iXDNQc7i64RjtCYZok4h40PpVMNOPU7O9rhlnxlxwVcWm6UN1HEHH8TCti0aBj0=
+  - secure: yXS+oVs17FxGXsftpTtvlVhHst+gCuC9Zd2IH5a/F1BB3M3kgF5SBKvj5LWCrBa2R4Roq4VsPdNHe7Wl3chHAfAXRBfB0YxopyCFm4e4cdRyI+sRnvGk3mPU13/rB5o/uYjlJVCHQ8kYeC//c+pTuTYjI7LzrwBLsrsG/Ojl9fQ=
+  - secure: ItH9/R//Yifo5/Zyigf5jD2/VBMsfhrNfVBh5C0IoG5a+CcCprSzbr6Zh0eF01Nw+h6Oato6ouomnNYQqQKfD/eRUR5mfPXFu+b+bI/NjqkyKGobMQ6hgAllElAL9p6AGOtNyHhKQ/hwStdZbJPQ4ETraQjRmAAUZ+zKwiaMeFo=
+  - secure: sr5Hkelfm1uYEwC/3cntR5hkH7u9ZVQw4bM2jwqjq1CFxbKsZu6ecELhAHQbf0KforE7+ZdjQBnQ+0/Y1aCkXMQBiaD/DHT8We3IV1Eqnf0znmlRttXisFuXzkv54ghsQMxFuQw+VzJOnmQYREfjGNPeEwoh04VAi+GDG4A1cWE=
 
 deploy:
   provider: heroku
