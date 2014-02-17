@@ -187,7 +187,7 @@ EDM.createWidget = function(config) {
             ],
             scripts: [
                 baseUrl + '/libs/requirejs/require.js',
-                baseUrl + '/libs/jquery/jquery.min.js',
+                baseUrl + '/libs/jquery/dist/jquery.min.js',
                 baseUrl + '/libs/underscore/underscore-min.js',
                 baseUrl + '/libs/backbone/backbone-min.js',
                 baseUrl + '/js/edmunds-sdk.min.js',
