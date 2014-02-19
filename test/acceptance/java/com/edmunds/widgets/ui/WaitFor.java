@@ -36,6 +36,10 @@ public class WaitFor {
         getDriverWait().until(ExpectedConditions.presenceOfElementLocated(By.id("tmvwidget")));
     }
 
+    public static void presenceOfNVCWidget() {
+        getDriverWait().until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#nvcwidget iframe")));
+    }
+
     public static void cssValue(WebElement element, String propertyName, String propertyValue) {
         getDriverWait().until(CustomExpectedConditions.cssValueToBePresentInElement(element, propertyName, propertyValue));
     }
