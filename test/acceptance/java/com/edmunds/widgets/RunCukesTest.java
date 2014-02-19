@@ -12,6 +12,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 @CucumberOptions(format = "json:target/cucumber-report.json")
 
@@ -19,8 +20,10 @@ public class RunCukesTest extends AbstractTestNGCucumberTests {
 
     private static final String DEFAULT_BROWSER = "phantomjs";
     private static final String DEFAULT_URL = "http://localhost:5000";
+    private static final long WAIT_TIMEOUT_IN_SECONDS = 10;
     private static String baseUrl;
     private static WebDriver driver;
+    private static WebDriverWait wait;
 
     @Before
     public void setUp() throws InterruptedException {
@@ -35,6 +38,7 @@ public class RunCukesTest extends AbstractTestNGCucumberTests {
         setDriver(browser);
         setWindowSize(WindowSize.LARGE);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, WAIT_TIMEOUT_IN_SECONDS);
     }
 
     @After
@@ -59,6 +63,10 @@ public class RunCukesTest extends AbstractTestNGCucumberTests {
 
     public static WebDriver getDriver() {
         return driver;
+    }
+
+    public static WebDriverWait getDriverWait() {
+        return wait;
     }
 
     public static void navigate(String page) {
