@@ -33,7 +33,7 @@ public enum WindowSize {
     }
 
     public Dimension getDimension() {
-        return new Dimension(getWidth(), getHeight());
+        return new Dimension(width, height);
     }
 
 }
