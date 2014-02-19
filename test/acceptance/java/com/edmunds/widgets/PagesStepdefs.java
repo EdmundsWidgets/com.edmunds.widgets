@@ -1,7 +1,6 @@
 package com.edmunds.widgets;
 
 import static com.edmunds.widgets.RunCukesTest.getDriver;
-import static com.edmunds.widgets.RunCukesTest.getUrl;
 import static com.edmunds.widgets.RunCukesTest.navigate;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;

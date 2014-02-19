@@ -2,7 +2,6 @@ Feature: TMV Widget
   As a user
   I want to configure own NVC widget
 
-  @dev
   Scenario: Check defaults
     Given I am on '/tmv/configure' page
     Then I should see widget configurator
@@ -23,3 +22,63 @@ Feature: TMV Widget
     Then 'Width' value should be '250px'
     Then 'Include border' checkbox should be checked
     Then 'Border Radius' value should be '5px'
+
+  @todo
+  Scenario: I want to configure Vehicle Api key
+    Given I am on '/tmv/configure' page
+
+  Scenario: I want to configure default ZIP code
+    Given I am on '/tmv/configure' page
+    When I apply 'axr2rtmnj63qsth3ume3tv5f' Vehicle Api key
+    Then I should see 'axr2rtmnj63qsth3ume3tv5f' as applied Vehicle Api key
+    Then I should have possibility to apply default ZIP code
+    When I apply '12345' default ZIP code
+    Then I should see '12345' as applied default ZIP code
+    Then TMV widget should be displayed with '12345' ZIP code
+
+  @todo
+  Scenario: I want to configure publications state of the vehicles
+    Given I am on '/tmv/configure' page
+
+  @todo
+  Scenario: I want to configure included makes
+    Given I am on '/tmv/configure' page
+
+  @todo
+  Scenario: I want to configure price to display
+    Given I am on '/tmv/configure' page
+
+  @todo
+  Scenario: I want to configure theme of the widget
+    Given I am on '/tmv/configure' page
+
+  @todo
+  Scenario: I want to configure color scheme of the widget
+    Given I am on '/tmv/configure' page
+
+  @todo
+  Scenario: I want to configure layout of the widget
+    Given I am on '/tmv/configure' page
+
+  Scenario: I want to configure width of the widget
+    Given I am on '/tmv/configure' page
+    Then width of TMV widget should be equal to '250px'
+    When I change the width of the widget to '321px'
+    Then width of TMV widget should be equal to '321px'
+
+  Scenario: I want to configure border of the widget
+    Given I am on '/tmv/configure' page
+    Then I should see 'checked' 'Include border' checkbox
+    Then TMV widget should be displayed with border
+    When I click 'Include border' checkbox
+    Then I should see 'unchecked' 'Include border' checkbox
+    Then TMV widget should be displayed without border
+    When I click 'Include border' checkbox
+    Then I should see 'checked' 'Include border' checkbox
+    Then TMV widget should be displayed with border
+
+  Scenario: I want to configure border radius of the widget
+    Given I am on '/tmv/configure' page
+    Then TMV widget should be displayed with '5px' border radius
+    When I change border radius to '10px'
+    Then TMV widget should be displayed with '10px' border radius
