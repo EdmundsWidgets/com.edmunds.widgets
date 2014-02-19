@@ -19,7 +19,6 @@ public class WidgetConfigurator {
     }
 
     public static WebElement findNVCWidgetRootElement() {
-        waitForNVCWidgetPresence();
         return getDriver().findElement(By.id("nvcwidget"));
     }
 
@@ -106,12 +105,6 @@ public class WidgetConfigurator {
     public static boolean hasSelectedLayout(String text) {
         WebElement selectedOption = findLayotRadioGroup().getSelectedOption();
         return selectedOption.getText().equals(text);
-    }
-
-    public static void waitForNVCWidgetPresence() {
-        String xpath = "//div[@id='nvcwidget']/iframe";
-        WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
     }
 
 }
