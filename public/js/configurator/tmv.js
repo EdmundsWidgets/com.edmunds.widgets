@@ -119,7 +119,7 @@
             'valid #zip-code-control': 'onZipCodeChange'
         },
 
-        $widgetPlaceholder: $('#tmvwidget'),
+        $widgetPlaceholder: $('#widget-placeholder'),
 
         vehicleApiKey: '',
 
@@ -350,7 +350,8 @@
         renderWidget: function() {
             var options = this.toJSON(),
                 widget;
-            this.$widgetPlaceholder.empty();
+            this.$widgetPlaceholder.find('#tmvwidget').remove();
+            this.$widgetPlaceholder.prepend('<div id="tmvwidget"></div>');
             widget = this.widget = new EDM.TMV(this.vehicleApiKey, {
                 root:       'tmvwidget',
                 baseClass:  'tmvwidget'
