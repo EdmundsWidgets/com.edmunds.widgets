@@ -9,6 +9,10 @@ import static com.edmunds.widgets.RunCukesTest.getDriver;
 
 public class WaitFor {
 
+    private WaitFor() {
+        // Utility class
+    }
+
     private static final long TIMEOUT_IN_SECONDS = 5;
 
     public static void applyingVehicleApiKey() {
