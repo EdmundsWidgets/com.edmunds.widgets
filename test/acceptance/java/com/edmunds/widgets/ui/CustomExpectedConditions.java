@@ -14,11 +14,7 @@ public class CustomExpectedConditions {
             public Boolean apply(WebDriver driver) {
                 try {
                     String value = element.getCssValue(propertyName);
-                    if (value != null) {
-                        return value.equals(propertyValue);
-                    } else {
-                        return false;
-                    }
+                    return propertyValue.equals(value);
                 } catch (StaleElementReferenceException e) {
                     return null;
                 }
