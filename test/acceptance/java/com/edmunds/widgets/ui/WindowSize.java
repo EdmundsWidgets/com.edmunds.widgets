@@ -1,4 +1,4 @@
-package com.edmunds.widgets.responsive;
+package com.edmunds.widgets.ui;
 
 import org.openqa.selenium.Dimension;
 

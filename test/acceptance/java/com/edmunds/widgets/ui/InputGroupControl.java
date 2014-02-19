@@ -1,10 +1,7 @@
-package com.edmunds.widgets.component;
+package com.edmunds.widgets.ui;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class InputGroupControl {
 
@@ -59,7 +56,7 @@ public class InputGroupControl {
         return findApplySectionElement().findElement(By.tagName("input"));
     }
 
-    private WebElement findAppliedValueElement() {
+    public WebElement findAppliedValueElement() {
         return findChangeSectionElement().findElement(By.className("form-control-text"));
     }
 

@@ -1,4 +1,4 @@
-package com.edmunds.widgets.component;
+package com.edmunds.widgets.ui;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,7 +15,6 @@ public class WidgetConfigurator {
     }
 
     public static WebElement findTMVWidgetRootElement() {
-        waitForTMVWidgetPresence();
         return getDriver().findElement(By.id("tmvwidget"));
     }
 
@@ -24,12 +23,12 @@ public class WidgetConfigurator {
         return getDriver().findElement(By.id("nvcwidget"));
     }
 
-    public InputGroupControl findVehicleApiKeyControl() {
+    public static InputGroupControl findVehicleApiKeyControl() {
         WebElement element = getDriver().findElement(By.id("vehicle-api-key-control"));
         return new InputGroupControl(element);
     }
 
-    public InputGroupControl findDealerApiKeyControl() {
+    public static InputGroupControl findDealerApiKeyControl() {
         WebElement element = getDriver().findElement(By.id("dealer-api-key-control"));
         return new InputGroupControl(element);
     }
@@ -107,12 +106,6 @@ public class WidgetConfigurator {
     public static boolean hasSelectedLayout(String text) {
         WebElement selectedOption = findLayotRadioGroup().getSelectedOption();
         return selectedOption.getText().equals(text);
-    }
-
-    public static void waitForTMVWidgetPresence() {
-        String xpath = "//div[@id='tmvwidget']/div[@class='tmvwidget-inner']";
-        WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
     }
 
     public static void waitForNVCWidgetPresence() {

@@ -5,7 +5,7 @@ import static com.edmunds.widgets.RunCukesTest.getDriver;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.assertFalse;
 
-import com.edmunds.widgets.component.InputGroupControl;
+import com.edmunds.widgets.ui.InputGroupControl;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.And;

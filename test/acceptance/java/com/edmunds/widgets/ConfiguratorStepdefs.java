@@ -1,7 +1,7 @@
 package com.edmunds.widgets;
 
-import static com.edmunds.widgets.component.WidgetConfigurator.*;
-import com.edmunds.widgets.component.InputGroupControl;
+import static com.edmunds.widgets.ui.WidgetConfigurator.*;
+import com.edmunds.widgets.ui.InputGroupControl;
 
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;

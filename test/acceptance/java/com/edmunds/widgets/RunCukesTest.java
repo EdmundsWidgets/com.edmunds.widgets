@@ -2,7 +2,7 @@ package com.edmunds.widgets;
 
 import java.util.concurrent.TimeUnit;
 
-import com.edmunds.widgets.responsive.WindowSize;
+import com.edmunds.widgets.ui.WindowSize;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;

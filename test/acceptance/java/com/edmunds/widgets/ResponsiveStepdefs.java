@@ -1,6 +1,6 @@
 package com.edmunds.widgets;
 
-import com.edmunds.widgets.responsive.WindowSize;
+import com.edmunds.widgets.ui.WindowSize;
 import static com.edmunds.widgets.RunCukesTest.setWindowSize;
 
 import cucumber.api.java.en.Given;

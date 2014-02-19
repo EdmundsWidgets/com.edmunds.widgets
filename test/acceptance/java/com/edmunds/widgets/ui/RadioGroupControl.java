@@ -1,4 +1,4 @@
-package com.edmunds.widgets.component;
+package com.edmunds.widgets.ui;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
