@@ -1,7 +1,6 @@
 package com.edmunds.widgets;
 
 import com.edmunds.widgets.ui.WaitFor;
-import com.thoughtworks.selenium.Wait;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
