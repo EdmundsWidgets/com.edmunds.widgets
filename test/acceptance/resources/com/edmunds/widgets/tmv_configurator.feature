@@ -48,17 +48,25 @@ Feature: TMV Widget
   Scenario: I want to configure price to display
     Given I am on '/tmv/configure' page
 
-  @todo
+  @todo @devs
   Scenario: I want to configure theme of the widget
     Given I am on '/tmv/configure' page
+    When I select 'Theme 1' theme
+    When I select 'Theme 2' theme
+    When I select 'Theme 3' theme
 
-  @todo
+  @todo @devs
   Scenario: I want to configure color scheme of the widget
     Given I am on '/tmv/configure' page
+    When I select 'Light' color scheme
+    When I select 'Dark' color scheme
 
-  @todo
   Scenario: I want to configure layout of the widget
     Given I am on '/tmv/configure' page
+    When I select 'Horizontal' layout
+    Then width of TMV widget should be equal to '680px'
+    When I select 'Vertical' layout
+    Then width of TMV widget should be equal to '250px'
 
   Scenario: I want to configure width of the widget
     Given I am on '/tmv/configure' page
