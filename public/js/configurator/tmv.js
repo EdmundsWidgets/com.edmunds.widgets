@@ -121,6 +121,8 @@
 
         $widgetPlaceholder: $('#widget-placeholder'),
 
+        primaryStyles: document.getElementById('primary_styles'),
+
         vehicleApiKey: '',
 
         initialize: function() {
