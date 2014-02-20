@@ -342,6 +342,15 @@
 
         renderMakesList: function(makes) {
             this.$makesList.empty();
+            makes.sort(function(a, b) {
+                if (a.niceName > b.niceName) {
+                    return 1;
+                }
+                if (a.niceName < b.niceName) {
+                    return -1;
+                }
+                return 0;
+            });
             _.each(makes, function(make) {
                 this.$makesList.append(makesListItemTemplate(make));
             }, this);
