@@ -4,6 +4,7 @@ import static com.edmunds.widgets.RunCukesTest.getDriver;
 import static com.edmunds.widgets.ui.WidgetConfigurator.*;
 import com.edmunds.widgets.ui.InputGroupControl;
 
+import com.edmunds.widgets.ui.RadioGroupControl;
 import com.edmunds.widgets.ui.WaitFor;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -64,6 +65,20 @@ public class ConfiguratorStepdefs {
         }
         WebElement element = getDriver().findElement(By.name("borderRadius"));
         assertEquals(element.getAttribute("value"), borderRadiusStr);
+    }
+
+    @When("I select '(.*)' theme")
+    public void I_select_theme(String themeName) {
+        RadioGroupControl radioGroup = findThemeRadioGroup();
+        radioGroup.selectByText(themeName);
+        assertEquals(radioGroup.getSelectedOption().getText(), themeName);
+    }
+
+    @When("I select '(.*)' color scheme")
+    public void I_select_color_scheme(String colorSchemeName) {
+        RadioGroupControl radioGroup = findColorSchemeRadioGroup();
+        radioGroup.selectByText(colorSchemeName);
+        assertEquals(radioGroup.getSelectedOption().getText(), colorSchemeName);
     }
 
     @Then("^I should see '(.*)' as applied Vehicle Api key$")
