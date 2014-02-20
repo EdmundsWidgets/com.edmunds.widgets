@@ -72,4 +72,26 @@ public class CustomExpectedConditions {
         };
     }
 
+    public static ExpectedCondition<Boolean> cssValueToBePresentInElement(
+            final By locator, final String propertyName, final String propertyValue) {
+        return new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                WebElement element = driver.findElement(locator);
+                try {
+                    String value = element.getCssValue(propertyName);
+                    return propertyValue.equals(value);
+                } catch (StaleElementReferenceException e) {
+                    return null;
+                }
+            }
+
+            @Override
+            public String toString() {
+                return String.format("text ('%s') to be the value of ('%s') CSS property",
+                        propertyValue, propertyName);
+            }
+        };
+    }
+
 }
