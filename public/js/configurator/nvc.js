@@ -111,7 +111,7 @@
             'valid #zip-code-control': 'onZipCodeChange'
         },
 
-        $widgetPlaceholder: $('#nvcwidget'),
+        $widgetPlaceholder: $('#widget-placeholder'),
 
         initialize: function() {
             // cache elements
@@ -321,7 +321,8 @@
 
         renderWidget: function() {
             var options = this.toJSON();
-            this.$widgetPlaceholder.empty();
+            this.$widgetPlaceholder.find("#nvcwidget").remove();
+            this.$widgetPlaceholder.prepend('<div id="nvcwidget"></div>');
             this.widget = EDM.createWidget({
                 type:       'nvc',
                 renderTo:   'nvcwidget',
