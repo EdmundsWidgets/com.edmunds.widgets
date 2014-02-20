@@ -1,8 +1,10 @@
 package com.edmunds.widgets;
 
+import com.edmunds.widgets.ui.RadioGroupControl;
 import com.edmunds.widgets.ui.TMVWidget;
 import com.edmunds.widgets.ui.WaitFor;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.openqa.selenium.WebElement;
 
 import static com.edmunds.widgets.ui.WidgetConfigurator.*;
@@ -10,13 +12,11 @@ import static org.testng.Assert.assertEquals;
 
 public class TMVConfiguratorStepdefs {
 
-    @Then("^TMV widget should be displayed with border$")
-    public void TMV_widget_should_be_displayed_with_border() {
-        String propertyName = "border-top-width";
-        String expectedValue = "1px";
-        WebElement widgetRootElement = findTMVWidgetRootElement();
-        WaitFor.cssValue(widgetRootElement, propertyName, expectedValue);
-        assertEquals(widgetRootElement.getCssValue(propertyName), expectedValue);
+    @When("I select '(.*)' layout")
+    public void I_select_layout(String layoutName) {
+        RadioGroupControl layoutRadioGroup = findLayotRadioGroup();
+        layoutRadioGroup.selectByText(layoutName);
+        assertEquals(layoutRadioGroup.getSelectedOption().getText(), layoutName);
     }
 
     @Then("^TMV widget should be displayed with '(.*)' ZIP code$")
@@ -25,6 +25,15 @@ public class TMVConfiguratorStepdefs {
         WebElement widgetRootElement = findTMVWidgetRootElement();
         TMVWidget widget = new TMVWidget(widgetRootElement);
         assertEquals(widget.findZipCodeInput().getAttribute("value"), zipCode);
+    }
+
+    @Then("^TMV widget should be displayed with border$")
+    public void TMV_widget_should_be_displayed_with_border() {
+        String propertyName = "border-top-width";
+        String expectedValue = "1px";
+        WebElement widgetRootElement = findTMVWidgetRootElement();
+        WaitFor.cssValue(widgetRootElement, propertyName, expectedValue);
+        assertEquals(widgetRootElement.getCssValue(propertyName), expectedValue);
     }
 
     @Then("^TMV widget should be displayed without border$")
