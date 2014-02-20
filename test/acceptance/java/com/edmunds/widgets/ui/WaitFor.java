@@ -37,8 +37,18 @@ public class WaitFor {
         getDriverWait().until(ExpectedConditions.presenceOfElementLocated(By.id("tmvwidget")));
     }
 
+    public static void stalenessOfTMVWidget() {
+        WebElement element = getDriver().findElement(By.id("tmvwidget"));
+        getDriverWait().until(ExpectedConditions.stalenessOf(element));
+    }
+
     public static void presenceOfNVCWidget() {
         getDriverWait().until(ExpectedConditions.presenceOfElementLocated(By.id("nvcwidget")));
+    }
+
+    public static void stalenessOfNVCWidget() {
+        WebElement element = getDriver().findElement(By.id("nvcwidget"));
+        getDriverWait().until(ExpectedConditions.stalenessOf(element));
     }
 
     public static void attributeValue(WebElement element, String attributeName, String attributeValue) {
@@ -55,6 +65,10 @@ public class WaitFor {
 
     public static void cssValue(By locator, String propertyName, String propertyValue) {
         getDriverWait().until(CustomExpectedConditions.cssValueToBePresentInElement(locator, propertyName, propertyValue));
+    }
+
+    public static void presenceOfIncludedMakes() {
+        getDriverWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".list-group-makes .list-group-item")));
     }
 
 }

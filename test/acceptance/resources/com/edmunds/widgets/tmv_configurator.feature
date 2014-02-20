@@ -40,22 +40,45 @@ Feature: TMV Widget
   Scenario: I want to configure publications state of the vehicles
     Given I am on '/tmv/configure' page
 
-  @todo
   Scenario: I want to configure included makes
     Given I am on '/tmv/configure' page
+    When I apply 'axr2rtmnj63qsth3ume3tv5f' Vehicle Api key
+    Then list of Included makes should be loaded
+    Then 'Toggle all' makes checkbox should not be selected
+    When I select makes in the list of Included makes:
+      | Audi    |
+      | BMW     |
+      | Porsche |
+    Then TMV widget should be loaded with next makes:
+      | Audi    |
+      | BMW     |
+      | Porsche |
+    When I deselect makes in the list of Included makes:
+      | BMW     |
+      | Porsche |
+    Then TMV widget should be loaded with next makes:
+      | Audi    |
+    When I click 'Toggle all' makes checkbox
+    Then 'Toggle all' makes checkbox should be selected
+    Then all makes should be selected in the list of Included makes
+    Then TMV widget should be loaded with all makes
+    When I click 'Toggle all' makes checkbox
+    Then 'Toggle all' makes checkbox should not be selected
+    Then all makes should not be selected in the list of Included makes
+    Then TMV widget should be loaded without makes
 
   @todo
   Scenario: I want to configure price to display
     Given I am on '/tmv/configure' page
 
-  @todo @devs
+  @todo @deferred
   Scenario: I want to configure theme of the widget
     Given I am on '/tmv/configure' page
     When I select 'Theme 1' theme
     When I select 'Theme 2' theme
     When I select 'Theme 3' theme
 
-  @todo @devs
+  @todo @deferred
   Scenario: I want to configure color scheme of the widget
     Given I am on '/tmv/configure' page
     When I select 'Light' color scheme

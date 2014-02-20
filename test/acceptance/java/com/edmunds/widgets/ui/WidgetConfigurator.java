@@ -61,6 +61,10 @@ public class WidgetConfigurator {
         return getDriver().findElement(By.className("list-group-makes"));
     }
 
+    public static IncludedMakesControl findIncludedMakesControl() {
+        return new IncludedMakesControl(findIncludedMakesList());
+    }
+
     public static WebElement findToggleAllMakesCheckbox() {
         return getDriver().findElement(By.id("toggleAllMakes"));
     }

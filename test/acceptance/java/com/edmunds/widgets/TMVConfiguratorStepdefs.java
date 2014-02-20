@@ -1,14 +1,21 @@
 package com.edmunds.widgets;
 
+import com.edmunds.widgets.ui.IncludedMakesControl;
 import com.edmunds.widgets.ui.RadioGroupControl;
 import com.edmunds.widgets.ui.TMVWidget;
 import com.edmunds.widgets.ui.WaitFor;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.edmunds.widgets.ui.WidgetConfigurator.*;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 public class TMVConfiguratorStepdefs {
 
@@ -63,6 +70,30 @@ public class TMVConfiguratorStepdefs {
         WebElement widgetRootElement = findTMVWidgetRootElement();
         WaitFor.cssValue(widgetRootElement, propertyName, width);
         assertEquals(widgetRootElement.getCssValue(propertyName), width);
+    }
+
+    @Then("^TMV widget should be loaded with next makes:$")
+    public void TMV_widget_should_be_loaded_with_next_makes(List<String> makeNames) {
+        WaitFor.attributeValue(By.cssSelector("#tmvwidget select.tmvwidget-make"), "disabled", null);
+        TMVWidget widget = new TMVWidget(findTMVWidgetRootElement());
+        assertEquals(widget.getMakeNames(), makeNames);
+    }
+
+    @Then("^TMV widget should be loaded with all makes$")
+    public void TMV_widget_should_be_loaded_with_all_makes() {
+        IncludedMakesControl includedMakes = findIncludedMakesControl();
+        List<String> makeNames = new ArrayList<>();
+        for (WebElement includedMakesItem : includedMakes.getItems()) {
+            makeNames.add(includedMakesItem.getText());
+        }
+        TMVWidget widget = new TMVWidget(findTMVWidgetRootElement());
+        assertEquals(makeNames, widget.getMakeNames());
+    }
+
+    @Then("^TMV widget should be loaded without makes$")
+    public void TMV_widget_should_be_loaded_without_makes() {
+        TMVWidget widget = new TMVWidget(findTMVWidgetRootElement());
+        assertTrue(widget.getMakeNames().isEmpty());
     }
 
 }

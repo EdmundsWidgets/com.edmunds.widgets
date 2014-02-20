@@ -2,6 +2,8 @@ package com.edmunds.widgets;
 
 import static com.edmunds.widgets.RunCukesTest.getDriver;
 import static com.edmunds.widgets.ui.WidgetConfigurator.*;
+
+import com.edmunds.widgets.ui.IncludedMakesControl;
 import com.edmunds.widgets.ui.InputGroupControl;
 
 import com.edmunds.widgets.ui.RadioGroupControl;
@@ -13,7 +15,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class ConfiguratorStepdefs {
@@ -81,6 +86,28 @@ public class ConfiguratorStepdefs {
         assertEquals(radioGroup.getSelectedOption().getText(), colorSchemeName);
     }
 
+    @When("^I select makes in the list of Included makes:$")
+    public void I_select_makes_in_the_list_of_Included_makes(List<String> makesList) {
+        WaitFor.presenceOfIncludedMakes();
+        IncludedMakesControl control = findIncludedMakesControl();
+        control.selectByText(makesList);
+        WaitFor.stalenessOfTMVWidget();
+    }
+
+    @When("^I deselect makes in the list of Included makes:$")
+    public void I_deselect_makes_in_the_list_of_Included_makes(List<String> makesList) {
+        WaitFor.presenceOfIncludedMakes();
+        IncludedMakesControl control = findIncludedMakesControl();
+        control.deselectByText(makesList);
+        WaitFor.stalenessOfTMVWidget();
+    }
+
+    @When("^I click 'Toggle all' makes checkbox$")
+    public void I_click_Toggle_all_makes_checkbox() {
+        findToggleAllMakesCheckbox().click();
+        WaitFor.stalenessOfTMVWidget();
+    }
+
     @Then("^I should see '(.*)' as applied Vehicle Api key$")
     public void I_should_see_value_as_applied_Vehicle_Api_key(String expectedValue) {
         InputGroupControl vehicleApiKeyControl = findVehicleApiKeyControl();
@@ -110,6 +137,47 @@ public class ConfiguratorStepdefs {
         } else if ("unchecked".equals(expectedState)) {
             assertEquals(state, null);
         }
+    }
+
+    @Then("^list of Included makes should be loaded$")
+    public void list_of_Included_makes_should_be_loaded() {
+        WaitFor.presenceOfIncludedMakes();
+    }
+
+    @Then("^'Toggle all' makes checkbox should be selected$")
+    public void Toggle_all_makes_checkbox_should_be_selected() {
+        assertTrue(findToggleAllMakesCheckbox().isSelected());
+    }
+
+    @Then("^'Toggle all' makes checkbox should not be selected$")
+    public void Toggle_all_makes_checkbox_should_not_be_selected() {
+        assertFalse(findToggleAllMakesCheckbox().isSelected());
+    }
+
+    @Then("^all makes should be selected in the list of Included makes$")
+    public void all_makes_should_be_selected_in_the_list_of_Included_makes() {
+        List<WebElement> checkboxes = findIncludedMakesList().findElements(By.tagName("input"));
+        boolean hasNotSelectedCheckbox = false;
+        for (WebElement checkbox : checkboxes) {
+            if (!checkbox.isSelected()) {
+                hasNotSelectedCheckbox = true;
+                break;
+            }
+        }
+        assertFalse(hasNotSelectedCheckbox);
+    }
+
+    @Then("^all makes should not be selected in the list of Included makes$")
+    public void all_makes_should_not_be_selected_in_the_list_of_Included_makes() {
+        List<WebElement> checkboxes = findIncludedMakesList().findElements(By.tagName("input"));
+        boolean hasSelectedCheckbox = false;
+        for (WebElement checkbox : checkboxes) {
+            if (checkbox.isSelected()) {
+                hasSelectedCheckbox = true;
+                break;
+            }
+        }
+        assertFalse(hasSelectedCheckbox);
     }
 
 }

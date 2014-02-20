@@ -15,12 +15,11 @@ public class CustomExpectedConditions {
             public Boolean apply(WebDriver driver) {
                 try {
                     String value = element.getAttribute(attributeName);
-                    return attributeValue.equals(value);
+                    return value != null ? value.equals(attributeValue) : attributeValue == null;
                 } catch (StaleElementReferenceException e) {
                     return null;
                 }
             }
-
             @Override
             public String toString() {
                 return String.format("text ('%s') to be the value of ('%s') attribute",
@@ -37,12 +36,11 @@ public class CustomExpectedConditions {
                 WebElement element = driver.findElement(locator);
                 try {
                     String value = element.getAttribute(attributeName);
-                    return attributeValue.equals(value);
+                    return value != null ? value.equals(attributeValue) : attributeValue == null;
                 } catch (StaleElementReferenceException e) {
                     return null;
                 }
             }
-
             @Override
             public String toString() {
                 return String.format("text ('%s') to be the value of ('%s') attribute",
@@ -58,12 +56,11 @@ public class CustomExpectedConditions {
             public Boolean apply(WebDriver driver) {
                 try {
                     String value = element.getCssValue(propertyName);
-                    return propertyValue.equals(value);
+                    return value != null ? value.equals(propertyValue) : propertyValue == null;
                 } catch (StaleElementReferenceException e) {
                     return null;
                 }
             }
-
             @Override
             public String toString() {
                 return String.format("text ('%s') to be the value of ('%s') CSS property",
@@ -80,12 +77,11 @@ public class CustomExpectedConditions {
                 WebElement element = driver.findElement(locator);
                 try {
                     String value = element.getCssValue(propertyName);
-                    return propertyValue.equals(value);
+                    return value != null ? value.equals(propertyValue) : propertyValue == null;
                 } catch (StaleElementReferenceException e) {
                     return null;
                 }
             }
-
             @Override
             public String toString() {
                 return String.format("text ('%s') to be the value of ('%s') CSS property",
