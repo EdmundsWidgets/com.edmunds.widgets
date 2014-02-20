@@ -1,10 +1,13 @@
 package com.edmunds.widgets.ui;
 
+import static com.edmunds.widgets.RunCukesTest.WAIT_TIMEOUT_IN_SECONDS;
+import static com.edmunds.widgets.RunCukesTest.getDriver;
 import static com.edmunds.widgets.RunCukesTest.getDriverWait;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitFor {
 
@@ -37,11 +40,24 @@ public class WaitFor {
     }
 
     public static void presenceOfNVCWidget() {
-        getDriverWait().until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#nvcwidget iframe")));
+        getDriverWait().until(ExpectedConditions.presenceOfElementLocated(By.id("nvcwidget")));
+    }
+
+    public static void attributeValue(WebElement element, String attributeName, String attributeValue) {
+        getDriverWait().until(CustomExpectedConditions.attributeValueToBePresentInElement(element, attributeName, attributeValue));
+    }
+
+    public static void attributeValue(By locator, String attributeName, String attributeValue) {
+        getDriverWait().until(CustomExpectedConditions.attributeValueToBePresentInElement(locator, attributeName, attributeValue));
     }
 
     public static void cssValue(WebElement element, String propertyName, String propertyValue) {
         getDriverWait().until(CustomExpectedConditions.cssValueToBePresentInElement(element, propertyName, propertyValue));
+    }
+
+    public static void cssValue(By locator, String propertyName, String propertyValue) {
+        WebElement element = getDriver().findElement(locator);
+        cssValue(element, propertyName, propertyValue);
     }
 
 }
