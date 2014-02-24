@@ -313,10 +313,10 @@
         renderMakesList: function(makes) {
             this.$makesList.empty();
             makes.sort(function(a, b) {
-                if (a.niceName > b.niceName) {
+                if (a.name > b.name) {
                     return 1;
                 }
-                if (a.niceName < b.niceName) {
+                if (a.name < b.name) {
                     return -1;
                 }
                 return 0;
