@@ -126,8 +126,8 @@
             this.$borderRadiusSlider = this.$('#border_radius_slider');
             this.$makesList = this.$('.list-group-makes');
             this.$toggleAllMakes = this.$('#toggleAllMakes');
-            this.$tabNameControl2 = this.$('#tab2_name').find('input, .btn');
-            this.$tabNameControl3 = this.$('#tab3_name').find('input, .btn');
+            this.$tab2NameControl = this.$('#tab2_name').find('input, .btn');
+            this.$tab3NameControl = this.$('#tab3_name').find('input, .btn');
             // vehicle api key control
             this.vehicleApiControl = this.$('#vehicle-api-key-control').inputGroupControl({
                 tooltipTitle: 'Please enter a valid Vehicle API key',
@@ -246,8 +246,8 @@
             // reset button groups
             this.$('.btn-group .btn:first-child').trigger('click');
             // reset fields tab names
-            this.$tabNameControl2.prop('disabled', false);
-            this.$tabNameControl3.prop('disabled', false);
+            this.$tab2NameControl.prop('disabled', false);
+            this.$tab3NameControl.prop('disabled', false);
             // reset sliders
             this.widthSlider.option(widthSliderOptions);
             this.borderRadiusSlider.option(borderRadiusSliderOptions);
@@ -277,16 +277,16 @@
         onTabsToDisplayChange: function(event) {
             switch (event.target.value) {
                 case '1':
-                    this.$tabNameControl2.prop('disabled', false);
-                    this.$tabNameControl3.prop('disabled', false);
+                    this.$tab2NameControl.prop('disabled', false);
+                    this.$tab3NameControl.prop('disabled', false);
                     break;
                 case '2':
-                    this.$tabNameControl2.prop('disabled', false);
-                    this.$tabNameControl3.prop('disabled', true);
+                    this.$tab2NameControl.prop('disabled', false);
+                    this.$tab3NameControl.prop('disabled', true);
                     break;
                 case '3':
-                    this.$tabNameControl2.prop('disabled', true);
-                    this.$tabNameControl3.prop('disabled', false);
+                    this.$tab2NameControl.prop('disabled', true);
+                    this.$tab3NameControl.prop('disabled', false);
                     break;
             }
             this.renderWidget();
