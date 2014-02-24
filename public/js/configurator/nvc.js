@@ -105,6 +105,7 @@
 
             'change .list-group-makes [type="checkbox"]': 'onSelectMake',
             'change #toggleAllMakes': 'onToggleAllMakes',
+            'change [name="tabsToDisplay"]': 'onTabsToDisplayChange',
 
             'valid #vehicle-api-key-control': 'onVehicleApiKeyChange',
             'valid #dealer-api-key-control': 'onDealerApiKeyChange',
@@ -267,6 +268,24 @@
             this.renderWidget();
         },
 
+        onTabsToDisplayChange: function(event) {
+            switch (event.target.value) {
+                case '1':
+                    this.$('#tab2_name').find('input, .btn').prop('disabled', false);
+                    this.$('#tab3_name').find('input, .btn').prop('disabled', false);
+                    break;
+                case '2':
+                    this.$('#tab2_name').find('input, .btn').prop('disabled', false);
+                    this.$('#tab3_name').find('input, .btn').prop('disabled', true);
+                    break;
+                case '3':
+                    this.$('#tab2_name').find('input, .btn').prop('disabled', true);
+                    this.$('#tab3_name').find('input, .btn').prop('disabled', false);
+                    break;
+            }
+            this.renderWidget();
+        },
+
         onZipCodeChange: function(event, zipCode) {
             this.zipCode = zipCode;
             this.renderWidget();
@@ -347,7 +366,7 @@
                     vehicleApiKey:  this.vehicleApiKey || '',
                     dealerApiKey:   this.dealerApiKey || '',
                     includedMakes:  options.includedMakes,
-                    zipCode:        options.zipCode,
+                    zipCode:        this.zipCode,
                     dealerKeywords: '',
                     tabs: {
                         tab1: 'Configure',
