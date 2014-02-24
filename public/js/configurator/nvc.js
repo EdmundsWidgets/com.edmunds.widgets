@@ -242,6 +242,9 @@
             this.zipCodeControl.reset();
             // reset button groups
             this.$('.btn-group .btn:first-child').trigger('click');
+            // reset fields tab names
+            this.$('#tab2_name').find('input, .btn').prop('disabled', false);
+            this.$('#tab3_name').find('input, .btn').prop('disabled', false);
             // reset sliders
             this.widthSlider.option(widthSliderOptions);
             this.borderRadiusSlider.option(borderRadiusSliderOptions);
