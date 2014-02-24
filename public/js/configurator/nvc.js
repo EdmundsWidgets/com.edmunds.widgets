@@ -106,7 +106,7 @@
             'change .list-group-makes [type="checkbox"]': 'onSelectMake',
             'change #toggleAllMakes': 'onToggleAllMakes',
             'change [name="tabsToDisplay"]': 'onTabsToDisplayChange',
-            'click .apply-tab-name': 'onApplyTabNamesClick',
+            'click [data-action="applyTabName"]': 'renderWidget',
 
             'valid #vehicle-api-key-control': 'onVehicleApiKeyChange',
             'valid #dealer-api-key-control': 'onDealerApiKeyChange',
@@ -126,6 +126,8 @@
             this.$borderRadiusSlider = this.$('#border_radius_slider');
             this.$makesList = this.$('.list-group-makes');
             this.$toggleAllMakes = this.$('#toggleAllMakes');
+            this.$tabNameControl2 = this.$('#tab2_name').find('input, .btn');
+            this.$tabNameControl3 = this.$('#tab3_name').find('input, .btn');
             // vehicle api key control
             this.vehicleApiControl = this.$('#vehicle-api-key-control').inputGroupControl({
                 tooltipTitle: 'Please enter a valid Vehicle API key',
@@ -244,8 +246,8 @@
             // reset button groups
             this.$('.btn-group .btn:first-child').trigger('click');
             // reset fields tab names
-            this.$('#tab2_name').find('input, .btn').prop('disabled', false);
-            this.$('#tab3_name').find('input, .btn').prop('disabled', false);
+            this.$tabNameControl2.prop('disabled', false);
+            this.$tabNameControl3.prop('disabled', false);
             // reset sliders
             this.widthSlider.option(widthSliderOptions);
             this.borderRadiusSlider.option(borderRadiusSliderOptions);
@@ -275,39 +277,27 @@
         onTabsToDisplayChange: function(event) {
             switch (event.target.value) {
                 case '1':
-                    this.$('#tab2_name').find('input, .btn').prop('disabled', false);
-                    this.$('#tab3_name').find('input, .btn').prop('disabled', false);
+                    this.$tabNameControl2.prop('disabled', false);
+                    this.$tabNameControl3.prop('disabled', false);
                     break;
                 case '2':
-                    this.$('#tab2_name').find('input, .btn').prop('disabled', false);
-                    this.$('#tab3_name').find('input, .btn').prop('disabled', true);
+                    this.$tabNameControl2.prop('disabled', false);
+                    this.$tabNameControl3.prop('disabled', true);
                     break;
                 case '3':
-                    this.$('#tab2_name').find('input, .btn').prop('disabled', true);
-                    this.$('#tab3_name').find('input, .btn').prop('disabled', false);
+                    this.$tabNameControl2.prop('disabled', true);
+                    this.$tabNameControl3.prop('disabled', false);
                     break;
             }
             this.renderWidget();
         },
 
-        onApplyTabNamesClick: function() {
-            this.renderWidget();
-        },
-
-        getTabNames: function() {
-            var names = {};
-
-            names.tab1 = this.$('#tab1_name input').val();
-            names.tab2 = this.$('#tab2_name input').val();
-            names.tab3 = this.$('#tab3_name input').val();
-
-            if (this.$('#tab2_name input').prop('disabled')) {
-                names.tab2 = null;
-            } else if (this.$('#tab3_name input').prop('disabled')) {
-                names.tab3 = null;
-            }
-
-            return names;
+        getTabNames: function(options) {
+            return {
+                tab1: options.tab1Name,
+                tab2: options.tab2Name || null,
+                tab3: options.tab3Name || null
+            };
         },
 
         onZipCodeChange: function(event, zipCode) {
@@ -392,7 +382,7 @@
                     includedMakes:  options.includedMakes,
                     zipCode:        this.zipCode,
                     dealerKeywords: '',
-                    tabs: this.getTabNames()
+                    tabs: this.getTabNames(options)
                 }
             });
             return this;
