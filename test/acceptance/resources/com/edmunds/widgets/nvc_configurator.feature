@@ -18,9 +18,40 @@ Feature: NVC Widget Configurator
   Scenario: I want to configure default ZIP code
     Given I am on '/nvc/configure' page
 
-  @todo
   Scenario: I want to configure included makes
     Given I am on '/nvc/configure' page
+    Then NVC widget should be loaded
+    When I apply 'axr2rtmnj63qsth3ume3tv5f' Vehicle Api key
+    Then NVC widget should be loaded
+    Then I should see 'axr2rtmnj63qsth3ume3tv5f' as applied Vehicle Api key
+    When I apply 'axr2rtmnj63qsth3ume3tv5f' Dealer Api key
+    Then NVC widget should be loaded
+    When I apply '12345' default ZIP code
+    Then NVC widget should be loaded
+    Then I should see '12345' as applied default ZIP code
+    Then list of Included makes should be loaded
+    Then 'Toggle all' makes checkbox should not be selected
+    When I select makes in the list of Included makes:
+      | Audi    |
+      | BMW     |
+      | Porsche |
+    Then NVC widget should be loaded with next makes:
+      | Audi    |
+      | BMW     |
+      | Porsche |
+    When I deselect makes in the list of Included makes:
+      | BMW     |
+      | Porsche |
+    Then NVC widget should be loaded with next makes:
+      | Audi    |
+    When I click 'Toggle all' makes checkbox
+    Then 'Toggle all' makes checkbox should be selected
+    Then all makes should be selected in the list of Included makes
+    Then NVC widget should be loaded with all makes
+    When I click 'Toggle all' makes checkbox
+    Then 'Toggle all' makes checkbox should not be selected
+    Then all makes should not be selected in the list of Included makes
+    Then NVC widget should be loaded without makes
 
   @todo
   Scenario: I want to configure tabs to display

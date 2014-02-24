@@ -1,16 +1,23 @@
 package com.edmunds.widgets;
 
+import com.edmunds.widgets.ui.IncludedMakesControl;
+import com.edmunds.widgets.ui.NVCWidget;
 import com.edmunds.widgets.ui.WaitFor;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.edmunds.widgets.RunCukesTest.getDriver;
-import static com.edmunds.widgets.ui.WidgetConfigurator.findIncludeBorderCheckboxElement;
-import static com.edmunds.widgets.ui.WidgetConfigurator.findNVCWidgetRootElement;
+import static com.edmunds.widgets.ui.WidgetConfigurator.*;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class NVCConfiguratorStepdefs {
+
+    private WebElement iframe;
 
     @Then("^NVC widget should be displayed with border$")
     public void NVC_widget_should_be_displayed_with_border() {
@@ -63,17 +70,61 @@ public class NVCConfiguratorStepdefs {
         switchToDefaultContent();
     }
 
-    public void switchToNVCWidgetContent() {
-        // at first, we need to wait for presence on the page
+    @Then("^NVC widget should be loaded with next makes:$")
+    public void NVC_widget_should_be_loaded_with_next_makes(List<String> makeNames) {
+        WaitFor.stalenessOfElement(iframe);
+        switchToNVCWidgetContent();
+        WaitFor.textToBePresentInMakesSelectOfNVCWidget("Select a Make");
+        NVCWidget widget = new NVCWidget(findNVCWidgetRootElement());
+        assertEquals(makeNames, widget.getMakeNames());
+        switchToDefaultContent();
+    }
+
+    @Then("^NVC widget should be loaded with all makes$")
+    public void NVC_widget_should_be_loaded_with_all_makes() {
+        List<String> makeNames = getSelectedMakeNames();
+        WaitFor.stalenessOfElement(iframe);
+        switchToNVCWidgetContent();
+        WaitFor.textToBePresentInMakesSelectOfNVCWidget("Select a Make");
+        NVCWidget widget = new NVCWidget(findNVCWidgetRootElement());
+        assertEquals(makeNames, widget.getMakeNames());
+        switchToDefaultContent();
+    }
+
+    @Then("^NVC widget should be loaded without makes$")
+    public void NVC_widget_should_be_loaded_without_makes() {
+        WaitFor.stalenessOfElement(iframe);
+        switchToNVCWidgetContent();
+        WaitFor.textToBePresentInMakesSelectOfNVCWidget("Makes not found");
+        NVCWidget widget = new NVCWidget(findNVCWidgetRootElement());
+        assertTrue(widget.getMakeNames().isEmpty());
+        switchToDefaultContent();
+    }
+
+    @Then("^NVC widget should be loaded$")
+    public void NVC_widget_should_be_loaded() {
         WaitFor.presenceOfNVCWidget();
-        WebElement frame = findNVCWidgetRootElement().findElement(By.tagName("iframe"));
-        getDriver().switchTo().frame(frame);
+        iframe = findNVCWidgetRootElement().findElement(By.tagName("iframe"));
+    }
+
+    public void switchToNVCWidgetContent() {
+        NVC_widget_should_be_loaded();
+        getDriver().switchTo().frame(findNVCWidgetRootElement().findElement(By.tagName("iframe")));
         // then we need to wait for presence in iframe content
         WaitFor.presenceOfNVCWidget();
     }
 
     public void switchToDefaultContent() {
         getDriver().switchTo().defaultContent();
+    }
+
+    public List<String> getSelectedMakeNames() {
+        IncludedMakesControl includedMakes = findIncludedMakesControl();
+        List<String> makeNames = new ArrayList<>();
+        for (WebElement includedMakesItem : includedMakes.getSelectedItems()) {
+            makeNames.add(includedMakesItem.getText());
+        }
+        return makeNames;
     }
 
 }
