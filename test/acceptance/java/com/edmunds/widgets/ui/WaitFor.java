@@ -51,6 +51,10 @@ public class WaitFor {
         getDriverWait().until(ExpectedConditions.stalenessOf(element));
     }
 
+    public static void stalenessOfElement(WebElement element) {
+        getDriverWait().until(ExpectedConditions.stalenessOf(element));
+    }
+
     public static void attributeValue(WebElement element, String attributeName, String attributeValue) {
         getDriverWait().until(CustomExpectedConditions.attributeValueToBePresentInElement(element, attributeName, attributeValue));
     }
@@ -69,6 +73,16 @@ public class WaitFor {
 
     public static void presenceOfIncludedMakes() {
         getDriverWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".list-group-makes .list-group-item")));
+    }
+
+    public static void textToBePresentInMakesSelectOfTMVWidget(String text) {
+        By locator = By.cssSelector("#tmvwidget select.tmvwidget-make option:first-child");
+        getDriverWait().until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
+    }
+
+    public static void textToBePresentInMakesSelectOfNVCWidget(String text) {
+        By locator = By.cssSelector("#nvcwidget .vehicle-style-configurator select:first-child option:first-child");
+        getDriverWait().until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
     }
 
 }

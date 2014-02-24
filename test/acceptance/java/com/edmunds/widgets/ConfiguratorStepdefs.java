@@ -23,12 +23,21 @@ import static org.testng.Assert.assertTrue;
 
 public class ConfiguratorStepdefs {
 
-    @When("^I apply '(.*)' Vehicle Api key$")
-    public void I_apply_Vehicle_Api_key(String vehicleApiKey) {
-        InputGroupControl vehicleApiKeyControl = findVehicleApiKeyControl();
-        vehicleApiKeyControl.findInputElement().sendKeys(vehicleApiKey);
-        vehicleApiKeyControl.clickApplyButton();
-        WaitFor.applyingVehicleApiKey();
+    @When("^I apply '(.*)' (.*) Api key$")
+    public void I_apply__Api_key(String apiKey, String apiKeyType) {
+        InputGroupControl apiKeyControl;
+        if ("Vehicle".equals(apiKeyType)) {
+            apiKeyControl = findVehicleApiKeyControl();
+        } else {
+            apiKeyControl = findDealerApiKeyControl();
+        }
+        apiKeyControl.findInputElement().sendKeys(apiKey);
+        apiKeyControl.clickApplyButton();
+        if ("Vehicle".equals(apiKeyType)) {
+            WaitFor.applyingVehicleApiKey();
+        } else {
+            WaitFor.applyingDealerApiKey();
+        }
     }
 
     @When("^I apply '(.*)' default ZIP code$")
@@ -91,7 +100,6 @@ public class ConfiguratorStepdefs {
         WaitFor.presenceOfIncludedMakes();
         IncludedMakesControl control = findIncludedMakesControl();
         control.selectByText(makesList);
-        WaitFor.stalenessOfTMVWidget();
     }
 
     @When("^I deselect makes in the list of Included makes:$")
@@ -99,19 +107,24 @@ public class ConfiguratorStepdefs {
         WaitFor.presenceOfIncludedMakes();
         IncludedMakesControl control = findIncludedMakesControl();
         control.deselectByText(makesList);
-        WaitFor.stalenessOfTMVWidget();
     }
 
     @When("^I click 'Toggle all' makes checkbox$")
     public void I_click_Toggle_all_makes_checkbox() {
         findToggleAllMakesCheckbox().click();
-        WaitFor.stalenessOfTMVWidget();
     }
 
-    @Then("^I should see '(.*)' as applied Vehicle Api key$")
-    public void I_should_see_value_as_applied_Vehicle_Api_key(String expectedValue) {
-        InputGroupControl vehicleApiKeyControl = findVehicleApiKeyControl();
-        String value = vehicleApiKeyControl.findAppliedValueElement().getText();
+    @Then("^I should see '(.*)' as applied (.*) Api key$")
+    public void I_should_see_value_as_applied_Api_key(String expectedValue, String apiKeyType) {
+        InputGroupControl apiKeyControl;
+        if ("Vehicle".equals(apiKeyType)) {
+            WaitFor.applyingVehicleApiKey();
+            apiKeyControl = findVehicleApiKeyControl();
+        } else {
+            WaitFor.applyingDealerApiKey();
+            apiKeyControl = findDealerApiKeyControl();
+        }
+        String value = apiKeyControl.findAppliedValueElement().getText();
         assertEquals(value, expectedValue);
     }
 
