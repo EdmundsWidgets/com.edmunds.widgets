@@ -106,6 +106,7 @@
             'change .list-group-makes [type="checkbox"]': 'onSelectMake',
             'change #toggleAllMakes': 'onToggleAllMakes',
             'change [name="tabsToDisplay"]': 'onTabsToDisplayChange',
+            'click .apply-tab-name': 'onApplyTabNamesClick',
 
             'valid #vehicle-api-key-control': 'onVehicleApiKeyChange',
             'valid #dealer-api-key-control': 'onDealerApiKeyChange',
@@ -289,6 +290,26 @@
             this.renderWidget();
         },
 
+        onApplyTabNamesClick: function() {
+            this.renderWidget();
+        },
+
+        getTabNames: function() {
+            var names = {};
+
+            names.tab1 = this.$('#tab1_name input').val();
+            names.tab2 = this.$('#tab2_name input').val();
+            names.tab3 = this.$('#tab3_name input').val();
+
+            if (this.$('#tab2_name input').prop('disabled')) {
+                names.tab2 = null;
+            } else if (this.$('#tab3_name input').prop('disabled')) {
+                names.tab3 = null;
+            }
+
+            return names;
+        },
+
         onZipCodeChange: function(event, zipCode) {
             this.zipCode = zipCode;
             this.renderWidget();
@@ -371,11 +392,7 @@
                     includedMakes:  options.includedMakes,
                     zipCode:        this.zipCode,
                     dealerKeywords: '',
-                    tabs: {
-                        tab1: 'Configure',
-                        tab2: 'TMV&reg;',
-                        tab3: 'Price Quotes'
-                    }
+                    tabs: this.getTabNames()
                 }
             });
             return this;
