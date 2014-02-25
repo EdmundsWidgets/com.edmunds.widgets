@@ -105,6 +105,8 @@
 
             'change .list-group-makes [type="checkbox"]': 'onSelectMake',
             'change #toggleAllMakes': 'onToggleAllMakes',
+            'change [name="tabsToDisplay"]': 'onTabsToDisplayChange',
+            'click [data-action="applyTabName"]': 'renderWidget',
 
             'valid #vehicle-api-key-control': 'onVehicleApiKeyChange',
             'valid #dealer-api-key-control': 'onDealerApiKeyChange',
@@ -124,6 +126,8 @@
             this.$borderRadiusSlider = this.$('#border_radius_slider');
             this.$makesList = this.$('.list-group-makes');
             this.$toggleAllMakes = this.$('#toggleAllMakes');
+            this.$tab2NameControl = this.$('#tab2_name').find('input, .btn');
+            this.$tab3NameControl = this.$('#tab3_name').find('input, .btn');
             // vehicle api key control
             this.vehicleApiControl = this.$('#vehicle-api-key-control').inputGroupControl({
                 tooltipTitle: 'Please enter a valid Vehicle API key',
@@ -241,6 +245,9 @@
             this.zipCodeControl.reset();
             // reset button groups
             this.$('.btn-group .btn:first-child').trigger('click');
+            // reset fields tab names
+            this.$tab2NameControl.prop('disabled', false);
+            this.$tab3NameControl.prop('disabled', false);
             // reset sliders
             this.widthSlider.option(widthSliderOptions);
             this.borderRadiusSlider.option(borderRadiusSliderOptions);
@@ -265,6 +272,32 @@
         onDealerApiKeyChange: function(event, apiKey) {
             this.dealerApiKey = apiKey;
             this.renderWidget();
+        },
+
+        onTabsToDisplayChange: function(event) {
+            switch (event.target.value) {
+                case '1':
+                    this.$tab2NameControl.prop('disabled', false);
+                    this.$tab3NameControl.prop('disabled', false);
+                    break;
+                case '2':
+                    this.$tab2NameControl.prop('disabled', false);
+                    this.$tab3NameControl.prop('disabled', true);
+                    break;
+                case '3':
+                    this.$tab2NameControl.prop('disabled', true);
+                    this.$tab3NameControl.prop('disabled', false);
+                    break;
+            }
+            this.renderWidget();
+        },
+
+        getTabNames: function(options) {
+            return {
+                tab1: options.tab1Name,
+                tab2: options.tab2Name || null,
+                tab3: options.tab3Name || null
+            };
         },
 
         onZipCodeChange: function(event, zipCode) {
@@ -347,13 +380,9 @@
                     vehicleApiKey:  this.vehicleApiKey || '',
                     dealerApiKey:   this.dealerApiKey || '',
                     includedMakes:  options.includedMakes,
-                    zipCode:        options.zipCode,
+                    zipCode:        this.zipCode,
                     dealerKeywords: '',
-                    tabs: {
-                        tab1: 'Configure',
-                        tab2: 'TMV&reg;',
-                        tab3: 'Price Quotes'
-                    }
+                    tabs: this.getTabNames(options)
                 }
             });
             return this;
