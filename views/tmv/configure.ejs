@@ -4,6 +4,7 @@
 	<title><%= title %></title>
 	<link rel="stylesheet" href="/css/app.css">
 	<link rel="stylesheet" href="/libs/jquery-ui/themes/smoothness/jquery-ui.min.css">
+	<link rel="stylesheet" href="/tmv/css/simple-light.css" id="primary_styles">
 </head>
 <body<% if (portal === true) { %> class="portal-page"<% } %>>
 
@@ -15,13 +16,12 @@
 	<div class="row">
 
 		<div class="col-sm-5 col-md-4">
-			<% include configure/configurator.ejs %>
+			<% include ../components/configurator/tmv.ejs %>
 		</div>
 
 		<div class="col-sm-7 col-md-8">
 			<div id="message" class="alert hidden"></div>
 			<div id="widget-placeholder">
-				<div id="tmvwidget"></div>
 				<i class="corner top left"></i>
 				<i class="corner top right"></i>
 				<i class="corner bottom left"></i>

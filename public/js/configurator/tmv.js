@@ -119,7 +119,9 @@
             'valid #zip-code-control': 'onZipCodeChange'
         },
 
-        $widgetPlaceholder: $('#tmvwidget'),
+        $widgetPlaceholder: $('#widget-placeholder'),
+
+        primaryStyles: document.getElementById('primary_styles'),
 
         vehicleApiKey: '',
 
@@ -340,6 +342,15 @@
 
         renderMakesList: function(makes) {
             this.$makesList.empty();
+            makes.sort(function(a, b) {
+                if (a.niceName > b.niceName) {
+                    return 1;
+                }
+                if (a.niceName < b.niceName) {
+                    return -1;
+                }
+                return 0;
+            });
             _.each(makes, function(make) {
                 this.$makesList.append(makesListItemTemplate(make));
             }, this);
@@ -350,7 +361,8 @@
         renderWidget: function() {
             var options = this.toJSON(),
                 widget;
-            this.$widgetPlaceholder.empty();
+            this.$widgetPlaceholder.find('#tmvwidget').remove();
+            this.$widgetPlaceholder.prepend('<div id="tmvwidget"></div>');
             widget = this.widget = new EDM.TMV(this.vehicleApiKey, {
                 root:       'tmvwidget',
                 baseClass:  'tmvwidget'

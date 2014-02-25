@@ -105,13 +105,15 @@
 
             'change .list-group-makes [type="checkbox"]': 'onSelectMake',
             'change #toggleAllMakes': 'onToggleAllMakes',
+            'change [name="tabsToDisplay"]': 'onTabsToDisplayChange',
+            'click [data-action="applyTabName"]': 'renderWidget',
 
             'valid #vehicle-api-key-control': 'onVehicleApiKeyChange',
             'valid #dealer-api-key-control': 'onDealerApiKeyChange',
             'valid #zip-code-control': 'onZipCodeChange'
         },
 
-        $widgetPlaceholder: $('#nvcwidget'),
+        $widgetPlaceholder: $('#widget-placeholder'),
 
         initialize: function() {
             // cache elements
@@ -124,6 +126,8 @@
             this.$borderRadiusSlider = this.$('#border_radius_slider');
             this.$makesList = this.$('.list-group-makes');
             this.$toggleAllMakes = this.$('#toggleAllMakes');
+            this.$tab2NameControl = this.$('#tab2_name').find('input, .btn');
+            this.$tab3NameControl = this.$('#tab3_name').find('input, .btn');
             // vehicle api key control
             this.vehicleApiControl = this.$('#vehicle-api-key-control').inputGroupControl({
                 tooltipTitle: 'Please enter a valid Vehicle API key',
@@ -145,8 +149,8 @@
             this.widthSlider = this.createSlider(this.$widthSlider, widthSliderOptions, _.bind(this.onWidthChange, this));
             this.borderRadiusSlider = this.createSlider(this.$borderRadiusSlider, borderRadiusSliderOptions, _.bind(this.onBorderRadiusChange, this));
             // optimize
-            this.renderWidget = _.debounce(this.renderWidget, 500, true);
-            this.updateStyles = _.debounce(this.updateStyles, 500, true);
+            this.renderWidget = _.debounce(this.renderWidget, 500);
+            this.updateStyles = _.debounce(this.updateStyles, 500);
             this.onReset = _.debounce(this.onReset, 500, true);
         },
 
@@ -241,6 +245,9 @@
             this.zipCodeControl.reset();
             // reset button groups
             this.$('.btn-group .btn:first-child').trigger('click');
+            // reset fields tab names
+            this.$tab2NameControl.prop('disabled', false);
+            this.$tab3NameControl.prop('disabled', false);
             // reset sliders
             this.widthSlider.option(widthSliderOptions);
             this.borderRadiusSlider.option(borderRadiusSliderOptions);
@@ -265,6 +272,32 @@
         onDealerApiKeyChange: function(event, apiKey) {
             this.dealerApiKey = apiKey;
             this.renderWidget();
+        },
+
+        onTabsToDisplayChange: function(event) {
+            switch (event.target.value) {
+                case '1':
+                    this.$tab2NameControl.prop('disabled', false);
+                    this.$tab3NameControl.prop('disabled', false);
+                    break;
+                case '2':
+                    this.$tab2NameControl.prop('disabled', false);
+                    this.$tab3NameControl.prop('disabled', true);
+                    break;
+                case '3':
+                    this.$tab2NameControl.prop('disabled', true);
+                    this.$tab3NameControl.prop('disabled', false);
+                    break;
+            }
+            this.renderWidget();
+        },
+
+        getTabNames: function(options) {
+            return {
+                tab1: options.tab1Name,
+                tab2: options.tab2Name || null,
+                tab3: options.tab3Name || null
+            };
         },
 
         onZipCodeChange: function(event, zipCode) {
@@ -312,6 +345,15 @@
 
         renderMakesList: function(makes) {
             this.$makesList.empty();
+            makes.sort(function(a, b) {
+                if (a.niceName > b.niceName) {
+                    return 1;
+                }
+                if (a.niceName < b.niceName) {
+                    return -1;
+                }
+                return 0;
+            });
             _.each(makes, function(make) {
                 this.$makesList.append(makesListItemTemplate(make));
             }, this);
@@ -321,7 +363,8 @@
 
         renderWidget: function() {
             var options = this.toJSON();
-            this.$widgetPlaceholder.empty();
+            this.$widgetPlaceholder.find("#nvcwidget").remove();
+            this.$widgetPlaceholder.prepend('<div id="nvcwidget"></div>');
             this.widget = EDM.createWidget({
                 type:       'nvc',
                 renderTo:   'nvcwidget',
@@ -337,13 +380,9 @@
                     vehicleApiKey:  this.vehicleApiKey || '',
                     dealerApiKey:   this.dealerApiKey || '',
                     includedMakes:  options.includedMakes,
-                    zipCode:        options.zipCode,
+                    zipCode:        this.zipCode,
                     dealerKeywords: '',
-                    tabs: {
-                        tab1: 'Configure',
-                        tab2: 'TMV&reg;',
-                        tab3: 'Price Quotes'
-                    }
+                    tabs: this.getTabNames(options)
                 }
             });
             return this;
@@ -361,11 +400,7 @@
                 options = this.toJSON(),
                 styleOptions = _.pick(options, ['theme', 'colorScheme']),
                 variables = _.pick(options, ['width', 'height', 'borderWidth', 'borderRadius']);
-            if (!this.widget) {
-                this.renderWidget();
-                return;
-            }
-            if (widgetFrameWindow && widgetFrameWindow.jQuery) {
+            if (this.widget && widgetFrameWindow && widgetFrameWindow.jQuery) {
                 // style options
                 _.each(styleOptions, function(value, key) {
                     key = encodeURIComponent('style[' + key + ']');
