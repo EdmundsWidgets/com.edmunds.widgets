@@ -69,9 +69,19 @@ Feature: NVC Widget Configurator
   Scenario: I want to configure theme of the widget
     Given I am on '/nvc/configure' page
 
-  @todo
-  Scenario: I want to configure color scheme of the widget
+  Scenario Outline: I want to configure color scheme of the widget
     Given I am on '/nvc/configure' page
+    Then NVC widget should be loaded
+    When I select <Color Scheme> color scheme for <Theme> theme
+    Then NVC widget should be rendered with <Color Scheme> color scheme for <Theme> theme
+    Examples:
+      | Theme   | Color Scheme |
+      | Theme 1 | Light        |
+      | Theme 1 | Dark         |
+      | Theme 2 | Light        |
+      | Theme 2 | Dark         |
+      | Theme 3 | Light        |
+      | Theme 3 | Dark         |
 
   Scenario: I want to configure width of the widget
     Given I am on '/nvc/configure' page

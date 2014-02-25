@@ -114,6 +114,12 @@ public class ConfiguratorStepdefs {
         findToggleAllMakesCheckbox().click();
     }
 
+    @When("^I select (.*) color scheme for (.*) theme$")
+    public void I_select_color_scheme_for_theme(String colorSchemeName, String themeName) {
+        I_select_color_scheme(colorSchemeName);
+        I_select_theme(themeName);
+    }
+
     @Then("^I should see '(.*)' as applied (.*) Api key$")
     public void I_should_see_value_as_applied_Api_key(String expectedValue, String apiKeyType) {
         InputGroupControl apiKeyControl;
