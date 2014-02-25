@@ -27,7 +27,7 @@ script:
 
 deploy:
   provider: heroku
-  buildpack: nodejs
+  strategy: git
   api_key:
     secure: IER0AhtZBkmwqWUI5/tpfv7du77yqnL8v0IdeaidQHZ7ucRPG8GBxY/+gpec17TTet6lsrK3dU7Hk4QXWKQSL2gu59zgY89x+o1LDSbY9otjqDJhJ7ipvm6WkctGJRYNphki40VgrfPbTFs3joW6dOff/jtFzR93ppsIp6E2eLE=
   app:
