@@ -370,7 +370,7 @@
             widget.init({
                 showVehicles:   options.publicationState.toUpperCase(),
                 includedMakes:  options.includedMakes,
-                zip:            options.zipCode,
+                zip:            this.zipCode,
                 price:          options.priceToDisplay
             });
             widget.render();
