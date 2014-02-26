@@ -18,11 +18,14 @@ Feature: NVC Widget Configurator
   Scenario: I want to configure default ZIP code
     Given I am on '/nvc/configure' page
 
+  @dev
   Scenario: I want to configure included makes
     Given I am on '/nvc/configure' page
     Then NVC widget should be loaded
     When I apply 'axr2rtmnj63qsth3ume3tv5f' Vehicle Api key
+    Then NVC widget should be loaded
     When I apply 'axr2rtmnj63qsth3ume3tv5f' Dealer Api key
+    Then NVC widget should be loaded
     When I apply '12345' default ZIP code
     Then NVC widget should be loaded
     Then list of Included makes should be loaded
