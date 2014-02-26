@@ -31,9 +31,9 @@ deploy:
   api_key:
     secure: IER0AhtZBkmwqWUI5/tpfv7du77yqnL8v0IdeaidQHZ7ucRPG8GBxY/+gpec17TTet6lsrK3dU7Hk4QXWKQSL2gu59zgY89x+o1LDSbY9otjqDJhJ7ipvm6WkctGJRYNphki40VgrfPbTFs3joW6dOff/jtFzR93ppsIp6E2eLE=
   app:
-    master: edmunds-widgets-dev
+    master: edmunds-widgets-development
     staging: edmunds-widgets-staging
-    production: edmunds-widgets-prod
+    production: edmunds-widgets-production
 
 notifications:
   email: false
