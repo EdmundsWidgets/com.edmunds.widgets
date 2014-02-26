@@ -71,7 +71,6 @@ Feature: TMV Widget
   Scenario: I want to configure price to display
     Given I am on '/tmv/configure' page
 
-  @dev
   Scenario Outline: I want to configure theme and color scheme of the widget
     Given I am on '/tmv/configure' page
     When I select <Color Scheme> color scheme for <Theme> theme
