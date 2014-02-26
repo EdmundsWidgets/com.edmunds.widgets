@@ -71,18 +71,19 @@ Feature: TMV Widget
   Scenario: I want to configure price to display
     Given I am on '/tmv/configure' page
 
-  @todo @deferred
-  Scenario: I want to configure theme of the widget
+  @dev
+  Scenario Outline: I want to configure theme and color scheme of the widget
     Given I am on '/tmv/configure' page
-    When I select 'Theme 1' theme
-    When I select 'Theme 2' theme
-    When I select 'Theme 3' theme
-
-  @todo @deferred
-  Scenario: I want to configure color scheme of the widget
-    Given I am on '/tmv/configure' page
-    When I select 'Light' color scheme
-    When I select 'Dark' color scheme
+    When I select <Color Scheme> color scheme for <Theme> theme
+    Then TMV widget should be rendered with <Color Scheme> color scheme for <Theme> theme
+  Examples:
+    | Theme   | Color Scheme |
+    | Theme 1 | Light        |
+    | Theme 1 | Dark         |
+    | Theme 2 | Light        |
+    | Theme 2 | Dark         |
+    | Theme 3 | Light        |
+    | Theme 3 | Dark         |
 
   Scenario: I want to configure layout of the widget
     Given I am on '/tmv/configure' page
