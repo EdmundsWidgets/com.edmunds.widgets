@@ -109,8 +109,8 @@ public class NVCConfiguratorStepdefs {
 
     @Then("^NVC widget should be rendered with (.*) color scheme for (.*) theme$")
     public void NVC_widget_should_be_rendered_with_color_scheme_for_theme(String colorSchemeName, String themeName) {
-        By locator = By.cssSelector("Theme 3".equals(themeName) ? "#nvcwidget" :
-                "#nvcwidget .nvcwidget-inner");
+        By locator = By.cssSelector("Theme 3".equals(themeName) ? "#nvcwidget .nvcwidget-inner" :
+                "#nvcwidget");
         String expectedColor = "Light".equals(colorSchemeName) ? "rgba(242, 242, 242, 1)" :
                 "rgba(63, 63, 63, 1)";
         String cssProperty = "background-color";
