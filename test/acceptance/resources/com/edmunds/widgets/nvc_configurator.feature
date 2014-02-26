@@ -22,13 +22,9 @@ Feature: NVC Widget Configurator
     Given I am on '/nvc/configure' page
     Then NVC widget should be loaded
     When I apply 'axr2rtmnj63qsth3ume3tv5f' Vehicle Api key
-    Then NVC widget should be loaded
-    Then I should see 'axr2rtmnj63qsth3ume3tv5f' as applied Vehicle Api key
     When I apply 'axr2rtmnj63qsth3ume3tv5f' Dealer Api key
-    Then NVC widget should be loaded
     When I apply '12345' default ZIP code
     Then NVC widget should be loaded
-    Then I should see '12345' as applied default ZIP code
     Then list of Included makes should be loaded
     Then 'Toggle all' makes checkbox should not be selected
     When I select makes in the list of Included makes:
