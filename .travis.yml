@@ -22,9 +22,6 @@ env:
 before_install:
   - gem install foreman -v 0.61
 
-script:
-  - foreman start & mvn clean test
-
 deploy:
   provider: heroku
   strategy: git
