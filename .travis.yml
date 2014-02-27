@@ -11,13 +11,13 @@ jdk:
 
 env:
   global:
-  - secure: Ae20K6NT9dfFCqp66KHklLbx+OLYDTuIuERb6WijIHrgtQNHsxpBIKrAV8fpFviM9+EC21ESlGBd2mYX2Hjf49ijBqw4tLp4x4OkfUaBFtz7rcKYpJP70udgs1SEJHWUcm3EqVzOgmprcGeHbsEJ5m3ZTJDntP4FDwn6Y3AP4SA=
-  - secure: zruRnG+yjV+gMfZ/hTbZpugAsbrhwJwg/yKPuGfnwdkSQlA+waVw6XjUdFIT2l0XVWTxtffuQtYpu+RiyTI+5wz/vqXaTi1Q6K+PiYGDAxOgV/KUF0NceBhylfi7J0W1S6JxdswcH8e+tbXPjfT0DyR6URuPNgUmvPHiboH5Us4=
-  - secure: uk5n6hXIV5f0A8GeOcqgrlbmjeZQ+F0IYDPZ7eyPBt+05tf7lQFsvv0PhVyR4yzCfhsdFmLPWDPxLk4W7PjkikQhujCpyIRIWJEom6mDWKSDtnuuvzvjAxx+pX5TkqbwZBcAjdRL4YTnOkdNF6ymxnn99oyWVyXOK5m0LrAdtho=
-  - secure: tSrXcLpXrfx7NxFuSwSQ2PdgSXkKBnWTaDWtlEglAddjtB4MwnxDs36XqQMhnkIg/wXhKNbjmei9auQ8AjenUx6EjokHSEAMg+ws19mgu+LQrHToCC4QolRSBpj4RkxOA7ehdigeqxulEJEQ1fxyLzOmKdyOCyEGSGMPaMvInaw=
-  - secure: XpFlJUwNh5F/Ci5oR/10pxIawl2en+o5VK1cRDAeuBskSxb7KoVgThd19gP2ltZfkrY1DSiddFJ6O+PX8Si8jXEzQEJDhZq+gbOOmNzUaI8lYGtCp3za+brVBwSmigdz/RahuSvGdG7QGL8+y4JIoWsA/JQ7QmSHm9zY1Z4GA7M=
-  - secure: Byxv+BJP0PHiAd1nI/zP4pC4pKSUg7o/LC26VqfXluncIILCQ60bmQhgydB7eohA8+q0GofnHSU92wtURR5aP/wTSSb0D8p7Ug+FLCnQWKRxmGvJwwK46sdNZCdUiGLlCiknX+91CbxGtMGQrZXqgWumq8qk14bPJnyf/rnsaKs=
-  - secure: iw82IEnglwk1NJfb/Kn0dMv5JqIqzcggMlx/0GDkSQ+anuFceMnpNP5lxutLFxMwedIMvXaVduATGkopJ6YtTnCC96GWW9JX5zcztd+3TiWa1euy/Rw1v7I3MuEBzs9lpU+8US4aVlcq35cYmjFRx7kqYra2sgT/2PPv9GMvl0Q=
+  - secure: a0eCYdxL1ifrYxaQscM/yAv8mKXL0vnSSzeWJEAARVIBMQBVjJ3YpMRuLN29BhKG0IgM4qmn+4syRXusd+R4+qjflXlqVEOC6MwJPYRqSS4qo4uKfHUuwH/ZjLPsWjpstExEMGEWIxg0a2KW5LOAPuBKbrEs9/eHlIO6Yg0Erwg=
+  - secure: rh4XSCUgfNrithKwQc52JIicVF5JQlehN1LlKt7ZqR8qhWCr3aIajV1rJYfzqEYQ3wQTM0kD9EbrwC+SQR+Ycm/RzH0+DNbZDkmptnPFHQP7epf3BKjlZmjCOvVkxRcIYpc5pgmEG6zfNqKPvdSb5qVO80rHlr5FWwwNYGoe/FY=
+  - secure: cO3nCPlF2MdbPvgYzSRmqY2TZVHZNxcMk3AISe6jYSt8GC8ZyPFJIaaGLJsuQiaTemQqjPhgxF+InR4K6BPGDdgqeAjh0YvQhjC4PpHajrRE2XMGGXaXVNDAOl8oPeswWeduRvmxaeXR07ZPzYW5BxEbeZVcaF9Dtj0CnXvlPNE=
+  - secure: Cg/9ggISlEvzUsU3UgZTu2zSg9gEv8U22eXiFbe6SJEYobZ5xxYYabhCeVzhWUBBjQhuTZxrAYJFgLDnahMqZp5h/+x639W1SGAGi0NoYNJCEPoOK1xX6mtJqcyPSIqm6oqYWA9+iAx9txhfM6BnqEhnLKW3O6RUYeyE/XNZIkU=
+  - secure: jm8Gf7Kt/WevzngT4Tr3ly38OMPnV81VFECmRABpNgIBZMp/PmVgrbtIMn7WK1BI4ALKlVpBY+qDGNcRVm6P/2txEHW0U/R4HuRgEMGf+LNn02i2TMSg+SYxMKEr9OtbgzEGdsq2/NDUHZM2rsez1rPrgWTi9+k2gywRq7xVdvo=
+  - secure: CO0tRBCsFegtGLHdEma9D2xWHyTRuX6kKrNOJVYVMwdvGtYPMbtG9ynFfOrFX3amn90wsgWGJF0vvCN8wz0qZtmQebeUipfuL/peHGWvIXiNQuWfiXIqEi5WCRzL6jdwmxjqH+WbanKEdDfkwnZFX2ZMKZTV57UKEAB3M1b4wGA=
+  - secure: iKF+PNnNDVYfMzD+nnp3ugUG2/qdtp3tGW79fAqDBKZcHCvJGssCUhifGjyR2Og3YgNKqb+bl2k7gUrRfhBa3HHDteXsk28vKDWc8QNvrYkMX1uuwXulErFQ+1H7TWFcrUZcRHQQ4DRZGaq9Dphe9kYHdXaccUgrjN2z1aurDpk=
 
 before_install:
   - gem install foreman -v 0.61
@@ -29,7 +29,7 @@ deploy:
   provider: heroku
   strategy: git
   api_key:
-    secure: V3lqI/IpNGhVSva1gveNPo+cc+wzfuM1OfjQbNTcFpq21BxL5bAoL87mDf6Wa7BoI96Bsje8P/motBJvLbocjlE2H+NJoccRqiKLSuV0eY0F4OtJHMs23wJEGugHc9EZ3Ml7qiHgfevGWk6/n1JPC5VOFsd/pE9Dbh+80+7Ht70=
+    secure: EK0XD0R14svqBL4YmYQLbBru+c/wIdKBpTcVNxpoUfBuMHcFRqhs9+V54c4ODdkWXUqNh78bROEtrX3GOExnB8Txizhpzkf2NCJxAp+LZF1vXtj7FMIlYOTVPUqRZOfqXp87DloW6cN4o09VchybuMZPI2Cf4FV9qxevYDD4PZE=
   app:
     master: edmunds-widgets-development
     staging: edmunds-widgets-staging
