@@ -25,7 +25,7 @@ before_install:
 deploy:
   provider: heroku
   strategy: git
-  api_key:
+  api-key:
     secure: btdQ7Dv84/JdbESshPWuhGVPtkg+vAmO1Wxow3D6fS2EFNd8Nw1KLaEOAIiqMydIPpDXyCbM3cWb9VK41Ers6BjNQQLS8K50V4L7SwpJ1RACe95/XN1ACk0IwZExM2qRKL4O5LNkwX1h+wuLd3zjMM9fN2tlGp2EK5Z6/Tx2xbg=
   app:
     master: edmunds-widgets-development
