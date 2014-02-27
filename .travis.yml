@@ -28,8 +28,7 @@ script:
 deploy:
   provider: heroku
   strategy: git
-  api_key:
-    secure: EK0XD0R14svqBL4YmYQLbBru+c/wIdKBpTcVNxpoUfBuMHcFRqhs9+V54c4ODdkWXUqNh78bROEtrX3GOExnB8Txizhpzkf2NCJxAp+LZF1vXtj7FMIlYOTVPUqRZOfqXp87DloW6cN4o09VchybuMZPI2Cf4FV9qxevYDD4PZE=
+  api_key: b2517405-051a-4790-bfa5-c114e5b8435c
   app:
     master: edmunds-widgets-development
     staging: edmunds-widgets-staging
