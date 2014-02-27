@@ -1,13 +1,13 @@
 language: node_js
 
 node_js:
-  - 0.10.25
+- 0.10.25
 
 rvm:
-  - 1.9.3
+- 1.9.3
 
 jdk:
-  - openjdk7
+- openjdk7
 
 env:
   global:
@@ -20,13 +20,13 @@ env:
   - secure: iKF+PNnNDVYfMzD+nnp3ugUG2/qdtp3tGW79fAqDBKZcHCvJGssCUhifGjyR2Og3YgNKqb+bl2k7gUrRfhBa3HHDteXsk28vKDWc8QNvrYkMX1uuwXulErFQ+1H7TWFcrUZcRHQQ4DRZGaq9Dphe9kYHdXaccUgrjN2z1aurDpk=
 
 before_install:
-  - gem install foreman -v 0.61
+- gem install foreman -v 0.61
 
 deploy:
   provider: heroku
   strategy: git
   api_key:
-    secure: 0820JlgISObM2vglmHNiWea5lk5KVLxaL7i5wW4d9BXHJUnl6QFp1mkjJ2H1y/F9OzjsR2Kzb4AtRDD1K3ROR4SyzhVJujG9mruRFEp0T0GX/lMFAkiRrk5tiAxuGn2Q+VV3gFZ+wtkGiWxuXyVfGlclKTAqAmrtbzXEunmZjwE=
+    secure: dKM4qtTcsHuKFl4S6JulXUOypkI4Ekctncj3rWIzgAZZ3VNM0dcs4BInxYZCA3ad/ePTAopE40pJXMF5xO5MxfVBNOnHf8bDQGiVkFAHRWHrIYfljnTfJyzZt+u3xDvkueLvId3wdBIT3jkv8Ms/WUPRFFvHGIyR+gB7yG83BGQ=
   app:
     master: edmunds-widgets-development
     staging: edmunds-widgets-staging
