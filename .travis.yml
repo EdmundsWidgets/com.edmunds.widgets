@@ -1,36 +1,31 @@
 language: node_js
-
 node_js:
-  - 0.10.25
-
+- 0.10.25
 rvm:
-  - 1.9.3
-
+- 1.9.3
 jdk:
-  - openjdk7
-
+- openjdk7
 env:
   global:
-  - secure: dGTBvPPENpgiKOInkt4dDY+GY4c0ZCHb8vmFPxisIqvBWgBj0inQWteRD8ROWowjC/co7ZcnOuhbb3wDV0O8GGeFUr6hJbAY2HCxmBMfkDz+3aE/EZVweOUkmGT7WZGYSnC1FRYAlG9q+uFjEBTmEXX53dIc1/xwqqjNgEhIycU=
-  - secure: WwhUZGQHT82TB53oacXXYnUBH7EJUattV4O8FEeDa6v1v2PLvAmZihhfeeKQPMM1LStcXSEJrWAx5FO0yjEQVNxJxw4taSdgelBjBgEUCrvraqG4mOvF333dwoDwxMbF41TbzWFogO1vtzzxsdkNaE40LLDX1qtxTomVbmVgu8g=
-  - secure: Q+bAP47oqnhCtjUwtzVM7WYPeI7GLJRPfFgg7vcQLXI7eppnF/uP4OOZg3+uetVeMLmQirlYZJkHsUhsMXVJIvXT3F4EkJMtEG+D/wFudbvG5wVrkXQ1nyGhtjpQQwXUvP2WtIUQ9EdgixMK8QieLNf9+mNon/oQk99PCwg653c=
-  - secure: dttPx6nzgiIY2tHJrFo92ddZe7bUoT8Yf82g/RbTCMFUion9YLYmT7Uo7hu35iAJbzEDw87eHGHUlPEIVhd80WH5UikIq0SC+5J37H82QyyzQ2E2GUnsY68VGFuTDRaqP7gRP0ogPHpjXRWpKFGgs7h9p06ytL5lSZtlFJWTNH4=
-  - secure: HVxwLRpMx/SoCTScuIkMp8Wh8U741r+eZIgvF6xDEHmWIdiiPdfijtnwmLXplLqlD4gRFQvGGz7rL/w8ksj+QUJ9sd7J2bSiMZNNGNLW7YVl76ghl50U7b00zwy7YZYobczqjjrqHs+fYLbl7Pv2BHScw50LOW0Wk1SlC3XxK0c=
-  - secure: mRUoJnAfw2Vg6l96oMlzZrVDY9cO3Ornf5/nabVUyyVDvBCIUyXeOBefuqVc5t2/1VU9FvG/klh5ZWItpNpiY9y9eHPRgBf6mW7MOx+h075C9UQqofqmM6lzqtR2jg7Py3izKjvtSJw67qDwevgfjOt6xTk8yWiLT/FgGpZ2rKY=
-  - secure: U8QnqeR5yWBtA6VNuQchEcNNJKwQN7EsgcUy5GN+/Rnnz1TwTIXRHqsVVUiManGLkvTh/gQa03Xemq1MKBZaQUTixjHfkdIm5cEq1GksbfAhr6do2kC3a+lkoiXp86ZmsEkNKBbaVNp5Ye2wAaR6EaZVlbCITJ7PThrLjVGrnn4=
-
+  - secure: RalJW7jLXnHTqe0ZpDfzxNtXJRQLHfB0Zw77TE/tMO4fVQXcT2HD/T1Vxvwb6YUnstKtBVst278I+wUKqJ50tTYtD+LHN2F4F+dHKAI51wvLeeA4W7Ulssnxyjf/e3tFFQiX35isjo5qsACL++X3cGxRcMIZZGvhbzWNZqTkCvc=
+  - secure: KMh2AYwsmlwsC53WEde46QD6qQGhATStbTXja9mH9vKg0DwV/AChUBUzEdqYRsH42isxBw62ni1/Xd6ErjA6Up7PgVg0kw7zV3VWMTRQpSad3JqtQfN8PvPh2ifilpWeLrviB25s8mCaVuJwkZ7gMKIISWvz2Urba7QUiHRfSkY=
+  - secure: LCTFmv8wro47sAdj9Di5qbo+OQEgahK8IiRMtolZQ0o4NcBUtXm5WfaeT7vpyUamzu5aHow5yqYnJ3ympGFIrgmIeiwvwi92mkWY8/jzkURAxms4+u+/AINLymTxgq/s/VQRLua24Kg0LGQ7/QNGraNPV5v0JTP071K3yIo0Luc=
+  - secure: ft801MFGGdorD3y4LKTdwbo3bJgDIB+/jPBcuov3A4w0pe3pWXYwVSGVMSFAnSi9OK0Uw9+OHTiCPn6b0HifmLEHtsmCU+pug9DfdyLetpDwoPjBJEqgr6aOPSUHrDizMhUwpDieyBKm23wlEkgyYOzfqW4extz2onEZd+81csk=
+  - secure: e7luh2Gk0olzClM1RGjoQ8hqvkqZ3U+XH15UrWHXxY4VT36SlUXQ4fabcO0nltv1tFgSWbJaworvDXkN6PuQK2yas+HABTuA9ckaR4lGOae3eaK+UUxwH4LXyTBaNK+Kq6LKKNXecJmWj7P4bZ+BQU/YS/DQaLqrxQIiImTObc0=
+  - secure: WtU5U9M4ZkSeRjIchGYZ/oGO6uTUQ5BE8zEW7rCemNNMnVkQvHId6swFvV4yMkwyYkTN9QuKz42OB6d+FPUfO4dDsXrTmsKJwrlinm1VHFTZ2DiMrzoQnoRsqqi1nNF4Vh+UGSiwRszjI8iKebhBauDHHcQRfEIapJdRR57t9t8=
+  - secure: JI8uSNEzQ9rpfiRP9XqqhDLGiuVWNi4GNSlHmVE/pa3bqD6MAxAnJsRAfyNPB6sxxzxUcDx/FzCVjDCqj1UB+1nsyvnTkARlWwz+6xhcu8RtYQFkwVabYaLwP4ORQmTh+XImCOKK+FQKDraUrhcPqqowEUOP8wi19UE9U5tKkNs=
 before_install:
-  - gem install foreman -v 0.61
-
+- gem install foreman -v 0.61
+script:
+- foreman start & mvn clean test
 deploy:
   provider: heroku
   strategy: git
-  api-key:
-    secure: btdQ7Dv84/JdbESshPWuhGVPtkg+vAmO1Wxow3D6fS2EFNd8Nw1KLaEOAIiqMydIPpDXyCbM3cWb9VK41Ers6BjNQQLS8K50V4L7SwpJ1RACe95/XN1ACk0IwZExM2qRKL4O5LNkwX1h+wuLd3zjMM9fN2tlGp2EK5Z6/Tx2xbg=
+  api_key:
+    secure: gJsZb3pKIf4qwFXmniUzU2Jp7fhKZcNafPkt5W4etwqRgEeMj8VWyVIMHpW2Z3uxjSMdc+L0cw8GEG8vfSxuvJt3XfpaIEyYlZZpODGzWL84tItf65zsGxxQ7gHLh0w+3fCAZufEFAEBOccW2kA4uT2N4MxcokXXpud1o+WUrR0=
   app:
     master: edmunds-widgets-development
     staging: edmunds-widgets-staging
     production: edmunds-widgets-production
-
 notifications:
   email: false
