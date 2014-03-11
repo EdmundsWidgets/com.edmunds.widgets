@@ -17,5 +17,8 @@
     "jquery-ui": "1.10.3",
     "requirejs": "2.1.10",
     "underscore": "1.5.2"
+  },
+  "devDependencies": {
+    "less": "~1.7.0"
   }
 }
