@@ -8,7 +8,7 @@
   },
   "scripts": {
     "preinstall": "npm install -g bower",
-    "install": "bower install",
+    "install": "bower install | xargs echo",
     "start": "node app.js"
   },
   "dependencies": {
