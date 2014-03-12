@@ -5868,16 +5868,13 @@ button.close {
 .content {
   padding: 10px 0;
 }
-.rating-summary {
-  color: #535353;
-  line-height: 17px;
+.rating-tab .rating-summary {
   height: 125px;
   overflow-y: auto;
+  line-height: 17px;
 }
-.rating-summary h4 {
-  font-weight: bold;
-  font-size: 12px;
-  margin-bottom: 0;
+.rating-summary {
+  color: #535353;
 }
 .rating-summary p {
   font-size: 12px;
@@ -5923,6 +5920,7 @@ header h1 {
 .nav > li > a:hover {
   background: url(img/tab_button_center_hover.png) repeat-x;
   color: #fff;
+  z-index: 4;
 }
 .nav > li > a:focus {
   background-color: transparent;
@@ -5944,7 +5942,6 @@ header h1 {
   background: url(img/tab_button_right.png) no-repeat;
   top: 0;
   right: -17px;
-  z-index: 2;
 }
 .nav > li > a:hover:before {
   background: url(img/tab_button_left_hover.png) no-repeat;
@@ -5961,6 +5958,10 @@ header h1 {
   background: url(img/tab_button_center_hover.png) repeat-x;
   color: #fff;
 }
+.nav .open > a,
+.nav-pills > li.active > a {
+  z-index: 2;
+}
 .nav .open > a:before,
 .nav-pills > li.active > a:before {
   background: url(img/tab_button_left_hover.png) no-repeat;
@@ -5969,88 +5970,6 @@ header h1 {
 .nav-pills > li.active > a:after {
   background: url(img/tab_button_right_hover.png) no-repeat;
 }
-/*
-.widget{
-  background: #fff;
-  margin: 0 auto;
-  min-width: 220px;
-}
-.header{
-  .clearfix();
-  background: @header-background;
-  position: relative;
-  -webkit-border-radius: 3px 3px 0 0;
-  -moz-border-radius: 3px 3px 0 0;
-  border-radius: 3px 3px 0 0;
-  .title{
-    color: @header-title-color;
-    font: @header-title-font;
-    text-transform: uppercase;
-    padding: 15px 20px 8px;
-  }
-  .tabs{
-    .clearfix();
-    float: left;
-    .active{
-      background: url(img/tab_button_center_hover.png) repeat-x;
-      cursor: pointer;
-      color: #fff;
-      &:before{
-        background: url(img/tab_button_left_hover.png) no-repeat;
-      }
-      &:after{
-        background: url(img/tab_button_right_hover.png) no-repeat;
-      }
-    }
-    div{
-      height: 26px;
-      padding: 0 3px;
-      margin-left: 12px;
-      float: right;
-      position: relative;
-      background: url(img/tab_button_center.png) repeat-x;
-      font: 11px/26px Arial, Helvetica, sans-serif;
-      color: #444;
-      &:hover{
-        background: url(img/tab_button_center_hover.png) repeat-x;
-        cursor: pointer;
-        color: #fff;
-      }
-      &:before{
-        content: "";
-        position: absolute;
-        height: 26px;
-        width: 6px;
-        background: url(img/tab_button_left.png) no-repeat;
-        top: 0;
-        left: -6px;
-      }
-      &:hover:before{
-        background: url(img/tab_button_left_hover.png) no-repeat;
-      }
-      &:after{
-        content: "";
-        position: absolute;
-        height: 26px;
-        width: 17px;
-        background: url(img/tab_button_right.png) no-repeat;
-        top: 0;
-        right: -17px;
-      }
-      &:hover:after{
-        background: url(img/tab_button_right_hover.png) no-repeat;
-      }
-    }
-    .arrow-down{
-      background: url(img/arrow-down.png) no-repeat;
-      width: 9px;
-      height: 7px;
-      display: inline-block;
-      vertical-align: middle;
-      margin-left: 15px;
-    }
-  }
-}*/
 .rating-bar {
   background: #00a8fe;
 }
@@ -6177,4 +6096,97 @@ footer .logo a {
 }
 .btn-group .dropdown-menu > li > a {
   padding: 3px 6px;
+}
+.edmunds-says .rating-bar {
+  padding: 10px;
+}
+.edmunds-says .content .pros h4 {
+  color: #444;
+  margin-bottom: 10px;
+  background: url(img/icon-pros.png) no-repeat;
+  padding-left: 20px;
+}
+.edmunds-says .content .cons h4 {
+  color: #444;
+  margin-bottom: 10px;
+  background: url(img/icon-cons.png) no-repeat;
+  padding-left: 20px;
+}
+.edmunds-says .content ul {
+  list-style: none;
+  padding: 0;
+  font-size: 12px;
+  color: #444;
+}
+.edmunds-says .content .rating-summary h4 {
+  margin-bottom: 5px;
+}
+h4 {
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+hr {
+  margin: 0 10px;
+}
+.rating-title .close-button {
+  background: url("img/icon-close.png") no-repeat;
+  width: 16px;
+  height: 16px;
+  float: right;
+  cursor: pointer;
+  margin: 5px 10px 0 0;
+}
+.rating-title .arrow-right {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-left: 5px solid;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  color: #00a6e4;
+  float: right;
+  margin: 7px 10px 6px 10px;
+}
+.rating-title .category {
+  float: left;
+  color: #333333;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 23px;
+}
+.rating-title .text-grade {
+  color: #999999;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  float: left;
+  width: 60px;
+  text-align: right;
+  line-height: 23px;
+}
+.rating-tab .content .description {
+  color: #444;
+  font-size: 12px;
+  padding: 10px;
+}
+.edmunds-rating-strips {
+  padding: 10px;
+}
+.edmunds-rating-strips p {
+  margin: 10px 0;
+  font-size: 11px;
+  color: #444;
+}
+.edmunds-rating-strips .strip {
+  background: #000;
+  display: inline-block;
+  background: url(img/strip_excellent.png) no-repeat;
+  width: 87px;
+  height: 7px;
+  margin: 0 7px;
+}
+.edmunds-rating-strips .strip.good {
+  background: url(img/strip_good.png) no-repeat;
 }
