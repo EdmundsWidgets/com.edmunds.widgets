@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" href="../prototype/main.css">
+</head>
+<body>
+
+<!--note: Auxiliary page with main components. Should be removed later. Not for production.-->
+
+
+<h1 class="base">Base font color</h1>
+<h1 class="light">Light font color</h1>
+<h1 class="dark">Dark font color</h1>
+
+<div class="rating">
+    <div class="letter-grade excellent active">a</div>
+    <div class="letter-grade good active">b</div>
+    <div class="letter-grade fair active">c</div>
+    <div class="letter-grade poor active">d</div>
+    <div class="letter-grade bad active">e</div>
+</div>
+
+<div class="rating">
+    <div class="letter-grade small excellent">a</div>
+    <div class="letter-grade small good">b</div>
+    <div class="letter-grade small fair">c</div>
+    <div class="letter-grade small poor">d</div>
+    <div class="letter-grade small bad">e</div>
+</div>
+
+<div class="rating-selector">
+    <div class="letter-grade small excellent">a</div>
+    <div class="category">Comfort</div>
+    <div class="arrow-right"></div>
+    <div class="text-grade">Excellent</div>
+</div>
+
+<div class="rating-selector">
+    <div class="letter-grade small good">b</div>
+    <div class="category">Performance</div>
+    <div class="arrow-right"></div>
+    <div class="text-grade">Good</div>
+</div>
+
+<div class="rating-selector">
+    <div class="letter-grade small fair">c</div>
+    <div class="category">Value</div>
+    <div class="arrow-right"></div>
+    <div class="text-grade">Fair</div>
+</div>
+
+<div class="rating-selector">
+    <div class="letter-grade small poor">d</div>
+    <div class="category">Comfort</div>
+    <div class="arrow-right"></div>
+    <div class="text-grade">Poor</div>
+</div>
+
+<div class="rating-selector">
+    <div class="letter-grade small bad">e</div>
+    <div class="category">Performance</div>
+    <div class="arrow-right"></div>
+    <div class="text-grade">Bad</div>
+</div>
+
+<div class="btn-group list-style-id pull-left">
+    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+        2.0L 4-cyl. FWD 5-speed Automatic <span class="arrow-down"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
+        <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
+        <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
+    </ul>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="rating-bar container-fluid">
+    <div class="row">
+        <div class="rating-container col-md-8">
+            <div class="test-drive-date pull-right">
+                <p class="bold">Driven on</p>
+                <p>09/08/2013</p>
+            </div>
+            <div class="rating clearfix">
+                <div class="right-side">
+                    <div class="thumbs-down hidden-xs"></div>
+                    <div class="letter-grade hidden-xs fair">c</div>
+                    <div class="letter-grade hidden-xs poor">d</div>
+                    <div class="letter-grade hidden-xs bad">e</div>
+                </div>
+                <div class="left-side clearfix">
+                    <div class="letter-grade active excellent">a</div>
+                    <div class="letter-grade hidden-xs good">b</div>
+                    <div class="thumbs-up hidden-xs"></div>
+                </div>
+                <div class="edmunds-grade-separator hidden-xs"><span>Edmunds rating</span></div>
+                <div class="edmunds-rating visible-xs">
+                    <p>Edmunds Rating</p>
+                    <p class="text-grade">Excellent!</p>
+                </div>
+            </div>
+        </div>
+        <div class="vehicle-info-container col-md-4">
+            <div class="vehicle-info">
+                <p>Vehicle Tested: 2013 Acura ILX Sedan (2.0L 4-cyl. FWD 5-speed Automatic)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../bower_components/less/dist/less-1.7.0.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

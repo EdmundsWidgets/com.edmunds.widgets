@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edmunds says</title>
+    <title>Photos</title>
     <link rel="stylesheet" href="../prototype/main.css">
 </head>
 <body>
 
-<div class="edm-widget edmunds-says">
+<div class="edm-widget photos">
     <header>
         <div class="container-fluid">
             <h1 class="pull-left">2013 Acura ILX sedan</h1>
@@ -43,46 +43,53 @@
         </div>
     </header>
     <div class="rating-bar container-fluid">
-        <p>Excellent build quality, good fuel economy and palatable starting prices make the 2013 Acura ILX an intriguing option for a compact luxury sedan. Still, there are other worthy alternatives that savvy shoppers should consider.</p>
-    </div>
-    <section class="content container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <div class="pros">
-                    <h4>PROs</h4>
-                    <ul>
-                        <li>- Generous number of standard features;</li>
-                        <li>- above-average fuel economy from Hybrid model.</li>
+            <div class="rating-container col-xs-12">
+                <div class="btn-group visible-xs clearfix">
+                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                        All <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Interior</a></li>
+                        <li><a href="#">Exterior</a></li>
+                        <li><a href="#">Color Options</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="col-xs-12 col-md-6">
-                <div class="cons">
-                    <h4>CONs</h4>
-                    <ul>
-                        <li>- Lackluster base engine;</li>
-                        <li>- smallish trunk;</li>
-                        <li>- no automatic transmission or top-end features for sport-oriented 2.4L model.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <div class="rating-summary">
-                    <h4>What's new for 2013?</h4>
-                    <p>The 2013 Acura ILX is an all-new model.</p>
-                </div>
-            </div>
-            <div class="hidden-xs col-sm-12">
-                <div class="rating-summary">
-                    <h4>Introduction</h4>
-                    <p>IntroductionAfter a decade of moving upmarket and farther away from the entry-level buyer, Acura's back with a new-generation compact model, the 2013 ILX. Smaller and less expensive than the TSX, the ILX sedan is aimed at shoppers who want something a bit nicer and sportier than the typical mainstream sedan but aren't willing to step up to the higher expense of an established luxury car.</p>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <a href="#" class="btn btn-primary btn-primary-dark">Read full review <span class="hidden-xs">on Edmunds.com</span></a>
+                <ul class="nav nav-pills hidden-xs">
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Interior</a></li>
+                    <li><a href="#">Exterior</a></li>
+                    <li><a href="#">Color Options</a></li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+    <div class="content">
+        <div class="list-photos visible-xs">
+            <ul>
+                <li><img src="img/video_thumbnail.png" alt="slider"/></li>
+                <li><img src="img/video_thumbnail.png" alt="slider"/></li>
+                <li><img src="img/video_thumbnail.png" alt="slider"/></li>
+                <li><img src="img/video_thumbnail.png" alt="slider"/></li>
+            </ul>
+        </div>
+        <div class="slider-wrapper hidden-xs">
+            <div class="slider-viewport">
+                <img src="img/video_1.png" alt="slider"/>
+            </div>
+            <div class="slider-controls">
+                <ul>
+                    <li><a href="#"><img src="img/video_thumbnail.png" alt="slider"/></a></li>
+                    <li><a href="#"><img src="img/video_thumbnail.png" alt="slider"/></a></li>
+                    <li><a href="#"><img src="img/video_thumbnail.png" alt="slider"/></a></li>
+                </ul>
+                <div class="nav-left visible-sm"></div>
+                <div class="nav-right visible-sm"></div>
+                <div class="nav-top visible-md"></div>
+                <div class="nav-bottom visible-md"></div>
+            </div>
+        </div>
+    </div>
     <footer class="container-fluid">
         <div class="row">
             <a class="legacy col-xs-5" href="#">Legal Notice</a> <!--note: Does the Legacy page exist?-->
@@ -95,6 +102,5 @@
 <script src="/libs/jquery/dist/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/libs/bootstrap/dist/js/bootstrap.js"></script>
-
 </body>
 </html>

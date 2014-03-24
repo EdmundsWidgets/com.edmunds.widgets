@@ -2,69 +2,66 @@
 <html>
 <head>
     <title>Photos</title>
-    <link rel="stylesheet" href="../prototype/base.css">
+    <link rel="stylesheet" href="../prototype/main.css">
 </head>
 <body>
 
-<div class="widget photos container">
-    <header class="row">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div  class="pull-left"><h1>2013 Acura ILX sedan</h1></div>
-                    <div class="btn-group pull-left">
-                        <button type="button" class="btn btn-default list-of-cars dropdown-toggle" data-toggle="dropdown">
-                            2.0L 4-cyl. FWD 5-speed Automatic <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
-                            <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
-                            <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
-                        </ul>
-                    </div>
-                </div>
+<div class="edm-widget photos">
+    <header>
+        <div class="container-fluid">
+            <h1 class="pull-left">2013 Acura ILX sedan</h1>
+            <div class="btn-group list-style-id pull-left">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                    2.0L 4-cyl. FWD 5-speed Automatic <span class="arrow-down"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
+                    <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
+                    <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
+                </ul>
             </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <ul class="nav nav-pills">
-                    <li><a href="#">Ratings</a></li>
+                <ul class="nav nav-pills edm-navigation">
+                    <li class="active"><a href="#">Ratings</a></li>
                     <li><a href="#">Edmunds says</a></li>
                     <li class="dropdown visible-xs">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Reviews <span class="caret"></span>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reviews<span class="arrow-down"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Consumer Reviews</a></li>
+                            <li><a href="#">TCO</a></li>
                             <li><a href="#">Photos</a></li>
                             <li><a href="#">Videos</a></li>
                         </ul>
                     </li>
                     <li class="hidden-xs"><a href="#">Consumer Reviews</a></li>
-                    <li class="hidden-xs active"><a href="#">Photos</a></li>
+                    <li class="hidden-xs"><a href="#">Photos</a></li>
                     <li class="hidden-xs"><a href="#">Videos</a></li>
                 </ul>
             </div>
         </div>
     </header>
-    <div class="row">
-        <div class="rating-bar">
-            <div class="btn-group visible-xs clearfix">
-                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
-                    All <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
+    <div class="rating-bar container-fluid">
+        <div class="row">
+            <div class="rating-container col-xs-12">
+                <div class="btn-group visible-xs clearfix">
+                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                        All <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Interior</a></li>
+                        <li><a href="#">Exterior</a></li>
+                        <li><a href="#">Color Options</a></li>
+                    </ul>
+                </div>
+                <ul class="nav nav-pills hidden-xs">
+                    <li><a href="#">All</a></li>
                     <li><a href="#">Interior</a></li>
                     <li><a href="#">Exterior</a></li>
                     <li><a href="#">Color Options</a></li>
                 </ul>
             </div>
-            <ul class="nav nav-pills hidden-xs">
-                <li><a href="#">All</a></li>
-                <li><a href="#">Interior</a></li>
-                <li><a href="#">Exterior</a></li>
-                <li><a href="#">Color Options</a></li>
-            </ul>
         </div>
     </div>
     <div class="content">
@@ -93,9 +90,11 @@
             </div>
         </div>
     </div>
-    <footer class="row">
-        <a class="legacy col-xs-5" href="#">Legal Notice</a> <!--note: Does the Legacy page exist?-->
-        <div class="logo col-xs-7"><a href="http://www.edmunds.com" class="pull-right"></a>Build by</div>
+    <footer class="container-fluid">
+        <div class="row">
+            <a class="legacy col-xs-5" href="#">Legal Notice</a> <!--note: Does the Legacy page exist?-->
+            <div class="logo col-xs-7"><a href="http://www.edmunds.com" class="pull-right"></a>Build by</div>
+        </div>
     </footer>
 </div>
 

@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rating tab</title>
-    <link rel="stylesheet" href="../prototype/base.css">
+    <title>Rating tab 2</title>
+    <link rel="stylesheet" href="../prototype/main.css">
 </head>
 <body>
 
-<div class="widget rating-tab container">
-    <header class="row">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div  class="pull-left"><h1>2013 Acura ILX sedan</h1></div>
-                    <div class="btn-group pull-left">
-                        <button type="button" class="btn btn-default list-of-cars dropdown-toggle" data-toggle="dropdown">
-                            2.0L 4-cyl. FWD 5-speed Automatic <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
-                            <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
-                            <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
-                        </ul>
-                    </div>
-                </div>
+<div class="edm-widget rating-tab">
+    <header>
+        <div class="container-fluid">
+            <h1 class="pull-left">2013 Acura ILX sedan</h1>
+            <div class="btn-group list-style-id pull-left">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                    2.0L 4-cyl. FWD 5-speed Automatic <span class="arrow-down"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
+                    <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
+                    <li><a href="#">2.0L 4-cyl. FWD 5-speed Automatic</a></li>
+                </ul>
             </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <ul class="nav nav-pills">
+                <ul class="nav nav-pills edm-navigation">
                     <li class="active"><a href="#">Ratings</a></li>
                     <li><a href="#">Edmunds says</a></li>
                     <li class="dropdown visible-xs">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Reviews <span class="caret"></span>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reviews<span class="arrow-down"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Consumer Reviews</a></li>
+                            <li><a href="#">TCO</a></li>
                             <li><a href="#">Photos</a></li>
                             <li><a href="#">Videos</a></li>
                         </ul>
@@ -47,57 +42,81 @@
             </div>
         </div>
     </header>
-    <div class="row">
-        <div class="rating-bar col-md-8">
-            <div class="test-drive-date pull-right">
-                <p class="bold">Driven on</p>
-                <p>09/08/2013</p>
+    <div class="rating-bar container-fluid">
+        <div class="row">
+            <div class="rating-container col-md-8">
+                <div class="test-drive-date pull-right">
+                    <p class="bold">Driven on</p>
+                    <p>09/08/2013</p>
+                </div>
+                <div class="rating clearfix">
+                    <div class="right-side">
+                        <div class="thumbs-down hidden-xs"></div>
+                        <div class="letter-grade hidden-xs fair">c</div>
+                        <div class="letter-grade hidden-xs poor">d</div>
+                        <div class="letter-grade hidden-xs bad">e</div>
+                    </div>
+                    <div class="left-side clearfix">
+                        <div class="letter-grade active excellent">a</div>
+                        <div class="letter-grade hidden-xs good">b</div>
+                        <div class="thumbs-up hidden-xs"></div>
+                    </div>
+                    <div class="edmunds-grade-separator hidden-xs"><span>Edmunds rating</span></div>
+                    <div class="edmunds-rating visible-xs">
+                        <p>Edmunds Rating</p>
+                        <p class="text-grade">Excellent!</p>
+                    </div>
+                </div>
             </div>
-            <div class="rating clearfix">
-                <div class="letter-grade excellent">a</div>
-                <div class="letter-grade hidden-xs good">b</div>
-                <div class="edmunds-grade-separator hidden-xs"></div>
-                <div class="letter-grade hidden-xs fair">c</div>
-                <div class="letter-grade hidden-xs poor">d</div>
-                <div class="letter-grade hidden-xs bad">e</div>
-                <div class="edmunds-rating visible-xs">
-                    <p>Edmunds Rating</p>
-                    <p class="text-grade">Excellent!</p>
+            <div class="vehicle-info-container col-md-4">
+                <div class="vehicle-info">
+                    <p>Vehicle Tested: 2013 Acura ILX Sedan (2.0L 4-cyl. FWD 5-speed Automatic)</p>
                 </div>
             </div>
         </div>
-        <div class="vehicle-info-container col-md-4">
-            <div class="vehicle-info">
-                <p>Vehicle Tested: 2013 Acura ILX Sedan (2.0L 4-cyl. FWD 5-speed Automatic)</p>
+    </div>
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="rating-details">
+                <div class="rating-title col-xs-12">
+                    <div class="letter-grade small excellent">a</div>
+                    <div class="category">Comfort</div>
+                    <div class="text-grade">Excellent</div>
+                    <div class="close-button"></div>
+                </div>
+                <hr class="col-sm-12"/> <!--note: Delete this porn later-->
+                <p class="description">It's when you begin to look at what else is available for around 026K that the ILX really shines. Its generous standard equipment and competitive fuel economy (not to mention good looks) should give it some traction in the market.</p>
+                <div class="edmunds-rating-strips">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <p>A<span class="strip"></span>Build Quality (vs. $)</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <p>A<span class="strip"></span>Features (vs. $)</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <p>A<span class="strip"></span>Cost</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <p>A<span class="strip"></span>MPG</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <p>B<span class="strip good"></span>Warranty</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <p>B<span class="strip good"></span>Ownership</p>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <a href="#" class="btn btn-primary btn-primary-dark">Read full review <span class="hidden-xs">on Edmunds.com</span></a>
+                </div>
             </div>
         </div>
-    </div>
-    <section class="content row">
-        <div class="rating-title clearfix">
-            <div class="letter-grade small excellent">a</div>
-            <div class="category">Comfort</div>
-            <div class="text-grade">Excellent</div>
-            <div class="close-button"></div>
-        </div>
-        <hr>
-        <p class="description">It's when you begin to look at what else is available for around 026K that the ILX really shines. Its
-            generous standard equipment and competitive fuel economy (not to mention good looks) should give it some
-            traction in the market.</p>
-        <div class="edmunds-rating-strips">
-            <p>A<span class="strip"></span>Build Quality (vs. $)</p>
-            <p>A<span class="strip"></span>Features (vs. $)</p>
-            <p>A<span class="strip"></span>Cost</p>
-            <p>A<span class="strip"></span>MPG</p>
-            <p>B<span class="strip good"></span>Warranty</p>
-            <p>B<span class="strip good"></span>Ownership</p>
-        </div>
-        <div class="col-xs-12">
-            <a href="#" class="btn btn-primary">Read full review <span class="hidden-xs">on Edmunds.com</span></a>
-        </div>
     </section>
-    <footer class="row">
-        <a class="legacy col-xs-5" href="#">Legal Notice</a> <!--note: Does the Legacy page exist?-->
-        <div class="logo col-xs-7"><a href="http://www.edmunds.com" class="pull-right"></a>Build by</div>
+    <footer class="container-fluid">
+        <div class="row">
+            <a class="legacy col-xs-5" href="#">Legal Notice</a> <!--note: Does the Legacy page exist?-->
+            <div class="logo col-xs-7"><a href="http://www.edmunds.com" class="pull-right"></a>Build by</div>
+        </div>
     </footer>
 </div>
 
