@@ -1,11 +1,17 @@
-define(['collection/vehicle/ratings'], function(RatingsCollection) {
+define([
+    'collection/vehicle/rating'
+], function(RatingCollection) {
     return Backbone.Model.extend({
         url: function(styleId) {
             return 'https://api.edmunds.com/api/vehicle/v2/grade/' + styleId;
         },
         parse: function(response) {
-            response.ratings = new RatingsCollection(response.ratings);
+            response.ratings = new RatingCollection(response.ratings, {
+                parse: true
+            });
+
             response.grade = this.convertGrade(response.grade);
+
             return response;
         },
         convertGrade: function(grade) {
@@ -14,32 +20,37 @@ define(['collection/vehicle/ratings'], function(RatingsCollection) {
                     return {
                         grade: 'a',
                         textGrade: 'Excellent!',
-                        gradeClass: 'excellent'
+                        gradeClass: 'excellent',
+                        activeA: 'active'
                     };
                 case 'b':
                     return {
                         grade: 'b',
                         textGrade: 'Good',
-                        gradeClass: 'good'
+                        gradeClass: 'good',
+                        activeB: 'active'
                     };
                 case 'c':
                     return {
                         grade: 'c',
                         textGrade: 'Fair',
-                        gradeClass: 'fair'
+                        gradeClass: 'fair',
+                        activeC: 'active'
                     };
                 case 'd':
                     return {
                         grade: 'd',
                         textGrade: 'Poor',
-                        gradeClass: 'poor'
+                        gradeClass: 'poor',
+                        activeD: 'active'
                     };
                 case 'e':
                     return {
                         grade: 'e',
                         textGrade: 'Bad',
-                        gradeClass: 'bad'
-                    }
+                        gradeClass: 'bad',
+                        activeE: 'active'
+                    };
                 default:
                     return 'N/A';
             }

@@ -1,6 +1,6 @@
 define([
     'model/vehicle/grade',
-    'collection/vehicle/ratings',
+    'collection/vehicle/rating',
     'view/vehicle/rating-selector'
 ], function(GradeModel, RatingCollection, RatingSelectorView) {
 
@@ -8,10 +8,9 @@ define([
 
     return Backbone.View.extend({
         tagName: 'section',
-
-        className: 'content container-fluid',
-
+        className: 'content',
         template: _.template('' +
+            '<div class="container-fluid">' +
             '<div class="row">' +
             '<div class="rating-details-container"></div>' +
             '<div class="rating-selectors-container">' +
@@ -24,9 +23,10 @@ define([
             '</div>' +
             '</div>' +
             '</div>' +
+            '</div>' +
         ''),
 
-        model: new GradeModel(),
+//        model: new GradeModel(), note: Delete this later
 
         initialize: function(options) {
             _.extend(this, _.pick(options, viewOptions));

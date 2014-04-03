@@ -1,5 +1,6 @@
 define(function() {
     return _.template('' +
+        '<div class="container-fluid">' +
         '<div class="row">' +
         '<div class="rating-container col-md-8">' +
         '<div class="test-drive-date pull-right">' +
@@ -10,13 +11,13 @@ define(function() {
         '<div class="right-side">' +
         '<div class="thumbs-down hidden-xs">' +
         '</div>' +
-        '<div class="letter-grade hidden-xs fair">c</div>' +
-        '<div class="letter-grade hidden-xs poor">d</div>' +
-        '<div class="letter-grade hidden-xs bad">e</div>' +
+        '<div class="letter-grade hidden-xs <%= grade.activeC %> fair">c</div>' +
+        '<div class="letter-grade hidden-xs <%= grade.activeD %> poor">d</div>' +
+        '<div class="letter-grade hidden-xs <%= grade.activeE %> bad">e</div>' +
         '</div> <div class="left-side clearfix">' +
         '<div class="letter-grade active <%= grade.gradeClass %> visible-xs"><%= grade.grade %></div>' +
-        '<div class="letter-grade hidden-xs excellent">a</div>' +
-        '<div class="letter-grade hidden-xs good">b</div>' +
+        '<div class="letter-grade hidden-xs <%= grade.activeA %> excellent">a</div>' +
+        '<div class="letter-grade hidden-xs <%= grade.activeB %> good">b</div>' +
         '<div class="thumbs-up hidden-xs"></div>' +
         '</div>' +
         '<div class="edmunds-grade-separator hidden-xs">' +
@@ -31,6 +32,7 @@ define(function() {
         '<div class="vehicle-info-container col-md-4">' +
         '<div class="vehicle-info">' +
         '<p>Vehicle Tested: <%= make.name %> <%= model.name %> <%= year.year %> <%= style["submodel"].body %> <%= style.name %></p>' +
+        '</div>' +
         '</div>' +
         '</div>' +
         '</div>' +

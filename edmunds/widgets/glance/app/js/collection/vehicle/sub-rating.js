@@ -1,15 +1,10 @@
 define([
-    'model/vehicle/rating'
-], function(RatingModel) {
-
+    'model/vehicle/sub-rating'
+], function(SubRatingModel) {
     return Backbone.Collection.extend({
-
-        model: RatingModel,
-
+        model: SubRatingModel,
         comparator: function(model) {
             return model.get('title');
         }
-
     });
-
 });

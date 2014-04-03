@@ -31,8 +31,7 @@ define(['collection/vehicle/styles', 'template/vehicle/styles'], function(Styles
                     api_key:    this.apiKey,
                     submodel:   this.submodel
                 },
-                reset: true,
-                dataType: 'jsonp'
+                reset: true
             });
             return this;
         },

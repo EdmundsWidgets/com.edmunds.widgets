@@ -1,9 +1,10 @@
 define([
     'view/vehicle/styles',
     'view/vehicle/grade',
+    'view/vehicle/rating-bar',
     'template/vehicle/header',
-    'view/vehicle/rating-bar'
-], function(StylesView, GradeView, headerTemplate, RatingBarView) {
+    'template/vehicle/footer'
+], function(StylesView, GradeView, RatingBarView, headerTemplate, footerTemplate) {
 
     return Backbone.View.extend({
 
@@ -11,7 +12,7 @@ define([
 
         initialize: function(options) {
             this.initializeStylesView(options);
-            this.initializeGradeView(options);
+//            this.initializeGradeView(options);
             this.initializeRatingBarView(options);
         },
 
@@ -23,11 +24,11 @@ define([
             this.listenTo(this.stylesView, 'change', this.onVehicleStyleChange);
         },
 
-        initializeGradeView: function(options) {
+        /*initializeGradeView: function(options) { note: Delete this later
             this.gradeView = new GradeView({
                 apiKey: options.apiKey
             });
-        },
+        },*/
 
         initializeRatingBarView: function(options) {
             this.ratingBarView = new RatingBarView({
@@ -38,14 +39,15 @@ define([
         render: function() {
             this.$el.append(headerTemplate);
             this.$el.append(this.ratingBarView.el);
-            $('.list-style-id').append(this.stylesView.el);
-            this.$el.append(this.gradeView.el);
+            this.$('.list-style-id').append(this.stylesView.el);
+            this.$el.append(footerTemplate);
+//            this.$el.append(this.gradeView.el);
             return this;
         },
 
         onVehicleStyleChange: function(/*style*/) {
             var styleId = 200434856; // style.get('id');
-            this.gradeView.trigger('setStyleId', styleId);
+//            this.gradeView.trigger('setStyleId', styleId);
             this.ratingBarView.trigger('setStyleId', styleId);
         }
 

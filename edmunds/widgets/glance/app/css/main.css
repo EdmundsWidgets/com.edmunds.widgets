@@ -1,5 +1,3 @@
-/*note: THIS IS NOT MINIFIED VERSION AND SHOULD BE REFACTORED LATER*/
-
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -6271,19 +6269,41 @@ button.close {
 .rating-details hr {
   margin: 0 10px;
 }
-.rating-details .edmunds-rating-strips p {
-  margin: 5px 0;
+.rating-details .edmunds-rating-strips {
   font-size: 11px;
 }
-.rating-details .edmunds-rating-strips .strip {
-  display: inline-block;
-  background: url(../img/strip_excellent.png) no-repeat;
-  width: 87px;
-  height: 7px;
-  margin: 0 7px;
+.rating-details .edmunds-rating-strips > div {
+  margin: 5px 0;
 }
-.rating-details .edmunds-rating-strips .strip.good {
-  background: url(../img/strip_good.png) no-repeat;
+.rating-details .edmunds-rating-strips .grade {
+  float: left;
+  margin-right: 10px;
+  text-transform: uppercase;
+}
+.rating-details .edmunds-rating-strips .strip-container {
+  background: #ddd;
+  float: left;
+  height: 7px;
+  margin: 3px 10px 0 0;
+  width: 80px;
+}
+.rating-details .edmunds-rating-strips .strip-container .strip {
+  height: 7px;
+}
+.rating-details .edmunds-rating-strips .strip-container .excellent {
+  background: #389800;
+}
+.rating-details .edmunds-rating-strips .strip-container .good {
+  background: #90be3f;
+}
+.rating-details .edmunds-rating-strips .strip-container .fair {
+  background: #ffcc33;
+}
+.rating-details .edmunds-rating-strips .strip-container .poor {
+  background: #bf2f37;
+}
+.rating-details .edmunds-rating-strips .strip-container .bad {
+  background: #96252b;
 }
 .edm-widget {
   background: #ffffff;
