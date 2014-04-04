@@ -8,7 +8,7 @@ define([
 
         linkToTheFullReview: _.template('' +
             '<div class="col-xs-12">' +
-            '<a href="#" class="btn btn-primary btn-primary-dark">Read full review <span class="hidden-xs">on Edmunds.com</span></a>' +
+            '<a href="http://www.edmunds.com/honda/accord/2013/rating-details.html?sub=sedan" class="btn btn-primary btn-primary-dark">Read full review <span class="hidden-xs">on Edmunds.com</span></a>' +
             '</div>' +
         ''),
 

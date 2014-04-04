@@ -15,7 +15,10 @@ define(['collection/vehicle/styles', 'template/vehicle/styles'], function(Styles
             this.load();
         },
         render: function() {
+            var firstItem = this.collection.at(0).toJSON();
             this.$el.empty();
+            $('.list-style-id button').html(firstItem.name + '<span class="arrow-down"></span>');
+            this.trigger('change');
             this.collection.each(this.add, this);
             this.$el.find('li').on('click', $.proxy(this.onClick, this));
             return this;
