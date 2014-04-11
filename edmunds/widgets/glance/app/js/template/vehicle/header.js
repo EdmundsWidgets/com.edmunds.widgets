@@ -14,10 +14,10 @@ define(function(){
         '<div class="row">' +
         '<ul class="nav nav-pills edm-navigation">' +
         '<li class="active">' +
-        '<a href="#">Ratings</a>' +
+        '<a href="#" data-id="rating">Ratings</a>' +
         '</li>' +
         '<li>' +
-        '<a href="#">Edmunds says</a>' +
+        '<a href="#" data-id="edmunds-says">Edmunds says</a>' +
         '</li>' +
         '<li class="dropdown visible-xs">' +
         '<a class="dropdown-toggle" data-toggle="dropdown" href="#">' +
