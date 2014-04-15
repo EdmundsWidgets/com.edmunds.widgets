@@ -5911,6 +5911,7 @@ button.close {
 .edm-navigation > li.active > a:focus {
   background: url(../img/tab_button_center_active.png) repeat-x;
   color: #fff;
+  z-index: 2;
 }
 .edm-navigation > li.open > a:before,
 .edm-navigation > li.active > a:before {
