@@ -32,6 +32,10 @@ define([
         },
 
         render: function() {
+            $('.edm-widget').removeClass('edmunds-says');
+            $('.edm-widget').addClass('rating-tab');
+            $('.edm-navigation li').removeClass('active');
+            $('a[data-id="rating"]').parent('li').addClass('active');
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.after(this.gradeView.el);
         }
