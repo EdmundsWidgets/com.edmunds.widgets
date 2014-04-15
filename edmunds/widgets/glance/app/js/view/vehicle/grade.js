@@ -35,7 +35,7 @@ define([
         },
 
         render: function() {
-            this.$el.addClass('rating-tab');
+//            this.$el.addClass('rating-tab');
             this.$el.html(this.template);
             this.$('p').text(this.model.get('summary'));
             this.ratingSelectorView = new RatingSelectorView({

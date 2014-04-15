@@ -5896,7 +5896,6 @@ button.close {
 }
 .edm-navigation > li > a:hover {
   background: url(../img/tab_button_center_hover.png) repeat-x;
-  color: #fff;
 }
 .edm-navigation > li > a:hover:before {
   background: url(../img/tab_button_left_hover.png) no-repeat;
@@ -5910,22 +5909,21 @@ button.close {
 .edm-navigation > li.active > a,
 .edm-navigation > li.active > a:hover,
 .edm-navigation > li.active > a:focus {
-  background: url(../img/tab_button_center_hover.png) repeat-x;
+  background: url(../img/tab_button_center_active.png) repeat-x;
   color: #fff;
 }
 .edm-navigation > li.open > a:before,
 .edm-navigation > li.active > a:before {
-  background: url(../img/tab_button_left_hover.png) no-repeat;
+  background: url(../img/tab_button_left_active.png) no-repeat;
 }
 .edm-navigation > li.open > a:after,
 .edm-navigation > li.active > a:after {
-  background: url(../img/tab_button_right_hover.png) no-repeat;
+  background: url(../img/tab_button_right_active.png) no-repeat;
 }
 .edm-navigation .arrow-down {
   display: inline-block;
   margin-left: 15px;
   vertical-align: middle;
-  border-top-color: #555555;
 }
 .edm-navigation .dropdown-menu {
   font-size: 11px;
@@ -6314,6 +6312,21 @@ button.close {
   color: #444444;
   min-width: 250px;
   overflow: hidden;
+}
+@media screen and (min-width: 250px) {
+  .edm-widget {
+    height: 600px;
+  }
+}
+@media screen and (min-width: 480px) {
+  .edm-widget {
+    height: 630px;
+  }
+}
+@media screen and (min-width: 710px) {
+  .edm-widget {
+    height: 480px;
+  }
 }
 .edm-widget p {
   margin: 0;

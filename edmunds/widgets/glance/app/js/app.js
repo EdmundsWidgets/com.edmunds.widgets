@@ -9,7 +9,7 @@ define([
 
     return Backbone.View.extend({
 
-        className: 'edm-widget',
+        className: 'edm-widget rating-tab',
 
         events: {
             'click .edm-navigation a[data-id="rating"]': 'ratingTab',
@@ -74,8 +74,9 @@ define([
             this.$('.edm-navigation li').removeClass('active');
             $(e.currentTarget).parent('li').addClass('active');
             this.$('.content').empty();
-            this.$('.content').removeClass('edmunds-says');
-            this.$('.content').addClass('rating-tab');
+            this.$el.removeClass('edmunds-says');
+            this.$el.addClass('rating-tab');
+            this.ratingBarView.render();
             this.ratingBarView.gradeView.render();
         }
 
