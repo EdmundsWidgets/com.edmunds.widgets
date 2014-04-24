@@ -77,6 +77,7 @@ define([
             $(e.currentTarget).parent('li').addClass('active');
             this.$('.content').empty();
             this.$el.removeClass('edmunds-says');
+            this.$el.removeClass('reviews-tab');
             this.$el.addClass('rating-tab');
             this.ratingBarView.render();
             this.ratingBarView.gradeView.render();
