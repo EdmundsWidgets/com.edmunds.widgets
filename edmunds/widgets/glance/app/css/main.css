@@ -6712,80 +6712,89 @@ footer .logo a {
   line-height: 55px;
   text-align: right;
 }
-.reviews-tab .customer-review {
+.reviews-tab .consumer-review {
   border-top: 1px solid #e5e5e5;
   padding: 20px 0;
 }
-.reviews-tab .customer-review:first-child {
+.reviews-tab .consumer-review:first-child {
   border: none;
   padding-top: 10px;
 }
-.reviews-tab .customer-review p {
-  font-size: 11px;
+.reviews-tab .consumer-review p {
+  margin: 15px 0;
 }
-.reviews-tab .customer-review h4 {
+.reviews-tab .consumer-review p.vehicle {
+  font-size: 11px;
+  margin: 0;
+}
+.reviews-tab .consumer-review p.title {
+  color: #94ce00;
+  margin-bottom: -15px;
+  font-weight: bold;
+}
+.reviews-tab .consumer-review h4 {
   font-size: 14px;
   margin: 0;
 }
-.reviews-tab .customer-review .date {
+.reviews-tab .consumer-review .date {
   text-align: right;
 }
-.reviews-tab .customer-review .rating-stars div {
+.reviews-tab .consumer-review .rating-stars div {
   float: left;
 }
-.reviews-tab .customer-review .rating-stars span {
+.reviews-tab .consumer-review .rating-stars span {
   font-size: 24px;
   font-weight: bold;
 }
-.reviews-tab .customer-review .rating-stars .star {
+.reviews-tab .consumer-review .rating-stars .star {
   width: 10px;
   height: 10px;
   background: url(../img/star_small.png) no-repeat;
   margin: 0 2px;
 }
-.reviews-tab .customer-review .rating-stars .star:before,
-.reviews-tab .customer-review .rating-stars .star:after {
+.reviews-tab .consumer-review .rating-stars .star:before,
+.reviews-tab .consumer-review .rating-stars .star:after {
   content: " ";
   display: table;
 }
-.reviews-tab .customer-review .rating-stars .star:after {
+.reviews-tab .consumer-review .rating-stars .star:after {
   clear: both;
 }
-.reviews-tab .customer-review .rating-stars .star:before,
-.reviews-tab .customer-review .rating-stars .star:after {
+.reviews-tab .consumer-review .rating-stars .star:before,
+.reviews-tab .consumer-review .rating-stars .star:after {
   content: " ";
   display: table;
 }
-.reviews-tab .customer-review .rating-stars .star:after {
+.reviews-tab .consumer-review .rating-stars .star:after {
   clear: both;
 }
-.reviews-tab .customer-review .rating-stars .star:before,
-.reviews-tab .customer-review .rating-stars .star:after {
+.reviews-tab .consumer-review .rating-stars .star:before,
+.reviews-tab .consumer-review .rating-stars .star:after {
   content: " ";
   display: table;
 }
-.reviews-tab .customer-review .rating-stars .star:after {
+.reviews-tab .consumer-review .rating-stars .star:after {
   clear: both;
 }
-.reviews-tab .customer-review .rating-stars .star:before,
-.reviews-tab .customer-review .rating-stars .star:after {
+.reviews-tab .consumer-review .rating-stars .star:before,
+.reviews-tab .consumer-review .rating-stars .star:after {
   content: " ";
   display: table;
 }
-.reviews-tab .customer-review .rating-stars .star:after {
+.reviews-tab .consumer-review .rating-stars .star:after {
   clear: both;
 }
-.reviews-tab .customer-review .rating-stars .star.filled {
+.reviews-tab .consumer-review .rating-stars .star.filled {
   background: url(../img/star_small_filled.png) no-repeat;
 }
-.reviews-tab .customer-review .pros {
+.reviews-tab .consumer-review .pros {
   background: url(../img/icon-pros.png) no-repeat;
   margin-bottom: 10px;
   padding-left: 20px;
   float: right;
   width: 34px;
 }
-.reviews-tab .customer-review .cons {
+.reviews-tab .consumer-review .cons {
   background: url(../img/icon-cons.png) no-repeat;
   margin-bottom: 10px;
   padding-left: 20px;
@@ -6794,4 +6803,109 @@ footer .logo a {
 }
 .reviews-tab .clearmine {
   clear: both;
+}
+.reviews-tab .list-reviews {
+  background: url(../img/list_reviews.png) no-repeat;
+  height: 37px;
+  width: 40px;
+  float: left;
+  margin-top: 9px;
+}
+.reviews-tab .list-reviews-nav {
+  float: right;
+}
+.reviews-tab .list-reviews-nav:before,
+.reviews-tab .list-reviews-nav:after {
+  content: " ";
+  display: table;
+}
+.reviews-tab .list-reviews-nav:after {
+  clear: both;
+}
+.reviews-tab .list-reviews-nav:before,
+.reviews-tab .list-reviews-nav:after {
+  content: " ";
+  display: table;
+}
+.reviews-tab .list-reviews-nav:after {
+  clear: both;
+}
+.reviews-tab .list-reviews-nav:before,
+.reviews-tab .list-reviews-nav:after {
+  content: " ";
+  display: table;
+}
+.reviews-tab .list-reviews-nav:after {
+  clear: both;
+}
+.reviews-tab .list-reviews-nav:before,
+.reviews-tab .list-reviews-nav:after {
+  content: " ";
+  display: table;
+}
+.reviews-tab .list-reviews-nav:after {
+  clear: both;
+}
+.reviews-tab .list-reviews-nav .next-review {
+  float: right;
+  background: url(../img/list_reviews_right.png) no-repeat;
+  width: 33px;
+  height: 34px;
+  margin: 10px 0 0 1px;
+}
+.reviews-tab .list-reviews-nav .prev-review {
+  float: right;
+  background: url(../img/list_reviews_left.png) no-repeat;
+  width: 33px;
+  height: 34px;
+  margin: 10px 0 0 15px;
+}
+.reviews-tab .list-reviews-nav .reviews-count {
+  float: right;
+}
+.reviews-tab .rated:before,
+.reviews-tab .rated:after {
+  content: " ";
+  display: table;
+}
+.reviews-tab .rated:after {
+  clear: both;
+}
+.reviews-tab .rated:before,
+.reviews-tab .rated:after {
+  content: " ";
+  display: table;
+}
+.reviews-tab .rated:after {
+  clear: both;
+}
+.reviews-tab .rated:before,
+.reviews-tab .rated:after {
+  content: " ";
+  display: table;
+}
+.reviews-tab .rated:after {
+  clear: both;
+}
+.reviews-tab .rated:before,
+.reviews-tab .rated:after {
+  content: " ";
+  display: table;
+}
+.reviews-tab .rated:after {
+  clear: both;
+}
+.reviews-tab .rated div {
+  float: left;
+}
+.reviews-tab .rated .cons {
+  float: left;
+  margin-left: 10px;
+  padding-left: 15px;
+  background-position: 0 center;
+}
+.reviews-tab .rated .pros {
+  float: left;
+  margin-left: 15px;
+  padding-left: 15px;
 }

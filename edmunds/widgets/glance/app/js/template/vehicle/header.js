@@ -20,7 +20,7 @@ define(function(){
         '<a href="#" data-id="edmunds-says">Edmunds says</a>' +
         '</li>' +
         '<li class="dropdown visible-xs">' +
-        '<a class="dropdown-toggle" data-toggle="dropdown" href="#">' +
+        '<a class="dropdown-toggle" data-id="consumer-reviews" data-toggle="dropdown" href="#">' +
         'Reviews' +
         '<span class="arrow-down"></span>' +
         '</a>' +
@@ -37,7 +37,7 @@ define(function(){
         '</ul>' +
         '</li>' +
         '<li class="hidden-xs">' +
-        '<a href="#">Consumer Reviews</a>' +
+        '<a href="#" data-id="consumer-reviews">Consumer Reviews</a>' +
         '</li>' +
         '<li class="hidden-xs">' +
         '<a href="#">Photos</a>' +

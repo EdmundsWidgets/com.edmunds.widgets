@@ -4,8 +4,9 @@ define([
     'view/vehicle/rating-bar',
     'view/vehicle/edmunds-says',
     'template/vehicle/header',
-    'template/vehicle/footer'
-], function(StylesView, GradeView, RatingBarView, EdmundsSaysView, headerTemplate, footerTemplate) {
+    'template/vehicle/footer',
+    'view/vehicle/consumer-reviews'
+], function(StylesView, GradeView, RatingBarView, EdmundsSaysView, headerTemplate, footerTemplate, ConsumerReviewsView) {
 
     return Backbone.View.extend({
 
@@ -13,7 +14,8 @@ define([
 
         events: {
             'click .edm-navigation a[data-id="rating"]': 'ratingTab',
-            'click .edm-navigation a[data-id="edmunds-says"]': 'edmundsSays'
+            'click .edm-navigation a[data-id="edmunds-says"]': 'edmundsSays',
+            'click .edm-navigation a[data-id="consumer-reviews"]': 'consumerReviews'
         },
 
         initialize: function(options) {
@@ -21,7 +23,7 @@ define([
             this.initializeStylesView(options);
 //            this.initializeGradeView(options);
             this.initializeRatingBarView(options);
-
+            this.consumerReviewsView = new ConsumerReviewsView();
         },
 
         initializeStylesView: function(options) {
@@ -78,6 +80,12 @@ define([
             this.$el.addClass('rating-tab');
             this.ratingBarView.render();
             this.ratingBarView.gradeView.render();
+        },
+        consumerReviews: function(e) {
+            e.preventDefault();
+            this.$('.edm-navigation li').removeClass('active');
+            $(e.currentTarget).parent('li').addClass('active');
+            this.consumerReviewsView.render();
         }
 
     });
