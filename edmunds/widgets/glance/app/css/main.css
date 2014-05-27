@@ -5928,6 +5928,10 @@ button.close {
   margin-left: 15px;
   vertical-align: middle;
 }
+.edm-navigation .dropdown.open .arrow-down,
+.edm-navigation .dropdown.active .arrow-down {
+  border-top-color: #fff;
+}
 .edm-navigation .dropdown-menu {
   font-size: 11px;
   left: -70px;
@@ -6830,6 +6834,7 @@ footer .logo a {
   width: 40px;
   float: left;
   margin-top: 9px;
+  cursor: pointer;
 }
 .reviews-tab .list-reviews-nav {
   float: right;
@@ -6873,12 +6878,18 @@ footer .logo a {
   height: 34px;
   margin: 10px 0 0 1px;
 }
+.reviews-tab .list-reviews-nav .next-review:hover {
+  cursor: pointer;
+}
 .reviews-tab .list-reviews-nav .prev-review {
   float: right;
   background: url(../img/list_reviews_left.png) no-repeat;
   width: 33px;
   height: 34px;
   margin: 10px 0 0 15px;
+}
+.reviews-tab .list-reviews-nav .prev-review:hover {
+  cursor: pointer;
 }
 .reviews-tab .list-reviews-nav .reviews-count {
   float: right;
