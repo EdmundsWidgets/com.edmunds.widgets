@@ -12,14 +12,12 @@ require(['jquery', 'underscore', 'backbone'], function() {
         'app',
         'bootstrap'
     ], function(App) {
-
-        var apiKey = 'axr2rtmnj63qsth3ume3tv5f';
-
+        var apiKey = 'axr2rtmnj63qsth3ume3tv5f',
+            submodel = 'sedan';
         var app = new App({
             apiKey:     apiKey,
-            submodel:   'sedan'
+            submodel:   submodel
         });
         document.body.appendChild(app.el);
-        app.render();
     });
 });
