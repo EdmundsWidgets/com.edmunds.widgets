@@ -7,6 +7,7 @@ define([
             return 'https://api.edmunds.com/api/vehiclereviews/v2/styles/' + styleId;
         },
         parse: function(response) {
+            response.averageRating = parseFloat(response.averageRating).toFixed(1);
             response.reviews = new ReviewsListCollection(response.reviews, {
                 parse: true
             });

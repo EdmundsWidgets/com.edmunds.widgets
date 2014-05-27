@@ -9,10 +9,14 @@ define([
             'click .consumer-review': 'renderFullReview',
             'click .list-reviews': 'render'
         },
-        initialize: function() {},
+        initialize: function(options) {
+            this.options = options || {};
+        },
         render: function() {
             this.$el.html(this.template({
-                collection: this.collection.toJSON()
+                collection: this.collection.toJSON(),
+                averageRating: this.options.averageRating,
+                reviewsCount: this.options.reviewsCount
             }));
             return this;
         },

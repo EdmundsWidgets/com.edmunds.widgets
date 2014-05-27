@@ -30,6 +30,8 @@ define([
         },
         init: function() {
             this.reviewsListView = new ReviewsListView({
+                averageRating: this.model.get('averageRating'),
+                reviewsCount: this.model.get('reviewsCount'),
                 collection: this.model.get('reviews')
             });
         }

@@ -6733,6 +6733,10 @@ footer .logo a {
   border-top: 1px solid #e5e5e5;
   padding: 18px 0;
 }
+.reviews-tab .consumer-review.reviews-list:hover {
+  background: rgba(38, 201, 255, 0.3);
+  cursor: pointer;
+}
 .reviews-tab .consumer-review:first-child {
   border-color: transparent;
 }
