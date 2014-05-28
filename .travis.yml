@@ -16,6 +16,8 @@ env:
   - secure: JI8uSNEzQ9rpfiRP9XqqhDLGiuVWNi4GNSlHmVE/pa3bqD6MAxAnJsRAfyNPB6sxxzxUcDx/FzCVjDCqj1UB+1nsyvnTkARlWwz+6xhcu8RtYQFkwVabYaLwP4ORQmTh+XImCOKK+FQKDraUrhcPqqowEUOP8wi19UE9U5tKkNs=
 before_install:
 - gem install foreman -v 0.61
+before_deploy:
+- git fetch --unshallow
 deploy:
   provider: heroku
   strategy: git
