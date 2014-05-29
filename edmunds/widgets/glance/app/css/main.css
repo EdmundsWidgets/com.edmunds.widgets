@@ -6347,6 +6347,20 @@ body {
 .edm-widget p {
   margin: 0;
 }
+.edm-widget .content {
+  height: 423px;
+  overflow: auto;
+}
+@media screen and (min-width: 480px) {
+  .edm-widget .content {
+    height: 469px;
+  }
+}
+@media screen and (min-width: 710px) {
+  .edm-widget .content {
+    height: 319px;
+  }
+}
 .btn-primary-dark {
   background: #0070aa;
   border: none;
@@ -6656,20 +6670,35 @@ footer .logo a {
 .photos .content .slider-wrapper .slider-controls ul li img {
   width: 100%;
 }
+.tco-tab .rating-container {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.tco-tab .rating-container p {
+  width: 88px;
+  line-height: 1;
+  margin: 6px 0;
+  padding: 0 7px;
+}
+.tco-tab .rating-container .btn-primary {
+  height: 25px;
+  margin: 5px 0;
+  display: block;
+  line-height: 14px;
+  padding: 5px 17px;
+  background: #0070bf;
+}
+.tco-tab .zip-code {
+  margin: 5px 0;
+}
+.tco-tab .zip-code .form-control {
+  height: 25px;
+  padding: 5px;
+  width: 55px;
+  text-align: center;
+}
 .reviews-tab .content {
-  height: 423px;
-  overflow: auto;
   padding: 0;
-}
-@media (min-width: 480px) {
-  .reviews-tab .content {
-    height: 469px;
-  }
-}
-@media (min-width: 710px) {
-  .reviews-tab .content {
-    height: 319px;
-  }
 }
 .reviews-tab .rating-bar {
   background: #00a8fe;

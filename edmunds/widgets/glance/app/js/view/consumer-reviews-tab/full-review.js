@@ -4,9 +4,15 @@ define([
     return Backbone.View.extend({
         el: '.reviews-tab',
         template: fullReviewTemplate,
-        initialize: function() {},
+        initialize: function(options) {
+            this.options = options || {};
+        },
         render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
+            this.$el.html(this.template({
+                model: this.model.toJSON(),
+                reviewsCount: this.options.reviewsCount,
+                currentReview: this.options.currentReview
+            }));
             return this;
         }
     });

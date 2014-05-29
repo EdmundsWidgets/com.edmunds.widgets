@@ -22,6 +22,7 @@ define(function() {
         '<li class="dropdown visible-xs">' +
         '<a class="dropdown-toggle" data-toggle="dropdown" href="#">Reviews<span class="arrow-down"></span></a>' +
         '<ul class="dropdown-menu">' +
+        '<li><a data-id="consumer-reviews-tab" href="#">Consumer reviews</a></li>' +
         '<li><a href="#">TCO</a></li>' +
         '<li><a href="#">Photos</a></li>' +
         '<li><a href="#">Videos</a></li>' +
